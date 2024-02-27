@@ -20,7 +20,7 @@
 
 ## 📓 Descripción General
 
-Pendiente...administradores
+Sistema web orientado a la administración, reservación, alojamiento y puntuación de una gran variedad de sitios de hospedaje, teniendo como principal objetivo garantizar, por medio de experiencias relajantes y tranquilizantes, la comodidad de todos los huéspedes. La aplicación está sumamente basada en Airbnb.
 
 ## 🙍 Tipos de Usuarios.
 
@@ -77,7 +77,7 @@ Pendiente...administradores
 
 - **Resolución de Problemas:** El usuario staff actúa como punto de contacto para resolver problemas y conflictos entre usuarios y anfitriones.
 
-## Funcionalidades
+## ⚙️ Funcionalidades
 
 ### Usuario Invitado
 
