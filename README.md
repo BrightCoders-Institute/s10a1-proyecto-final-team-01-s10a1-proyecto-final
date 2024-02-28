@@ -10,7 +10,7 @@
 
 - [Descripción General](#-descripción-general).
 - [Tipos de Usuarios](#-tipos-de-usuarios).
-- [Casos de Uso](#🛠-casos-de-uso).
+- [Casos de Uso](#-casos-de-uso).
 - [Requerimientos funcionales](#-requerimientos-funcionales).
 - [Requerimientos no funcionales](#-requerimientos-no-funcionales).
 - [Must have (prioridades)](#-must-have-prioridades).
