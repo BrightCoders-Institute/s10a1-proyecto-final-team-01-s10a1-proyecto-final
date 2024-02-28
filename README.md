@@ -10,7 +10,7 @@
 
 - [Descripción General](#-descripción-general).
 - [Tipos de Usuarios](#-tipos-de-usuarios).
-- [Casos de Uso](#casos-de-uso).
+- [Casos de Uso](#-casos-de-uso).
 - [Requerimientos funcionales](#-requerimientos-funcionales).
 - [Requerimientos no funcionales](#-requerimientos-no-funcionales).
 - [Must have (prioridades)](#-must-have-prioridades).
@@ -30,7 +30,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 - Usuarios Finales (Huéspedes).
 - Invitados (Tentativo).
 
-## 🛠️ Casos de Uso
+## 🔧 Casos de Uso
 ### Casos de uso del Usuario Final
 
 - **Buscar Alojamiento:** El usuario busca alojamientos según criterios como ubicación, fechas de estadía, tipo de alojamiento y comodidades.
@@ -77,7 +77,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Resolución de Problemas:** El usuario staff actúa como punto de contacto para resolver problemas y conflictos entre usuarios y anfitriones.
 
-## ⚙️ Requerimientos Funcionales
+## 🎨 Requerimientos Funcionales
 ### Usuario Invitado
 
 - Consultar el listado de hospedajes disponibles (sin posibilidad a reservar).
@@ -153,7 +153,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Mantenibilidad**: La aplicación debe ser fácil de mantener y actualizar sin causar interrupciones significativas en el servicio. Esto implica un código limpio y bien documentado, así como prácticas de desarrollo ágiles que faciliten la incorporación de nuevas características y corrección de errores.
 
-- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [Agile](./instructions/agile.md) y [Workflow](./instructions/workflow.md)
+- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [Agile](./instructions/agile.md) y [Workflow](./instructions/workflow.md).
 
 - **Características de Ruby on Rails**: Utilizar como mínimo las herramientas que vienen descritas en el archivo de [Instrucciones](./instructions/instructions.md).
 
@@ -189,7 +189,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Consulta de listado de hospedajes (Usuario Invitado):** Proporciona valor a los usuarios no registrados, pero su prioridad es menor comparada con las funcionalidades esenciales para usuarios registrados.
 
-## 🎖️ Nice to Have
+## 💭 Nice to Have
 - Actualización a tiempo real de la UI según los cambios efectuados en la base de datos.
 
 - Actualización a tiempo real de precios.
@@ -225,7 +225,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Gestión de Usuarios:** El super administrador tiene el control total sobre los usuarios registrados en la plataforma. Puede crear, editar, desactivar o eliminar cuentas de usuario según sea necesario, así como asignar roles y privilegios específicos a cada usuario.
 
-## 🕹️ Autores
+## 🪶 Autores
 - **[ramondiaz21](https://github.com/ramondiaz21)**
 - **[AnaCarrizales](https://github.com/AnaCarrizales)**
 - **[ErikGmz](https://github.com/ErikGmz)**
