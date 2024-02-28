@@ -8,21 +8,24 @@
 
 ## 📋 Tabla de contenido
 
-- Descripción General.
-- Tipos de Usuarios.
-- Casos de Uso.
-- Funcionalidades.
-- Nice to Have.
-- Producto Mínimo Viable (MVP).
-- Autores.
-- Badges.
-- Licencia.
+- [Descripción General](#📓-descripción-general).
+- [Tipos de Usuarios](#🙍-tipos-de-usuarios).
+- [Casos de Uso](#🛠️-casos-de-uso).
+- [Requerimientos funcionales](#⚙️-requerimientos-funcionales).
+- [Requerimientos no funcionales](#🔭-requerimientos-no-funcionales).
+- [Must have](#🔑-must-have-(prioridades)).
+- [Nice to Have](#🎖️-nice-to-have).
+- [Producto Mínimo Viable (MVP)](#🎲-producto-mínimo-viable-mvp).
+- [Autores](#🕹️-autores).
+- [Badges](#💻-badges).
+- [Licencia](#📖-licencia).
 
 ## 📓 Descripción General
 
+El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la interacción entre huéspedes y anfitriones a través de una plataforma intuitiva y segura.
 Pendiente...administradores
 
-## 🙍 Tipos de Usuarios.
+## 🙍 Tipos de Usuarios
 
 - Súper Administrador.
 - Usuarios Staff.
@@ -42,7 +45,7 @@ Pendiente...administradores
 
 - **Gestionar Reservas:** El usuario puede ver y gestionar sus reservas, incluyendo confirmaciones, modificaciones y cancelaciones.
 
-- **Explorar Perfil:** El usuario puede ver su perfil, incluyendo información personal y historial de reservas.
+- **Explorar Perfil:** El usuario puede ver su perfil, incluyendo información personal e historial de reservas.
 
 - **Dejar Reseñas:** Después de su estadía, el usuario puede dejar una reseña y calificación sobre el alojamiento.
 
@@ -59,6 +62,7 @@ Pendiente...administradores
 - **Ver Estadísticas:** El anfitrión puede ver estadísticas y análisis sobre el rendimiento de su alojamiento, como ocupación y ganancias.
 
 ### Caso de uso del Súper Administrador
+
 - **Gestionar Usuarios:** El superadministrador puede crear, editar, desactivar o eliminar cuentas de usuario.
 
 - **Moderar Contenido:** El superadministrador puede moderar contenido generado por usuarios, como reseñas y publicaciones.
@@ -77,7 +81,7 @@ Pendiente...administradores
 
 - **Resolución de Problemas:** El usuario staff actúa como punto de contacto para resolver problemas y conflictos entre usuarios y anfitriones.
 
-## Funcionalidades
+## ⚙️ Requerimientos Funcionales
 
 ### Usuario Invitado
 
@@ -139,6 +143,59 @@ Pendiente...administradores
 
 - **Soporte y Asistencia:** El super administrador proporciona soporte técnico y asistencia a los usuarios y administradores de la plataforma. Puede responder preguntas, resolver problemas técnicos, brindar orientación sobre el uso de la plataforma y ofrecer capacitación cuando sea necesario.
 
+## 🔭 Requerimientos no funcionales
+
+- **Seguridad de la aplicación:** La seguridad de los datos y la protección contra amenazas como ataques de hackers, inyección de código malicioso y robo de información sensible son fundamentales. Se deben implementar medidas de seguridad como autenticación robusta, autorización adecuada y cifrado de datos.
+
+- **Disponibilidad:** La aplicación debe estar disponible y accesible para los usuarios en todo momento, o al menos durante los periodos de tiempo acordados. Esto implica la implementación de redundancia, tolerancia a fallos y estrategias de recuperación ante desastres (tentativo).
+
+- **Adaptabilidad:** La aplicación debe ser capaz de adaptarse a diferentes dispositivos y navegadores, ya que los usuarios pueden acceder a ella desde una variedad de plataformas y dispositivos.
+
+- **Rendimiento:**: La aplicación debe ser capaz de responder de manera rápida y eficiente a las solicitudes de los usuarios. Esto implica tiempos de carga rápidos, latencia baja y alta capacidad de respuesta, incluso bajo cargas pesadas.
+
+- **Usabilidad**: La interfaz de usuario debe ser intuitiva y fácil de usar para todos los usuarios, independientemente de su nivel de experiencia. Esto implica un diseño centrado en el usuario, navegación clara y consistente, y retroalimentación adecuada para las acciones del usuario.
+
+- **Calidad**: El código de la aplicación debe ser sometido y aprobar pruebas de calidad (sintaxis, semántica y funcionalidades), utilizado herramientas como RuboCop, Reek, RubyCritic y RSpec.
+
+- **Mantenibilidad**: La aplicación debe ser fácil de mantener y actualizar sin causar interrupciones significativas en el servicio. Esto implica un código limpio y bien documentado, así como prácticas de desarrollo ágiles que faciliten la incorporación de nuevas características y corrección de errores.
+
+- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [agile](./instructions/agile.md) y [workflow](./instructions/workflow.md)
+
+- **Características de Ruby on Rails**: Utilizar como mínimo las herramientas que vienen descritas en el archivo de [Instrucciones](./instructions/instructions.md).
+
+## 🔑 Must have (Prioridades)
+
+- **Seguridad de la aplicación:** Es fundamental asegurar la protección de los datos de los usuarios y la integridad de la plataforma.
+
+- **Registro y Autenticación:** Permitir a los usuarios crear cuentas y acceder de forma segura es esencial para cualquier servicio en línea.
+
+- **Gestión de Usuarios (Usuario Súper Administrador):** La capacidad de administrar cuentas es crucial para mantener el orden y la seguridad en la plataforma.
+
+- **Búsqueda y Reserva de Alojamientos:** Esta es la funcionalidad central de la plataforma, permitiendo a los usuarios encontrar y
+  reservar hospedajes.
+
+- **Pagos Seguros:** Para completar las transacciones de reserva, es necesario un sistema de pagos confiable y seguro.
+
+- **Gestión de Propiedades (Usuario Anfitrión):** Permitir a los anfitriones listar y gestionar sus propiedades es fundamental para alimentar la plataforma con ofertas de alojamiento.
+
+- **Calificaciones y Reseñas:** Fomenta la confianza y transparencia entre usuarios y anfitriones.
+
+- **Soporte al Cliente:** Esencial para resolver dudas y problemas, mejorando la experiencia del usuario.
+
+- **Adaptabilidad y Rendimiento:** Garantizar que la plataforma sea accesible y eficiente en diferentes dispositivos y condiciones de red.
+
+- **Usabilidad:** Asegurar una interfaz intuitiva y fácil de usar mejora la satisfacción del usuario.
+
+- **Calidad y Mantenibilidad del Código:** Importante para la escalabilidad y la facilidad de mantenimiento a largo plazo.
+
+- **Control de versiones y trabajo ágil:** Facilita la colaboración y mantiene la estabilidad del proyecto.
+
+- **Características de Ruby on Rails:** Aprovechar las herramientas específicas del framework puede mejorar la eficiencia del desarrollo.
+
+- **Comunicación con Anfitriones y Gestión de Contenidos (Usuario Staff):** Aunque importantes, estas funcionalidades apoyan y enriquecen la experiencia del usuario y del anfitrión, pero no son críticas para el lanzamiento inicial de la plataforma.
+
+- **Consulta de listado de hospedajes (Usuario Invitado):** Proporciona valor a los usuarios no registrados, pero su prioridad es menor comparada con las funcionalidades esenciales para usuarios registrados.
+
 ## 🎖️ Nice to Have
 
 - Actualización a tiempo real de la UI según los cambios efectuados en la base de datos.
@@ -184,6 +241,8 @@ Pendiente...administradores
 - **[ErikGmz](https://github.com/ErikGmz)**
 - **[farellano0](https://github.com/farellano0)**
 - **[STR1ND3R](https://github.com/STR1ND3R)**
+- **[alandin1](https://github.com/alandin1)**
+- **[DevLuis123](https://github.com/DevLuis123)**
 
 ## 💻 Badges
 
@@ -200,3 +259,7 @@ Esta obra está bajo una
 [Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional][cc-by-nc-sa].
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
