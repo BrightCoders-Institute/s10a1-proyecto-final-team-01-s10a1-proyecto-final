@@ -21,13 +21,7 @@
 - [Licencia](#📖-licencia).
 
 ## 📓 Descripción General
-
-<<<<<<< HEAD
 El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la interacción entre huéspedes y anfitriones a través de una plataforma intuitiva y segura.
-Pendiente...administradores
-=======
-Sistema web orientado a la administración, reservación, alojamiento y puntuación de una gran variedad de sitios de hospedaje, teniendo como principal objetivo garantizar, por medio de experiencias relajantes y tranquilizantes, la comodidad de todos los huéspedes. La aplicación está sumamente basada en Airbnb.
->>>>>>> 80c34c75a17631d16f11dc46af4e2f035f07cfbe
 
 ## 🙍 Tipos de Usuarios
 
@@ -85,12 +79,7 @@ Sistema web orientado a la administración, reservación, alojamiento y puntuaci
 
 - **Resolución de Problemas:** El usuario staff actúa como punto de contacto para resolver problemas y conflictos entre usuarios y anfitriones.
 
-<<<<<<< HEAD
 ## ⚙️ Requerimientos Funcionales
-=======
-## ⚙️ Funcionalidades
->>>>>>> 80c34c75a17631d16f11dc46af4e2f035f07cfbe
-
 ### Usuario Invitado
 
 - Consultar el listado de hospedajes disponibles (sin posibilidad a reservar).
