@@ -8,17 +8,17 @@
 
 ## 📋 Tabla de contenido
 
-- [Descripción General](#📓-descripción-general).
-- [Tipos de Usuarios](#🙍-tipos-de-usuarios).
-- [Casos de Uso](#🛠️-casos-de-uso).
-- [Requerimientos funcionales](#⚙️-requerimientos-funcionales).
-- [Requerimientos no funcionales](#🔭-requerimientos-no-funcionales).
-- [Must have (prioridades)](#🔑-must-have-prioridades).
-- [Nice to Have](#🎖️-nice-to-have).
-- [Producto Mínimo Viable (MVP)](#🎲-producto-mínimo-viable-mvp).
-- [Autores](#🕹️-autores).
-- [Badges](#💻-badges).
-- [Licencia](#📖-licencia).
+- [Descripción General](#-descripción-general).
+- [Tipos de Usuarios](#-tipos-de-usuarios).
+- [Casos de Uso](#🛠-casos-de-uso).
+- [Requerimientos funcionales](#-requerimientos-funcionales).
+- [Requerimientos no funcionales](#-requerimientos-no-funcionales).
+- [Must have (prioridades)](#-must-have-prioridades).
+- [Nice to Have](#🎖-nice-to-have).
+- [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp).
+- [Autores](#-autores).
+- [Badges](#-badges).
+- [Licencia](#-licencia).
 
 ## 📓 Descripción General
 El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la interacción entre huéspedes y anfitriones a través de una plataforma intuitiva y segura.
