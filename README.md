@@ -11,9 +11,9 @@
 - [Descripción General](#-descripción-general).
 - [Tipos de Usuarios](#-tipos-de-usuarios).
 - [Casos de Uso](#-casos-de-uso).
-- [Requerimientos funcionales](#-requerimientos-funcionales).
-- [Requerimientos no funcionales](#-requerimientos-no-funcionales).
-- [Must have (prioridades)](#-must-have-prioridades).
+- [Requerimientos Funcionales](#-requerimientos-funcionales).
+- [Requerimientos no Funcionales](#-requerimientos-no-funcionales).
+- [Must Have (Prioridades)](#-must-have-prioridades).
 - [Nice to Have](#-nice-to-have).
 - [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp).
 - [Autores](#-autores).
@@ -138,7 +138,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Soporte y Asistencia:** El super administrador proporciona soporte técnico y asistencia a los usuarios y administradores de la plataforma. Puede responder preguntas, resolver problemas técnicos, brindar orientación sobre el uso de la plataforma y ofrecer capacitación cuando sea necesario.
 
-## 🔭 Requerimientos no funcionales
+## 🔭 Requerimientos No funcionales
 - **Seguridad de la aplicación:** La seguridad de los datos y la protección contra amenazas como ataques de hackers, inyección de código malicioso y robo de información sensible son fundamentales. Se deben implementar medidas de seguridad como autenticación robusta, autorización adecuada y cifrado de datos.
 
 - **Disponibilidad:** La aplicación debe estar disponible y accesible para los usuarios en todo momento, o al menos durante los periodos de tiempo acordados. Esto implica la implementación de redundancia, tolerancia a fallos y estrategias de recuperación ante desastres (tentativo).
@@ -157,7 +157,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Características de Ruby on Rails**: Utilizar como mínimo las herramientas que vienen descritas en el archivo de [Instrucciones](./instructions/instructions.md).
 
-## 🔑 Must have (Prioridades)
+## 🔑 Must Have (Prioridades)
 - **Seguridad de la aplicación:** Es fundamental asegurar la protección de los datos de los usuarios y la integridad de la plataforma.
 
 - **Registro y Autenticación:** Permitir a los usuarios crear cuentas y acceder de forma segura es esencial para cualquier servicio en línea.
