@@ -14,7 +14,7 @@
 - [Requerimientos funcionales](#-requerimientos-funcionales).
 - [Requerimientos no funcionales](#-requerimientos-no-funcionales).
 - [Must have (prioridades)](#-must-have-prioridades).
-- [Nice to Have](#🎖-nice-to-have).
+- [Nice to Have](#-nice-to-have).
 - [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp).
 - [Autores](#-autores).
 - [Badges](#-badges).
