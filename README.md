@@ -13,7 +13,7 @@
 - [Casos de Uso](#🛠️-casos-de-uso).
 - [Requerimientos funcionales](#⚙️-requerimientos-funcionales).
 - [Requerimientos no funcionales](#🔭-requerimientos-no-funcionales).
-- [Must have](#🔑-must-have-(prioridades)).
+- [Must have (prioridades)](#🔑-must-have-prioridades).
 - [Nice to Have](#🎖️-nice-to-have).
 - [Producto Mínimo Viable (MVP)](#🎲-producto-mínimo-viable-mvp).
 - [Autores](#🕹️-autores).
@@ -156,7 +156,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Mantenibilidad**: La aplicación debe ser fácil de mantener y actualizar sin causar interrupciones significativas en el servicio. Esto implica un código limpio y bien documentado, así como prácticas de desarrollo ágiles que faciliten la incorporación de nuevas características y corrección de errores.
 
-- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [agile](./instructions/agile.md) y [workflow](./instructions/workflow.md)
+- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [Agile](./instructions/agile.md) y [Workflow](./instructions/workflow.md)
 
 - **Características de Ruby on Rails**: Utilizar como mínimo las herramientas que vienen descritas en el archivo de [Instrucciones](./instructions/instructions.md).
 
