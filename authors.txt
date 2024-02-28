@@ -1,0 +1,7 @@
+Co-authored-by: Ana Carrizales <AnaCarrizales@users.noreply.github.com>
+Co-authored-by: Erik Gómez <ErikGmz@users.noreply.github.com>
+Co-authored-by: Fernando de Jesús Arellano Velasco <farellano0@users.noreply.github.com>
+Co-authored-by: Loloxo <STR1ND3R@users.noreply.github.com>
+Co-authored-by: Ramón Díaz <ramondiaz21@users.noreply.github.com>
+Co-authored-by: alandin1 <alandin1@users.noreply.github.com>
+Co-authored-by: Luis Gutiérrez <DevLuis123@users.noreply.github.com>
