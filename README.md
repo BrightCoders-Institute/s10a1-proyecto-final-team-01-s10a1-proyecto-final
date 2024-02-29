@@ -8,33 +8,31 @@
 
 ## 📋 Tabla de contenido
 
-- [Descripción General](#📓-descripción-general).
-- [Tipos de Usuarios](#🙍-tipos-de-usuarios).
-- [Casos de Uso](#🛠️-casos-de-uso).
-- [Requerimientos funcionales](#⚙️-requerimientos-funcionales).
-- [Requerimientos no funcionales](#🔭-requerimientos-no-funcionales).
-- [Must have](#🔑-must-have-(prioridades)).
-- [Nice to Have](#🎖️-nice-to-have).
-- [Producto Mínimo Viable (MVP)](#🎲-producto-mínimo-viable-mvp).
+- [Descripción General](#-descripción-general).
+- [Tipos de Usuarios](#-tipos-de-usuarios).
+- [Casos de Uso](#-casos-de-uso).
+- [Requerimientos Funcionales](#-requerimientos-funcionales).
+- [Requerimientos no Funcionales](#-requerimientos-no-funcionales).
+- [Must Have (Prioridades)](#-must-have-prioridades).
+- [Nice to Have](#-nice-to-have).
+- [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp).
 - [Interfaces de Usuario](#-interfaces-de-usuario).
-- [Autores](#🕹️-autores).
-- [Badges](#💻-badges).
-- [Licencia](#📖-licencia).
+- [Autores](#-autores).
+- [Badges](#-badges).
+- [Licencia](#-licencia).
 
 ## 📓 Descripción General
 
 El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la interacción entre huéspedes y anfitriones a través de una plataforma intuitiva y segura.
 
 ## 🙍 Tipos de Usuarios
-
 - Súper Administrador.
 - Usuarios Staff.
 - Usuarios Anfitriones.
 - Usuarios Finales (Huéspedes).
 - Invitados (Tentativo).
 
-## 🛠️ Casos de Uso
-
+## 🔧 Casos de Uso
 ### Casos de uso del Usuario Final
 
 - **Buscar Alojamiento:** El usuario busca alojamientos según criterios como ubicación, fechas de estadía, tipo de alojamiento y comodidades.
@@ -81,8 +79,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Resolución de Problemas:** El usuario staff actúa como punto de contacto para resolver problemas y conflictos entre usuarios y anfitriones.
 
-## ⚙️ Requerimientos Funcionales
-
+## 🎨 Requerimientos Funcionales
 ### Usuario Invitado
 
 - Consultar el listado de hospedajes disponibles (sin posibilidad a reservar).
@@ -143,8 +140,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Soporte y Asistencia:** El super administrador proporciona soporte técnico y asistencia a los usuarios y administradores de la plataforma. Puede responder preguntas, resolver problemas técnicos, brindar orientación sobre el uso de la plataforma y ofrecer capacitación cuando sea necesario.
 
-## 🔭 Requerimientos no funcionales
-
+## 🔭 Requerimientos No funcionales
 - **Seguridad de la aplicación:** La seguridad de los datos y la protección contra amenazas como ataques de hackers, inyección de código malicioso y robo de información sensible son fundamentales. Se deben implementar medidas de seguridad como autenticación robusta, autorización adecuada y cifrado de datos.
 
 - **Disponibilidad:** La aplicación debe estar disponible y accesible para los usuarios en todo momento, o al menos durante los periodos de tiempo acordados. Esto implica la implementación de redundancia, tolerancia a fallos y estrategias de recuperación ante desastres (tentativo).
@@ -159,12 +155,11 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Mantenibilidad**: La aplicación debe ser fácil de mantener y actualizar sin causar interrupciones significativas en el servicio. Esto implica un código limpio y bien documentado, así como prácticas de desarrollo ágiles que faciliten la incorporación de nuevas características y corrección de errores.
 
-- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [Agile](./instructions/agile.md) y [Workflow](./instructions/workflow.md)
+- **Control de versiones y trabajo ágil**: Todo el código de la aplicación debe alojarse en un repositorio de Git. Los commits deben ser atómicos y los mensajes debe seguir las buenas prácticas. La rama principal debe mantenerse estable en todo momento. Se trabaja según las especificaciones de los archivos [Agile](./instructions/agile.md) y [Workflow](./instructions/workflow.md).
 
 - **Características de Ruby on Rails**: Utilizar como mínimo las herramientas que vienen descritas en el archivo de [Instrucciones](./instructions/instructions.md).
 
-## 🔑 Must have (Prioridades)
-
+## 🔑 Must Have (Prioridades)
 - **Seguridad de la aplicación:** Es fundamental asegurar la protección de los datos de los usuarios y la integridad de la plataforma.
 
 - **Registro y Autenticación:** Permitir a los usuarios crear cuentas y acceder de forma segura es esencial para cualquier servicio en línea.
@@ -196,8 +191,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Consulta de listado de hospedajes (Usuario Invitado):** Proporciona valor a los usuarios no registrados, pero su prioridad es menor comparada con las funcionalidades esenciales para usuarios registrados.
 
-## 🎖️ Nice to Have
-
+## 💭 Nice to Have
 - Actualización a tiempo real de la UI según los cambios efectuados en la base de datos.
 
 - Actualización a tiempo real de precios.
@@ -207,7 +201,6 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 - Modo oscuro.
 
 ## 🎲 Producto Mínimo Viable (MVP)
-
 ### Características del MVP para Usuarios Finales:
 
 - **Registro de Usuario:** Los usuarios finales podrán registrarse en la plataforma utilizando su correo electrónico o cuentas de redes sociales.
@@ -237,8 +230,7 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 ## 🎲 Interfaces de Usuario
 > [Ver Documento de Diseño de la Interfaz de Usuario](./INTERFAZ.md)
 
-## 🕹️ Autores
-
+## 🪶 Autores
 - **[ramondiaz21](https://github.com/ramondiaz21)**
 - **[AnaCarrizales](https://github.com/AnaCarrizales)**
 - **[ErikGmz](https://github.com/ErikGmz)**
@@ -248,7 +240,6 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 - **[DevLuis123](https://github.com/DevLuis123)**
 
 ## 💻 Badges
-
 ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
 ![Rails](https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
@@ -257,7 +248,6 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 ## 📖 Licencia
-
 Esta obra está bajo una
 [Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional][cc-by-nc-sa].
 
