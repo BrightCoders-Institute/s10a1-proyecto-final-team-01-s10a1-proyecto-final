@@ -9,10 +9,10 @@ Especificación de la paleta de colores e interfaces tentativas de la aplicació
 - [Listado de Interfaces](#-listado-de-interfaces).
     - [Homepage](#homepage).
     - [Registro](#registro).
-    - [Inicio de sesión](#inicio-de-sesión).
-    - [Listado de hospedajes](#listado-de-hospedajes).
-    - [Detalles de un hospedaje](#detalles-de-un-hospedaje).
-    - [Adición/Edición de hospedaje](#adición/edición-de-hospedaje).
+    - [Inicio de Sesión](#inicio-de-sesión).
+    - [Listado de Hospedajes](#listado-de-hospedajes).
+    - [Detalles de un Hospedaje](#detalles-de-un-hospedaje).
+    - [Adición/Edición de Hospedaje](#adiciónedición-de-hospedaje).
     - [Página de Error](#página-de-error).
 
 ## 💭 Logo
@@ -27,11 +27,11 @@ Se elegió una paleta de colores conformada por cuatro tonos principales:
 
 <img src="../img/color_palette.png" width="300" alt="Paleta de Colores">
 
-## 🗒️ Listado de interfaces
+## 📝 Listado de Interfaces
 ### Homepage
 ### Registro
-### Inicio de sesión
-### Listado de hospedajes
-### Detalles de un hospedaje
-### Adición/Edición de hospedaje
+### Inicio de Sesión
+### Listado de Hospedajes
+### Detalles de un Hospedaje
+### Adición/Edición de Hospedaje
 ### Página de Error
