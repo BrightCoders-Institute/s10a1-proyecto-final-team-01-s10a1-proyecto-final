@@ -19,7 +19,7 @@ Especificación de la paleta de colores e interfaces tentativas de la aplicació
 Pendiente...
 
 ## 🎨 Paleta de Colores
-Se elegió una paleta de colores conformada por cuatro tonos principales:
+Se eligió una paleta de colores conformada por cuatro tonos principales:
 - **#190482**
 - **#7752FE**
 - **#8E8FFA**
