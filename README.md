@@ -8,18 +8,18 @@
 
 ## 📋 Tabla de contenido
 
-- [Descripción General](#-descripción-general).
-- [Tipos de Usuarios](#-tipos-de-usuarios).
-- [Casos de Uso](#-casos-de-uso).
-- [Requerimientos Funcionales](#-requerimientos-funcionales).
-- [Requerimientos no Funcionales](#-requerimientos-no-funcionales).
-- [Must Have (Prioridades)](#-must-have-prioridades).
-- [Nice to Have](#-nice-to-have).
-- [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp).
-- [Interfaces de Usuario](#-interfaces-de-usuario).
-- [Autores](#-autores).
-- [Badges](#-badges).
-- [Licencia](#-licencia).
+- [Descripción General](#-descripción-general)
+- [Tipos de Usuarios](#-tipos-de-usuarios)
+- [Casos de Uso](#-casos-de-uso)
+- [Requerimientos Funcionales](#-requerimientos-funcionales)
+- [Requerimientos no Funcionales](#-requerimientos-no-funcionales)
+- [Must Have (Prioridades)](#-must-have-prioridades)
+- [Nice to Have](#-nice-to-have)
+- [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp)
+- [Interfaces de Usuario](#-interfaces-de-usuario)
+- [Autores](#-autores)
+- [Badges](#-badges)
+- [Licencia](#-licencia)
 
 ## 📓 Descripción General
 
