@@ -4,7 +4,7 @@
 
 ## 🧩 Indicaciones del Proyecto
 
-> [Ver instrucciones antes de iniciar](./instructions/instructions.md)
+> [Ver Instrucciones Antes De Iniciar](./instructions/instructions.md)
 
 ## 📋 Tabla de contenido
 
@@ -227,8 +227,8 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 
 - **Gestión de Usuarios:** El super administrador tiene el control total sobre los usuarios registrados en la plataforma. Puede crear, editar, desactivar o eliminar cuentas de usuario según sea necesario, así como asignar roles y privilegios específicos a cada usuario.
 
-## 🎲 Interfaces de Usuario
-> [Ver Documento de Diseño de la Interfaz de Usuario](./INTERFAZ.md)
+## 🧱 Interfaces de Usuario
+> [Ver Documento de Diseño de la Interfaz de Usuario](./design/graphics_interfaces.md)
 
 ## 🪶 Autores
 - **[ramondiaz21](https://github.com/ramondiaz21)**
