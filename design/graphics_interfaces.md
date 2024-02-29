@@ -4,16 +4,16 @@
 Especificación de la paleta de colores e interfaces tentativas de la aplicación.
 
 ## 📋 Tabla de contenido
-- [Logo](#-logo).
-- [Paleta de Colores](#-paleta-de-colores).
-- [Listado de Interfaces](#-listado-de-interfaces).
-    - [Homepage](#homepage).
-    - [Registro](#registro).
-    - [Inicio de Sesión](#inicio-de-sesión).
-    - [Listado de Hospedajes](#listado-de-hospedajes).
-    - [Detalles de un Hospedaje](#detalles-de-un-hospedaje).
-    - [Adición/Edición de Hospedaje](#adiciónedición-de-hospedaje).
-    - [Página de Error](#página-de-error).
+- [Logo](#-logo)
+- [Paleta de Colores](#-paleta-de-colores)
+- [Listado de Interfaces](#-listado-de-interfaces)
+    - [Homepage](#homepage)
+    - [Registro](#registro)
+    - [Inicio de Sesión](#inicio-de-sesión)
+    - [Listado de Hospedajes](#listado-de-hospedajes)
+    - [Detalles de un Hospedaje](#detalles-de-un-hospedaje)
+    - [Adición/Edición de Hospedaje](#adiciónedición-de-hospedaje)
+    - [Página de Error](#página-de-error)
 
 ## 💭 Logo
 Pendiente...
