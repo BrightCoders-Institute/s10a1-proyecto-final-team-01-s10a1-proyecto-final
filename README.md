@@ -4,33 +4,34 @@
 
 ## 🧩 Indicaciones del Proyecto
 
-> [Ver Instrucciones Antes De Iniciar](./instructions/instructions.md)
+> **[Ver Instrucciones Antes De Iniciar](./instructions/instructions.md)**
 
 ## 📋 Tabla de contenido
 
-- [Descripción General](#-descripción-general)
-- [Tipos de Usuarios](#-tipos-de-usuarios)
-- [Casos de Uso](#-casos-de-uso)
-- [Requerimientos Funcionales](#-requerimientos-funcionales)
-- [Requerimientos no Funcionales](#-requerimientos-no-funcionales)
-- [Must Have (Prioridades)](#-must-have-prioridades)
-- [Nice to Have](#-nice-to-have)
-- [Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp)
-- [Interfaces de Usuario](#-interfaces-de-usuario)
-- [Autores](#-autores)
-- [Badges](#-badges)
-- [Licencia](#-licencia)
+- **[Descripción General](#-descripción-general)**
+- **[Tipos de Usuarios](#-tipos-de-usuarios)**
+- **[Casos de Uso](#-casos-de-uso)**
+- **[Requerimientos Funcionales](#-requerimientos-funcionales)**
+- **[Requerimientos no Funcionales](#-requerimientos-no-funcionales)**
+- **[Must Have (Prioridades)](#-must-have-prioridades)**
+- **[Nice to Have](#-nice-to-have)**
+- **[Producto Mínimo Viable (MVP)](#-producto-mínimo-viable-mvp)**
+- **[Interfaces de Usuario](#-interfaces-de-usuario)**
+- **[Modelo de la Base de Datos](#-modelo-de-la-base-de-datos)**
+- **[Autores](#-autores)**
+- **[Badges](#-badges)**
+- **[Licencia](#-licencia)**
 
 ## 📓 Descripción General
 
 El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la interacción entre huéspedes y anfitriones a través de una plataforma intuitiva y segura.
 
 ## 🙍 Tipos de Usuarios
-- Súper Administrador.
-- Usuarios Staff.
-- Usuarios Anfitriones.
-- Usuarios Finales (Huéspedes).
-- Invitados (Tentativo).
+- **Súper Administrador.**
+- **Usuarios Staff.**
+- **Usuarios Anfitriones.**
+- **Usuarios Finales (Huéspedes).**
+- **Invitados (Tentativo).**
 
 ## 🔧 Casos de Uso
 ### Casos de uso del Usuario Final
@@ -228,7 +229,10 @@ El proyecto "💤lepy" es una aplicación de hospedaje que busca facilitar la in
 - **Gestión de Usuarios:** El super administrador tiene el control total sobre los usuarios registrados en la plataforma. Puede crear, editar, desactivar o eliminar cuentas de usuario según sea necesario, así como asignar roles y privilegios específicos a cada usuario.
 
 ## 🧱 Interfaces de Usuario
-> [Ver Documento de Diseño de la Interfaz de Usuario](./design/graphic_interfaces.md)
+> **[Ver Documento de Diseño de la Interfaz de Usuario](./design/user_interfaces/graphic_interfaces.md)**
+
+## 📒 Modelo de la Base de Datos
+> **[Ver Documento del Modelo de la Base de Datos](./design/database_model/database_model.md)**
 
 ## 🪶 Autores
 - **[ramondiaz21](https://github.com/ramondiaz21)**
