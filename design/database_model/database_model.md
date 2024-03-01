@@ -11,7 +11,12 @@ Especificación de las entidades y correspondientes relaciones en la base de dat
 - **Roles.**
 - **Usuarios.**
 - **Mensajes.**
+- **Posts.**
+- **Comentarios.**
 - **Hospedajes.**
+- **Categorías.**
+- **Detalles.**
+- **Imágenes de carrusel.**
 - **Reservaciones.**
 - **Reseñas.**
 - **Configuraciones.**
