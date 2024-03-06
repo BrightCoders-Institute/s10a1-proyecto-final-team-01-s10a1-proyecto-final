@@ -71,3 +71,11 @@ end
 gem "tailwindcss-rails", "~> 2.3"
 
 gem 'devise', '~> 4.2'
+
+gem "omniauth", "~> 2.1"
+
+gem "omniauth-google-oauth2", "~> 1.1"
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "omniauth-facebook", "~> 9.0"

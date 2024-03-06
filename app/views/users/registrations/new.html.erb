@@ -29,5 +29,10 @@
         <%= f.submit "Sign up", class: "btn-primary" %>
       </div>
     <% end %>
+
+    <%= button_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"},
+                    class: "block text-center btn-primary w-100" %>
+    <%= button_to "Sign up with Facebook", user_facebook_omniauth_authorize_path, method: :post, data: {turbo: "false"},
+                    class: "block text-center btn-primary w-100" %>
   </div>
 </div>

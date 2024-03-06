@@ -10,7 +10,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.scoped_views = true
-  
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -312,4 +312,17 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.omniauth :google_oauth2, Rails.application.credentials.google_client_id,
+                  Rails.application.credentials.google_client_secret,
+                  {
+                    scope: 'email, profile',
+                    prompt: 'select_account',
+                    image_aspect_ratio: 'square',
+                    image_size: 50
+                  }
+
+  config.omniauth :facebook, Rails.application.credentials.facebook_client_id,
+                  Rails.application.credentials.facebook_client_secret,
+                  scope: 'email', info_fields: 'name,email'
 end
