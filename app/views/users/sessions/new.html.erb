@@ -1,36 +1,47 @@
-<div class="flex">
-  <div class="w-full">
-    <%= image_tag('Image_sidebar.jpg', class: "w-full h-dvh my-0 mx-0")%>
+<div class="contenedor">
+  <div class="seccion">
+    <%= image_tag 'Image_sidebar.jpg', class:"imagenl"%>
   </div>
 
-  <div class="w-full ">
-    <div class="flex flex-col justify-start items-center">
+  <div class="seccion">
+    <div class="container"> 
+
+    <div class="">
+      <%= image_tag 'logoZzzlepy.png'%>
       <h2>Log in</h2>
       <p>Log In to your Zzzlepy account to enjoy all the lodgings we have available for you!</p>
+    
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do
+      |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"john.doe@gmail.com", class:"form-input w-100" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-input w-100", placeholder: 	"Enter password:" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+      </div>
+      <% end %>
+
+      <div class="actions"><%= f.submit "Log in", class: "text-center btn-primary btn-sign-in" %></div>
+      
+      <div class="links1">
+        <% end %> <%= render "users/shared/links" %>
+      </div>
     </div>
-
-  <div class="flex flex-col items-center">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do
-    |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-    </div>
-    <% end %>
-
-    <div class="actions"><%= f.submit "Log in" %></div>
-
-    <% end %> <%= render "users/shared/links" %>
+    
+      <div class="links-wrapper">
+        <%= link_to 'Cookies', new_user_session_path, class: "sign-in-link" %>
+        <%= link_to 'Legal policy', new_user_session_path, class: "sign-in-link" %>
+        <%= link_to 'Made with love in BrightCoders', new_user_session_path, class: "sign-in-link" %>
+        <%= link_to 'Copyright 2024', new_user_session_path, class: "sign-in-link" %>
+      </div>
     </div>
   </div>
 </div>
