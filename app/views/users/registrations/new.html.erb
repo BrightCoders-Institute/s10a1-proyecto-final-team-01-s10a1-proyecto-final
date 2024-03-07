@@ -14,9 +14,6 @@
 
       <div class="field">
         <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <label>(<%= @minimum_password_length %> characters minimum)</label>
-        <% end %>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: "Enter password" %>
       </div>
 
@@ -30,9 +27,24 @@
       </div>
     <% end %>
 
-    <%= button_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"},
-                    class: "block text-center btn-primary w-100" %>
-    <%= button_to "Sign up with Facebook", user_facebook_omniauth_authorize_path, method: :post, data: {turbo: "false"},
-                    class: "block text-center btn-primary w-100" %>
+  <label for="" class="text-center w-100"> or </label>
+    <%= link_to 'Sign up as host', new_user_session_path, class: "btn-primary btn-host" %>
+  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-google w-100" do %>
+  <%= image_tag 'google.png', class: 'img-google' %>
+  <span>Sign up with Google</span>
+<% end %>
+
+  <%= button_to user_facebook_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-facebook w-100" do %>
+  <i class="fa-brands fa-facebook-f"></i>
+  <span>Sign up with Facebook</span>
+  <span></span>
+<% end %>
+<%= link_to 'Sign in', new_user_session_path, class: "text-center btn-primary btn-sign-in" %>
+  <div class="links-wrapper">
+   <%= link_to 'Cookies', new_user_session_path, class: "sign-in-link" %>
+   <%= link_to 'Legal policy', new_user_session_path, class: "sign-in-link" %>
+   <%= link_to 'Made with love in BrightCoders', new_user_session_path, class: "sign-in-link" %>
+   <%= link_to 'Copyright 2024', new_user_session_path, class: "sign-in-link" %>
+  </div>
   </div>
 </div>
