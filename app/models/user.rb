@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   before_create :set_default_role
+
   belongs_to :role
+  has_many :messages, dependent: :destroy, autosave: true
+  has_many :posts, dependent: :destroy, autosave: true
+  has_many :comments, dependent: :destroy, autosave: true
+  has_many :accommodations, dependent: :destroy, autosave: true
+  has_many :reviews, dependent: :destroy, autosave: true
+  has_many :reservations, dependent: :destroy, autosave: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -19,5 +26,9 @@ class User < ApplicationRecord
   def set_default_role
     role = Role.find_by(name: 'guest')
     self.role_id = role.id if role.present?
+  end
+
+  def messages
+    Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
   end
 end
