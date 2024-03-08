@@ -3,6 +3,7 @@
     <%= image_tag 'IMG.jpg', class: 'w-100 h-100' %>
   </div>
   <div class="right-side">
+  <%= image_tag 'app_logo.png'%>
     <h2 class="title">Create an account</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>

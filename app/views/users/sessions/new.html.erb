@@ -1,16 +1,13 @@
-<div class="contenedor">
-  <div class="seccion">
-    <%= image_tag 'Image_sidebar.jpg', class:"imagenl"%>
+<div class="contenedor log-in">
+  <div class="seccion left">
+    <%= image_tag 'Image_sidebar.jpg', class:"w-100 h-100"%>
   </div>
 
-  <div class="seccion">
-    <div class="container"> 
-
-    <div class="">
+  <div class="seccion right">
       <%= image_tag 'app_logo.png'%>
-      <h2>Log in</h2>
-      <p>Log In to your Zzzlepy account to enjoy all the lodgings we have available for you!</p>
-    
+      <h2 class="title">Log in</h2>
+      <label>Log In to your Zzzlepy account to enjoy all the lodgings we have available for you!</label>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do
       |f| %>
       <div class="field">
@@ -29,19 +26,28 @@
       </div>
       <% end %>
 
-      <div class="actions"><%= f.submit "Log in", class: "text-center btn-primary btn-sign-in" %></div>
+      <div class="actions m-b"><%= f.submit "Log in", class: "text-center btn-primary btn-sign-in" %></div>
+
+        <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-google w-100" do %>
+        <%= image_tag 'google.png', class: 'img-google' %>
+        <span>Sign up with Google</span>
+        <% end %>
+       
+        <%= button_to user_facebook_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-facebook w-100" do %>
+        <i class="fa-brands fa-facebook-f"></i>
+        <span>Sign up with Facebook</span>
+        <span></span>
+        <% end %>
+      
       
       <div class="links1">
         <% end %> <%= render "users/shared/links" %>
       </div>
-    </div>
-    
       <div class="links-wrapper">
         <%= link_to 'Cookies', new_user_session_path, class: "sign-in-link" %>
         <%= link_to 'Legal policy', new_user_session_path, class: "sign-in-link" %>
         <%= link_to 'Made with love in BrightCoders', new_user_session_path, class: "sign-in-link" %>
         <%= link_to 'Copyright 2024', new_user_session_path, class: "sign-in-link" %>
       </div>
-    </div>
   </div>
 </div>
