@@ -6,7 +6,7 @@
   <div class="seccion right">
       <%= image_tag 'app_logo.png'%>
       <h2 class="title">Log in</h2>
-      <label>Log In to your Zzzlepy account to enjoy all the lodgings we have available for you!</label>
+      <label>Log In to your Zzzlepy account to enjoy all the accommodations we have available for you!</label>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do
       |f| %>
@@ -27,6 +27,7 @@
       <% end %>
 
       <div class="actions m-b"><%= f.submit "Log in", class: "text-center btn-primary btn-sign-in" %></div>
+      <% end %>
 
         <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-google w-100" do %>
         <%= image_tag 'google.png', class: 'img-google' %>
@@ -39,9 +40,8 @@
         <span></span>
         <% end %>
       
-      
       <div class="links1">
-        <% end %> <%= render "users/shared/links" %>
+        <%= render "users/shared/links" %>
       </div>
       <div class="links-wrapper">
         <%= link_to 'Cookies', new_user_session_path, class: "sign-in-link" %>
