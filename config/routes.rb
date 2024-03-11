@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :tests do
+    member do
+      delete :remove_image
+    end
+  end
+
+
   resources :reservations
   resources :reviews
   resources :details
