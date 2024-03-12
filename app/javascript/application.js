@@ -5,3 +5,9 @@ import "controllers"
 
 import "trix"
 import "@rails/actiontext"
+
+import moment from 'moment'
+window.moment = moment
+
+import { DateRangePicker } from 'libraries/vanilla-datetimerange-picker'
+window.DateRangePicker = DateRangePicker

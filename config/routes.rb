@@ -5,11 +5,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :accommodations do
+    member do
+      delete :remove_image
+    end
+  end
 
   resources :reservations
   resources :reviews
   resources :details
-  resources :accommodations
   resources :comments
   resources :posts
   resources :messages
