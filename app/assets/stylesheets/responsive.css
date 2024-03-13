@@ -1,0 +1,50 @@
+@media (max-width: 768px) {
+  .sign-up.row {
+    flex-direction: column;
+  }
+
+  .left-side {
+    display: none;
+  }
+  
+  .right-side {
+    flex: none;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .sign-up .right-side {
+    align-items: center;
+  }
+
+  .sign-up .title {
+    font-size: 24px;
+  }
+
+  .form-input, .btn-primary {
+    padding: 10px; 
+  }
+
+  .btn-primary, .btn-google, .btn-facebook {
+    padding: 15px 25px;
+  }
+
+  .field, .actions, .links-wrapper {
+    margin: 10px 0; 
+  }
+
+  .sign-up form {
+    gap: 10px;
+  }
+
+  .links-wrapper {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .links-wrapper .sign-in-link {
+    padding: 8px;
+  }
+}
