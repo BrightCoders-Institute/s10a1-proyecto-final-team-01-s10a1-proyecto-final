@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  name: MyString
+  price_per_day: 9.99
+  rules: MyString
+  description: MyString
+  rating: 1
+  start_date: 2024-03-07
+  end_date: 2024-03-07
+  bedrooms_number: 1
+  bathrooms_number: 1
+  beds_number: 1
+  max_guests_number: 1
+
+two:
+  user: two
+  category: two
+  name: MyString
+  price_per_day: 9.99
+  rules: MyString
+  description: MyString
+  rating: 1
+  start_date: 2024-03-07
+  end_date: 2024-03-07
+  bedrooms_number: 1
+  bathrooms_number: 1
+  beds_number: 1
+  max_guests_number: 1

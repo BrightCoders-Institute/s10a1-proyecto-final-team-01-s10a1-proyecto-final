@@ -6,12 +6,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="prose">
-    <main class="container">
-      <%= yield %>
-    </main>
+
+  <body class="prose min-h-dvh min-w-full flex flex-col">
+    <div class="flex-grow sm:">
+      <div class="">
+        <% flash.each do |name, msg| %>
+          <div class="flex justify-center">
+            <div class="p-4 text-lg text-blue-800 rounded-lg w-full sm:w-2/3 mb-6
+                        bg-blue-50 dark:bg-gray-800 dark:text-blue-400 text-center" role="alert">
+              <%= content_tag(:span, msg, class: "font-semibold") %>
+            </div>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a991b50074.js" crossorigin="anonymous"></script>
   </body>
 </html>

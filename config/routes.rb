@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
   get 'errors/internal_server_error'
+
+  resources :reservations
+  resources :reviews
+  resources :details
+  resources :accommodations
+  resources :comments
+  resources :posts
+  resources :messages
   root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
