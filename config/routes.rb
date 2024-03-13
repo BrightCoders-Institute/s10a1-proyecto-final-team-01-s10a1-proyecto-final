@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :reservations
+  resources :reviews
+  resources :details
+  resources :accommodations
+  resources :comments
+  resources :posts
+  resources :messages
   root 'home#index'
 
   devise_for :users, controllers: {
