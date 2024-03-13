@@ -20,12 +20,6 @@ export default class extends Controller {
       const position = {lat: parseFloat(this.latitudeTarget.value || this.latitudeTarget.innerHTML), 
                         lng: parseFloat(this.longitudeTarget.value || this.longitudeTarget.innerHTML)};
 
-      /*
-      * Google Cloud Billing is currently deactivated.
-      *
-      * Load address autocompletion (this will be used only
-      * if Google Cloud Billing is activated).
-      */
       let autocomplete;
       function initAutocomplete() {
         autocomplete = new google.maps.places.Autocomplete(
@@ -40,7 +34,6 @@ export default class extends Controller {
         autocomplete.addListener("place_changed", onPlaceChanged);
       }
 
-      // Load Google Map.
       this.map = new Map(this.componentTarget, {
         center: position,
         zoom: 14,
@@ -52,8 +45,6 @@ export default class extends Controller {
         title: "Location",
       });
 
-      // Add listeners in order to update marker's positions
-      // when either the latitude or longitude change.
       const updateAddressOnMap = () => {
         position.lat = parseFloat(this.latitudeTarget.value || this.latitudeTarget.innerHTML);
         position.lng = parseFloat(this.longitudeTarget.value || this.longitudeTarget.innerHTML);
@@ -66,7 +57,6 @@ export default class extends Controller {
       this.latitudeTarget.addEventListener('change', updateAddressOnMap);
       this.longitudeTarget.addEventListener('change', updateAddressOnMap);
 
-      // This also will be used only if Google Cloud Billing is activated).
       function onPlaceChanged() {
         const place = autocomplete.getPlace();
 
