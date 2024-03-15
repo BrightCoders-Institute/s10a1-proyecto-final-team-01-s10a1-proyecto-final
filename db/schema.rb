@@ -171,6 +171,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_035625) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
+    t.string "name"
+    t.string "phone", limit: 16
+    t.string "emergency_contact", limit: 16
     t.bigint "role_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

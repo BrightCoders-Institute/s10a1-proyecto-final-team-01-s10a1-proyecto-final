@@ -1,0 +1,55 @@
+<section class="container-profile">
+  <%= render '/shared/profile_head' %>
+  <div class="profile">
+    <div class="row">
+      <div class="info">
+        <div class="subtitle">
+          <h2>Legal Full Name</h2>
+        </div>
+        <div class="data">
+          <p class='name'><%= @user.name %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="info">
+        <div class="subtitle">
+          <h2>Email Address</h2>
+        </div>
+        <div class="data">
+          <p class='email'><%= @user.email %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="info">
+        <div class="subtitle">
+          <h2>Phone number</h2>
+        </div>
+        <div class="data">
+          <p class='phone'><%= @user.phone %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="info">
+        <div class="subtitle">
+          <h2>Emergency contact</h2>
+        </div>
+        <div class="data">
+          <p class='emergency_contact'><%= @user.emergency_contact %></p>
+        </div>
+      </div>
+    </div>
+    <%= if @user.image.representable? %>
+      <div class="image-container">
+        <%= image_tag @user.image %>
+      </div>
+    <% end %>
+    <div class="action">
+        <%= link_to 'Edit Profile', edit_profile_path%>
+    </div>
+  </div>
+</section>
+
+

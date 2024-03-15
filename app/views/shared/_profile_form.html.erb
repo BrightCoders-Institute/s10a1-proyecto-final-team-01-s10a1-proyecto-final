@@ -1,0 +1,44 @@
+<div class="profile-form">
+  <%= form_with model: @user do |form| %>
+    <% @user.errors.full_messages.each do |error| %>
+      <div class="error-message">
+        <%= error %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control"%>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :phone, class: "form-label" %>
+      <%= form.number_field :phone, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email, class:"form-label"%>
+      <%= form.text_field :email, class:"form-control"%>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :emergency_contact, class:"form-label" %>
+      <%= form.number_field :emergency_contact, class: "form-control"%>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :image, class: "form-label"%>
+      <div class="image-container">
+        <%= link_to purge_image_profile_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do%>
+          <i class="fas fa-trash-alt"></i> Eliminar imagen
+        <% end if @user.image.representable? %>
+        <%= image_tag @user.image if @user.image.representable? %>
+    </div>
+      <%= form.file_field :image, class:"form-control", accept:"image/png, image/jpg, image/jpeg" %>
+    </div>
+
+    <div class="form-group actions">
+      <%= link_to 'Cancel', profile_path %>
+      <%= form.submit class: 'btn-edit'  %>
+    </div>
+  <% end %>
+</div>
