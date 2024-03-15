@@ -5,6 +5,10 @@
  *= require places
 */
 
+* {
+  font-family: "Roboto", sans-serif;;
+}
+
 .w-100 {
   width: 100%;
 }

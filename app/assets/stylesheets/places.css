@@ -86,4 +86,85 @@
   p {
     margin: 0;
   }
+
+  .taxes-wrapper {
+    padding: 0 0 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .taxes-container {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+  }
+
+  .taxes-wrapper .text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .taxes-title {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .taxes-text {
+    border-left: 1px solid #858585;
+    padding-left: 15px;
+    color: #858585;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+
+  .toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b0b0b0;
+    border-radius: 34px;
+    transition: background-color 0.3s;
+  }
+
+  .toggle-label::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .toggle-input:checked + .toggle-label {
+    background-color: #190482;
+  }
+
+  .toggle-input:checked + .toggle-label::before {
+    transform: translateX(26px);
+  }
 }
