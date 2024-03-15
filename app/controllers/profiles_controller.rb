@@ -1,17 +1,14 @@
 # frozen_string_literal: true
 
-# Controlador de Usuario
-class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-
+# Profile Controller
+class ProfilesController < ApplicationController
+  before_action :authenticate_user!
   def show
-    
+    @user = current_user
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -23,6 +20,12 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages
       redirect_to edit_profile_path
     end
+  end
+
+  def purge_image
+    @user = current_user
+    @user.image.purge
+    redirect_to edit_profile_path, notice: 'La imagen ha sido eliminada.'
   end
 
   private

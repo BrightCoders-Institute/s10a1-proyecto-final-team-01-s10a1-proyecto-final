@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, path: '/user', except: %i[index]
+  resources :users
 
-  resource :profile, only: %i[show edit update], controller: 'users' do
+  resource :profile do
+    member do
+      delete :purge_image
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

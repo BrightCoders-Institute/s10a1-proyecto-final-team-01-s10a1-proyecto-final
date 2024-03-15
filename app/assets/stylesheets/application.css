@@ -2,6 +2,8 @@
  *= require_self
  *= require application
  *= require responsive
+ *= require profile
+ *= require profile_form
 */
 
 .w-100 {
@@ -187,9 +189,5 @@ label {
   align-items: center;
   width: 100%;
   gap: 15px;
-}
-
-a {
-  text-decoration: none!important;
 }
 
