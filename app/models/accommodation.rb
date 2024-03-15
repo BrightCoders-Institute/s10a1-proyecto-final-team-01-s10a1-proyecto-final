@@ -3,7 +3,8 @@ class Accommodation < ApplicationRecord
   belongs_to :category
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
-  has_many :details, dependent: :destroy, autosave: true
+  has_and_belongs_to_many :details, dependent: :destroy, autosave: true
+
   has_rich_text :rules
   has_rich_text :description
 

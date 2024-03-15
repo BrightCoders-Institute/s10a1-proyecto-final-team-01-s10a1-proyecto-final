@@ -26,6 +26,14 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :details %>
+    <%= form.select(:detail_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
+                    accommodation.detail_ids), { include_blank: false },
+                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                      multiple: true, size: 10 }) %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :name %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>

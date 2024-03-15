@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :accommodations do
+    resources :details
     member do
       delete :remove_image
     end
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :reservations
   resources :reviews
-  resources :details
   resources :comments
   resources :posts
   resources :messages

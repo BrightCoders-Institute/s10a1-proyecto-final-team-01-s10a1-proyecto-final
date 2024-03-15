@@ -11,6 +11,15 @@
   </p>
 
   <p class="my-5">
+    <strong class="block font-medium mb-1">Details:</strong>
+    <ul>
+      <% accommodation.details.each do |detail| %>
+        <li><%= detail.name %></li>
+      <% end %>
+    </ul>
+  </p>
+
+  <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= accommodation.name %>
   </p>
@@ -53,13 +62,6 @@
   <p class="my-5">
     <strong class="block font-medium mb-1">Max guests number:</strong>
     <%= accommodation.max_guests_number %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Details:</strong>
-    <% accommodation.details.each do |detail| %>
-        <%= detail.name %>
-    <% end %>
   </p>
   
   <p class="my-5">
