@@ -41,9 +41,11 @@
         </div>
       </div>
     </div>
-    <div class="image-container">
-      <%= image_tag @user.image if @user.image.representable? %>
-    </div>
+    <%= if @user.image.representable? %>
+      <div class="image-container">
+        <%= image_tag @user.image %>
+      </div>
+    <% end %>
     <div class="action">
         <%= link_to 'Edit Profile', edit_profile_path%>
     </div>

@@ -61,6 +61,6 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to profile_path
-    assert_equal flash[:notice], 'Tu usuario ha sido actualizado correctamente'
+    assert_equal flash[:notice], 'Your user has been successfully updated.'
   end
 end
