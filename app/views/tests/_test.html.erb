@@ -1,0 +1,42 @@
+<%= content_tag :div, id: (dom_id test), data: { controller: "places", 
+            places_api_key_value: Rails.application.credentials.google_maps_api_key } do %>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Main image:</strong>
+    <%= image_tag test.main_image if test.main_image.attached? %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Secondary images:</strong>
+    <% test.secondary_images.each do |secondary_image| %>
+      <div><%= image_tag secondary_image %></div>
+    <% end %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= test.content %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= test.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Latitude:</strong>
+    <span data-places-target="latitude"><%= test.latitude %></span>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Longitude:</strong>
+    <span data-places-target="longitude"><%= test.longitude %></span>
+  </p>
+
+  <%= tag.div class: "my-5 h-[400px]", data: { "places-target": "component" } %>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this test", test, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this test", edit_test_path(test), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+<% end %>
