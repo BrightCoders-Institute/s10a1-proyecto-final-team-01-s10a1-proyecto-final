@@ -15,7 +15,7 @@
 
   <div class="my-5">
     <%= form.label :user %>
-    <%= form.select(:user_id, User.all.collect { |user| [user.email, user.id] }, { include_blank: true },
+    <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
                     { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
   </div>
 
