@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
-  resources :tests do
-    member do
-      delete :remove_image
-    end
-  end
-
   resources :accommodations do
     resources :details
     member do
       delete :remove_image
     end
   end
-  
+
   get 'errors/not_found'
   get 'errors/internal_server_error'
 
