@@ -1,5 +1,4 @@
-<%= content_tag :div, id: (dom_id accommodation), data: { controller: "places", 
-            places_api_key_value: Rails.application.credentials.google_maps_api_key } do %>
+<%= content_tag :div, id: (dom_id accommodation), data: { controller: "places" } do %>
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
     <%= accommodation.user.email %>
