@@ -70,14 +70,14 @@ class AccommodationsController < ApplicationController
     end
 
     def accommodation_params
-      params.require(:accommodation).permit(:user_id, :category_id, :name, :price_per_day, :main_image,
+      params.require(:accommodation).permit(:user_id, :category_id, :title, :price_per_day, :main_image,
                                             :rules, :description, :rating, :dates_range, :bedrooms_number,
                                             :bathrooms_number, :beds_number, :max_guests_number, :address, :latitude,
                                             :longitude, secondary_images: [])
     end
 
     def filtering_params(params)
-      params.slice(:hosts_ids, :categories_ids, :name, :price_per_day, :rating, :bedrooms_number,
+      params.slice(:hosts_ids, :categories_ids, :details_ids, :title, :price_per_day, :rating, :bedrooms_number,
                    :bathrooms_number, :beds_number, :max_guests_number, :dates_range, :address)
     end
 end

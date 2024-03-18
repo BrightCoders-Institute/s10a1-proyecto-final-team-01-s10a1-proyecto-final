@@ -2,22 +2,29 @@
 <%= form_with url: accommodations_path, method: :get do |form| %>
   <div>
     <div class="my-5">
-      <%= form.label :hosts_ids %>
+      <%= form.label :hosts_ids, 'Hosts' %>
       <%= form.select(:hosts_ids, options_for_select(User.where(role_id: 3).collect { |user| [user.email, user.id] },
                       params[:hosts_ids]), { include_blank: false, include_hidden: false },
                       { class: "w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
     </div>
 
     <div class="my-5">
-      <%= form.label :categories_ids %>
+      <%= form.label :categories_ids, 'Categories' %>
       <%= form.select(:categories_ids, options_for_select(Category.all.collect { |category| [category.name, category.id] },
                       params[:categories_ids]), { include_blank: true, include_hidden: false },
                       { class: "w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
     </div>
 
     <div class="my-5">
-      <%= form.label :name %>
-      <%= form.text_field :name, value: params[:name],
+      <%= form.label :details_ids, 'Details' %>
+      <%= form.select(:details_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
+                      params[:details_ids]), { include_blank: true, include_hidden: false },
+                      { class: "w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :title %>
+      <%= form.text_field :title, value: params[:title],
                           class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
     </div>
     

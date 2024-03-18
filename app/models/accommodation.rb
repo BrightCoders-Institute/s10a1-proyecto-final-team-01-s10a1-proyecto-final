@@ -21,13 +21,14 @@ class Accommodation < ApplicationRecord
 
   validates :user_id, presence: true
   validates :category_id, presence: true
-  validates :name, presence: true
+  validates :title, presence: true
   validates :price_per_day, presence: true
 
   scope :filter_by_hosts_ids, ->(hosts_ids) { where(user_id: hosts_ids).order(updated_at: :desc) }
   scope :filter_by_categories_ids, ->(categories_ids) { where(category_id: categories_ids).order(updated_at: :desc) }
-  scope :filter_by_name, ->(name) { where("name LIKE ?", "%#{name}%").order(updated_at: :desc) }
+  scope :filter_by_details_ids, ->(details_ids) { includes(:details).where(details: { id: details_ids }) }
 
+  scope :filter_by_title, ->(title) { where("title LIKE ?", "%#{title}%").order(updated_at: :desc) }
   scope :filter_by_price_per_day, ->(range) { filter_by_range(:price_per_day, range) }
   scope :filter_by_rating, ->(range) { filter_by_range(:rating, range) }
   scope :filter_by_bedrooms_number, ->(range) { filter_by_range(:bedrooms_number, range) }
