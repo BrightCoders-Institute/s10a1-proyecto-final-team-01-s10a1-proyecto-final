@@ -1,6 +1,4 @@
-<%= form_with(model: accommodation, class: "contents",
-              data: { controller: :places, places_api_key_value: Rails.application.credentials.google_maps_api_key
-              }) do |form| %>
+<%= form_with(model: accommodation, class: "contents", data: { controller: :places }) do |form| %>
   <% if accommodation.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(accommodation.errors.count, "error") %> prohibited this accommodation from being saved:</h2>
