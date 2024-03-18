@@ -11,3 +11,9 @@ window.moment = moment
 
 import { DateRangePicker } from 'libraries/vanilla-datetimerange-picker'
 window.DateRangePicker = DateRangePicker
+
+import TomSelect from "tom-select"
+window.TomSelect = TomSelect
+
+import RangeSlider from '@spreadtheweb/multi-range-slider'
+window.RangeSlider = RangeSlider

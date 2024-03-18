@@ -1,5 +1,6 @@
 @import 'actiontext.css';
-@import "vanilla-datetimerange-picker.css";
+@import 'vanilla-datetimerange-picker.css';
+@import 'pagy.css';
 /*
  *= require_self
  *= require application

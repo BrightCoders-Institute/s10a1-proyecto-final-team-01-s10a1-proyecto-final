@@ -4,6 +4,18 @@ class AccommodationsController < ApplicationController
 
   def index
     @accommodations = Accommodation.all
+    date_filter = params[:date_filter]
+
+    filtering_params(params).each do |key, value|
+      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range")
+        puts "#{key} => #{value}"
+        @accommodations = @accommodations.public_send("filter_by_#{key}", value)
+      end
+    end
+
+    @pagy, @accommodations = pagy(@accommodations)
+  rescue Pagy::VariableError
+    redirect_to accommodations_path(page: 1)
   end
 
   def show
@@ -62,5 +74,10 @@ class AccommodationsController < ApplicationController
                                             :rules, :description, :rating, :dates_range, :bedrooms_number,
                                             :bathrooms_number, :beds_number, :max_guests_number, :address, :latitude,
                                             :longitude, secondary_images: [])
+    end
+
+    def filtering_params(params)
+      params.slice(:hosts_ids, :categories_ids, :name, :price_per_day, :rating, :bedrooms_number,
+                   :bathrooms_number, :beds_number, :max_guests_number, :dates_range, :address)
     end
 end

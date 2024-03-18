@@ -81,3 +81,5 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth-facebook", "~> 9.0"
 
 gem "active_storage_validations", "~> 1.1"
+
+gem "pagy", "~> 7.0"
