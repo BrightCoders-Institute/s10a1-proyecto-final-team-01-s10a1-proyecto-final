@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'google_maps_api/show'
   resources :accommodations do
     resources :details
+    resources :reviews
     member do
       delete :remove_image
     end
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   resources :reservations
-  resources :reviews
   resources :comments
   resources :posts
   resources :messages

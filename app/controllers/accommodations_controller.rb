@@ -19,6 +19,9 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @pagy, @reviews = pagy(@accommodation.reviews)
+  rescue Pagy::VariableError
+    redirect_to accommodation_path(@accommodation, page: 1)
   end
 
   def new

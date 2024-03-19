@@ -48,7 +48,7 @@
       <%= form.label :bedrooms_number %>
       <%= form.hidden_field :bedrooms_number, value: (params[:bedrooms_number] || "").split(",").map(&:to_i).sort.join(",") %>
       <%= tag.div id: "bedrooms-number-range", class: "range-slider !mb-0 mt-3 w-72",
-                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 10,
                           rangeslider_range_value: params[:bedrooms_number], rangeslider_field_value: :bedrooms_number } %>
     </div>
 
@@ -64,7 +64,7 @@
       <%= form.label :beds_number %>
       <%= form.hidden_field :beds_number, value: (params[:beds_number] || "").split(",").map(&:to_i).sort.join(",") %>
       <%= tag.div id: "beds-number-range", class: "range-slider !mb-0 mt-3 w-72",
-                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                  data: { controller: "rangeslider", rangeslider_min_value: 1, rangeslider_max_value: 5,
                           rangeslider_range_value: params[:beds_number], rangeslider_field_value: :beds_number } %>
     </div>
 
@@ -72,7 +72,7 @@
       <%= form.label :max_guests_number %>
       <%= form.hidden_field :max_guests_number, value: (params[:max_guests_number] || "").split(",").map(&:to_i).sort.join(",") %>
       <%= tag.div id: "max-guests-number-range", class: "range-slider !mb-0 mt-3 w-72",
-                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 20,
                           rangeslider_range_value: params[:max_guests_number], rangeslider_field_value: :max_guests_number } %>
     </div>
 
