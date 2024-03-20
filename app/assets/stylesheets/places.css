@@ -1,14 +1,14 @@
 .places-list {
   .slider-wrapper {
-    position: relative;
     margin: auto;
     padding: 50px 0;
+    position: relative;
   }
 
   .slider-container {
+    overflow: hidden;
     position: relative;
     width: 100%;
-    overflow: hidden;
   }
 
   .slider {
@@ -17,47 +17,47 @@
 
   .slider-items {
     display: flex;
-    transition: transform 0.5s ease;
     gap: 25px;
+    transition: transform 0.5s ease;
   }
 
   .slider-item {
-    justify-content: center;
+    align-items: center;
     align-items: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 10px;
+    justify-content: center;
+    justify-content: center;
   }
 
   .slider-item img {
-    width: 70px;
     height: 70px;
+    width: 70px;
   }
 
   .prev-button,
   .next-button {
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 100px;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    font-size: 33px;
+    height: 29px;
+    justify-content: center;
+    padding: 10px;
+    padding: 8px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: black;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 100px;
-    border: 1px solid black;
     width: 29px;
-    height: 29px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 33px;
-    padding: 8px;
   }
 
   .prev-button {
-    left: -30px;
     display: none;
+    left: -30px;
   }
 
   .next-button {
@@ -76,11 +76,11 @@
   }
 
   .categorie-title.active {
+    border-bottom: 3px solid black;
     color: black;
     font-size: 14px;
     font-weight: bolder;
     padding-bottom: 10px;
-    border-bottom: 3px solid black;
   }
 
   p {
@@ -88,27 +88,27 @@
   }
 
   .taxes-wrapper {
-    padding: 0 0 25px 0;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
+    padding: 0 0 25px 0;
   }
 
   .taxes-container {
+    align-items: center;
     border: 1px solid #e8e8e8;
     border-radius: 10px;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 20px;
     width: 60%;
   }
 
   .taxes-wrapper .text-wrapper {
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
     gap: 15px;
+    justify-content: center;
   }
 
   .taxes-title {
@@ -119,17 +119,17 @@
 
   .taxes-text {
     border-left: 1px solid #858585;
-    padding-left: 15px;
     color: #858585;
     font-size: 16px;
     font-weight: 500;
+    padding-left: 15px;
   }
 
   .toggle-button {
-    position: relative;
     display: inline-block;
-    width: 60px;
     height: 34px;
+    position: relative;
+    width: 60px;
   }
 
   .toggle-input {
@@ -137,27 +137,27 @@
   }
 
   .toggle-label {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: #b0b0b0;
     border-radius: 34px;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
     transition: background-color 0.3s;
   }
 
   .toggle-label::before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
     background-color: white;
     border-radius: 50%;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
     transition: transform 0.3s;
+    width: 26px;
   }
 
   .toggle-input:checked + .toggle-label {
@@ -166,5 +166,134 @@
 
   .toggle-input:checked + .toggle-label::before {
     transform: translateX(26px);
+  }
+
+  .gallery-wrapper {
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    min-height: 320px;
+    position: relative;
+  }
+
+  .gallery-wrapper .carousel,
+  .gallery-wrapper .carousel-inner,
+  .gallery-wrapper .carousel-item {
+    height: 100%;
+  }
+
+  .gallery-wrapper .carousel-item.active {
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .gallery-wrapper .carousel-item img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    border-radius: 100%;
+    height: 7.5px;
+    width: 7.5px;
+  }
+
+  .carousel-control-prev svg,
+  .carousel-control-next svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    align-items: center;
+    background: white;
+    border-radius: 100%;
+    color: black;
+    display: flex;
+    font-size: 16px;
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+  }
+
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    color: black;
+  }
+
+  .carousel-control-prev:focus,
+  .carousel-control-next:focus {
+    color: black;
+  }
+
+  .carousel-control-prev {
+    left: 5px;
+  }
+
+  .carousel-control-next {
+    right: 5px;
+  }
+
+  .like-this {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 7.5px;
+    top: 7.5px;
+  }
+
+  .like-this svg {
+    height: 25px; /* Alto del SVG */
+    width: 25px; /* Ancho del SVG */
+  }
+
+  .like-this path {
+    fill: rgba(0, 0, 0, 0.5); /* Relleno negro con 50% de transparencia */
+    stroke: #fff; /* Borde blanco */
+    stroke-width: 1px; /* Ancho del borde */
+  }
+
+  .gallery-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .places-wrapper {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .star-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .place-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .gallery-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .general-info {
+    font-size: 14px;
+    font-weight: 400;
   }
 }
