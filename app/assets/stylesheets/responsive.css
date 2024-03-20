@@ -68,4 +68,8 @@
   .places-list .prev-button {
     left: 0;
   }
+
+  .places-list .places-wrapper {
+    padding-bottom: 25px;
+  }
 }
