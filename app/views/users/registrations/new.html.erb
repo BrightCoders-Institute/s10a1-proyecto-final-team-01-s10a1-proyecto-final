@@ -22,6 +22,7 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: "Confirm password" %>
       </div>
+      <%= f.hidden_field :role_id, value: 4 %>
 
       <div class="actions">
         <%= f.submit "Sign up", class: "btn-primary" %>

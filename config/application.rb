@@ -10,8 +10,9 @@ module S10a1ProyectoFinalTeam01S10a1ProyectoFinal
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+    config.exceptions_app = self.routes
+    config.action_dispatch.show_exceptions = true
     config.assets.enabled = true
-
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
