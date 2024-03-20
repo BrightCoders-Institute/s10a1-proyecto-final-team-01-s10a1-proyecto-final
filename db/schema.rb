@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_16_042148) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,11 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
     t.bigint "category_id", null: false
     t.string "name"
     t.decimal "price_per_day"
-    t.string "rules"
-    t.string "description"
     t.integer "rating"
-    t.date "start_date"
-    t.date "end_date"
     t.integer "bedrooms_number"
     t.integer "bathrooms_number"
     t.integer "beds_number"
@@ -33,8 +29,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
     t.string "address"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
+    t.string "dates_range"
     t.index ["category_id"], name: "index_accommodations_on_category_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
+  end
+
+  create_table "accommodations_details", force: :cascade do |t|
+    t.bigint "accommodation_id", null: false
+    t.bigint "detail_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_accommodations_details_on_accommodation_id"
+    t.index ["detail_id"], name: "index_accommodations_details_on_detail_id"
   end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -93,11 +99,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
   end
 
   create_table "details", force: :cascade do |t|
-    t.bigint "accommodation_id", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accommodation_id"], name: "index_details_on_accommodation_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -149,14 +153,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "address"
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -183,11 +179,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_004642) do
 
   add_foreign_key "accommodations", "categories"
   add_foreign_key "accommodations", "users"
+  add_foreign_key "accommodations_details", "accommodations"
+  add_foreign_key "accommodations_details", "details"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "details", "accommodations"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "posts", "users"

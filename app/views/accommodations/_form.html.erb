@@ -1,0 +1,147 @@
+<%= form_with(model: accommodation, class: "contents", data: { controller: :places }) do |form| %>
+  <% if accommodation.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(accommodation.errors.count, "error") %> prohibited this accommodation from being saved:</h2>
+
+      <ul>
+        <% accommodation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :user %>
+    <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
+                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :category %>
+    <%= form.select(:category_id, Category.all.collect { |category| [category.name, category.id] }, { include_blank: true },
+                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :details %>
+    <%= form.select(:detail_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
+                    accommodation.detail_ids), { include_blank: false },
+                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                      multiple: true, size: 10 }) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :price_per_day %>
+    <%= form.number_field :price_per_day, step: 0.001, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :dates_range %>
+    <%= form.text_field :dates_range, value: accommodation.dates_range,
+                        data: {controller: "daterangepicker"}, class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, min: 0, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.rich_text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rules %>
+    <%= form.rich_text_area :rules, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :bedrooms_number %>
+    <%= form.number_field :bedrooms_number, min: 0, max: 10, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :bathrooms_number %>
+    <%= form.number_field :bathrooms_number, min: 0, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :beds_number %>
+    <%= form.number_field :beds_number, min: 2, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :max_guests_number %>
+    <%= form.number_field :max_guests_number, min: 0, max: 20, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :main_image %>
+    <%= form.file_field :main_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <% if accommodation.main_image.attached? %>
+      <div class="my-5">
+        <div class="mb-3">
+          <%= image_tag accommodation.main_image %>
+        </div>
+        <%= link_to "Remove", remove_image_accommodation_path(accommodation.main_image), class: "rounded-lg py-1 px-3 bg-red-600 text-white inline-block font-medium cursor-pointer",
+                    method: :delete, data: { turbo_method: :delete } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :secondary_images %>
+    <%= form.file_field :secondary_images, multiple: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <% accommodation.secondary_images.each do |image| %>
+      <%= form.hidden_field :secondary_images, multiple: true, value: image.signed_id %>
+
+      <div class="my-5">
+        <div class="mb-3">
+          <%= image_tag image %>
+        </div>
+        <%= link_to "Remove", remove_image_accommodation_path(image), class: "rounded-lg py-1 px-3 bg-red-600 text-white inline-block font-medium cursor-pointer",
+                    method: :delete, data: { turbo_method: :delete } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: "address", autocomplete: "OFF", data: { "places-target": "address" }, placeholder: "Enter a place",
+                        value: (accommodation.address ? accommodation.address : "Mexico City"), 
+                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, data: { "places-target": "latitude" },
+                        value: (accommodation.latitude || "19.433"),
+                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, data: { "places-target": "longitude" },
+                        value: (accommodation.longitude || "-99.133"),
+                        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <%= tag.div class: "my-5 h-[400px]", data: { "places-target": "component" } %>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

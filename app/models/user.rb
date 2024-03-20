@@ -2,9 +2,10 @@ class User < ApplicationRecord
   has_one_attached :image
 
   before_create :set_default_role
+  after_destroy :delete_messages
 
   belongs_to :role
-  has_many :messages, dependent: :destroy, autosave: true
+  has_many :messages
   has_many :posts, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
   has_many :accommodations, dependent: :destroy, autosave: true
@@ -30,5 +31,11 @@ class User < ApplicationRecord
 
   def messages
     Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
+  end
+
+  private
+
+  def delete_messages
+    Message.where('sender_id = ? OR receiver_id = ?', self.id, self.id).map(&:destroy)
   end
 end
