@@ -11,12 +11,10 @@ export default class extends Controller {
 
   connect() {
     let field = document.getElementById(this.fieldValue);
+    let range = [this.minValue, this.maxValue];
 
     if (this.rangeValue !== undefined && this.rangeValue !== "") {
-      var range = this.rangeValue.split(",").map(number => parseInt(number)).sort((a, b) => a - b)
-    }
-    else {
-      var range = [this.minValue, this.maxValue]
+      range = this.rangeValue.split(",").map(number => parseInt(number)).sort((a, b) => a - b)
     }
 
     new RangeSlider("#" + this.element.id, {
