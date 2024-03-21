@@ -23,11 +23,9 @@
 
   .slider-item {
     align-items: center;
-    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    justify-content: center;
     justify-content: center;
   }
 
@@ -47,7 +45,6 @@
     font-size: 33px;
     height: 29px;
     justify-content: center;
-    padding: 10px;
     padding: 8px;
     position: absolute;
     top: 50%;
@@ -247,14 +244,14 @@
   }
 
   .like-this svg {
-    height: 25px; /* Alto del SVG */
-    width: 25px; /* Ancho del SVG */
+    height: 25px;
+    width: 25px;
   }
 
   .like-this path {
-    fill: rgba(0, 0, 0, 0.5); /* Relleno negro con 50% de transparencia */
-    stroke: #fff; /* Borde blanco */
-    stroke-width: 1px; /* Ancho del borde */
+    fill: rgba(0, 0, 0, 0.5);
+    stroke: #fff;
+    stroke-width: 1px;
   }
 
   .gallery-header {

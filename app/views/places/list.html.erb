@@ -1,92 +1,92 @@
-<div class="places-list">
+<div class="places-list" data-controller="slider">
 
   <div class="container">
     <div class="slider-wrapper">
       <div class="slider-container">
         <div class="slider">
-          <div class="slider-items">
+          <div class="slider-items" data-target="slider.sliderItems">
             <!-- Aquí colocas tus iconos -->
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title active">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
             </a>
-            <a href="">
+            <a href="" data-target="slider.sliderItem">
               <div class="slider-item"><%= image_tag 'RoomsIcon.svg', class: '' %>
                 <p class="categorie-title">Rooms</p>
               </div>
@@ -95,14 +95,14 @@
         </div>
 
       </div>
-      <button class="prev-button" onclick="prevSlide()">
+      <button class="prev-button" data-action="click->slider#prevSlide" data-target="slider.prevButton">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
 
       </button>
-      <button class="next-button" onclick="nextSlide()">
+      <button class="next-button" data-action="click->slider#nextSlide" data-target="slider.nextButton">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -126,11 +126,11 @@
         <div class="gallery-wrapper">
           <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
@@ -144,14 +144,14 @@
                 <img src="..." class="d-block w-100" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-prev" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="prev">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-next" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="next">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -187,11 +187,11 @@
         <div class="gallery-wrapper">
           <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
@@ -205,14 +205,14 @@
                 <img src="..." class="d-block w-100" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-prev" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="prev">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-next" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="next">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -248,11 +248,11 @@
         <div class="gallery-wrapper">
           <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
@@ -266,14 +266,14 @@
                 <img src="..." class="d-block w-100" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-prev" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="prev">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-next" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="next">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -309,11 +309,11 @@
         <div class="gallery-wrapper">
           <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
@@ -327,14 +327,14 @@
                 <img src="..." class="d-block w-100" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-prev" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="prev">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-next" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="next">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -370,11 +370,11 @@
         <div class="gallery-wrapper">
           <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+              <button type="button" data-bs-target="slider.#carouselExampleIndicators1" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
@@ -388,14 +388,14 @@
                 <img src="..." class="d-block w-100" alt="...">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-prev" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="prev">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+            <button class="carousel-control-next" type="button" data-bs-target="slider.#carouselExampleIndicators1"
               data-bs-slide="next">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">

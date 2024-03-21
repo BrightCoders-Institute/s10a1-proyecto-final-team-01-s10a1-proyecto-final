@@ -158,9 +158,6 @@ label {
   font-weight: bold;
 }
 
-
-
-/* */
 .contenedor {
   display: flex;
   min-height: 100vh;
@@ -182,15 +179,6 @@ label {
 .text-center {
   text-align: center;
 }
-
-/* .container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px 0;
-} */
 
 .links1{
   align-items: center;
