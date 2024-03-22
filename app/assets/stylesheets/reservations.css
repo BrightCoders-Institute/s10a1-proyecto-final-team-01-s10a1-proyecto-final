@@ -1,0 +1,100 @@
+.reservations {
+  padding: 50px 0;
+
+  .prose :where(p):not(:where([class~="not-prose"] *)) {
+    margin: 0;
+  }
+
+  .sub-subtitle {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .bold {
+    font-weight: 800;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .gray {
+    color: #717171;
+  }
+
+  .title {
+    color: black;
+    font-size: 36px;
+  }
+
+  .card {
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 50px 0;
+    padding: 20px;
+    width: fit-content;
+  }
+
+  .d-flex {
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+  }
+
+  .filters-wrapper {
+    align-items: center !important;
+    flex-direction: row !important;
+    gap: 50px !important;
+    justify-content: space-between !important;
+  }
+
+  .filters-container {
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .buttons-container {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .btn-outline {
+    border-radius: 100px;
+    padding: 5px 15px;
+    font-weight: 400;
+    color: #717171;
+    border: 2px solid #e8e8e8;
+  }
+
+  .reservations-status {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    background-color: #eaeaea;
+    padding: 50px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.reservations .btn-outline.active {
+  border: 2px solid black;
+}

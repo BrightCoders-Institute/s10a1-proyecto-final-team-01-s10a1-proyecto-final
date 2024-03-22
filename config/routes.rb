@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'places/list'
+  get 'reservations/index'
   get 'google_maps_api/show'
-  
   resources :accommodations do
     resources :details
     member do
