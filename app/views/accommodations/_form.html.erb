@@ -14,26 +14,25 @@
   <div class="my-5">
     <%= form.label :user %>
     <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+                    { class: "w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
     <%= form.label :category %>
     <%= form.select(:category_id, Category.all.collect { |category| [category.name, category.id] }, { include_blank: true },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+                    { class: "w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
     <%= form.label :details %>
     <%= form.select(:detail_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
                     accommodation.detail_ids), { include_blank: false },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
-                      multiple: true, size: 10 }) %>
+                    { class: "w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
   </div>
 
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

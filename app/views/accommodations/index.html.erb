@@ -8,12 +8,18 @@
     <%= link_to "New accommodation", new_accommodation_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <div>
+    <%= render "search_filter_form" %>
+  </div>
+
   <div id="accommodations" class="min-w-full">
-    <% @accommodations.each_with_index do |accommodation, index| %>
-      <h2>Accommodation no. <%= "%02d" % (index + 1) %></h2>
+    <% @accommodations.each do |accommodation| %>
+      <h2><%= accommodation.title %></h2>
       <%= link_to "Show this accommodation", accommodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       <%= link_to "Edit this accommodation", edit_accommodation_path(accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
       <hr class="mt-6">
     <% end %>
   </div>
+
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>
