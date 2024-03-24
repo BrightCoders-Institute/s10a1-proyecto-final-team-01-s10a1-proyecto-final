@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_accommodation
 
+  def index; end
+
   def create
     review = @accommodation.reviews.create!(review_params)
     redirect_to accommodation_path(@accommodation)

@@ -37,13 +37,10 @@ details_list.each { |detail| Detail.find_or_create_by(name: detail) }
   rules.update(body: Faker::Lorem.sentence)
   description.update(body: Faker::Lorem.sentence)
 
-  3.times do |second_number|
-    second_count = second_number + 1
-    review = Review.where(title: "Review no. #{second_count} (#{accommodation.id})").first_or_initialize
-    review.update(user_id: 32, accommodation_id: accommodation.id, rating: rand(0..5))
+  review = Review.where(title: "Review no. #{accommodation.id}").first_or_initialize
+  review.update(user_id: 32, accommodation_id: accommodation.id, rating: rand(0..5))
 
-    description = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
-                                           name: 'content').first_or_initialize
-    description.update(body: Faker::Lorem.sentence)
-  end
+  description = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
+                                          name: 'content').first_or_initialize
+  description.update(body: Faker::Lorem.sentence)
 end

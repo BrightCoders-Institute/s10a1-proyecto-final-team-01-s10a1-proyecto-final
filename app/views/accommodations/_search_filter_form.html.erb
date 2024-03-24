@@ -64,7 +64,7 @@
       <%= form.label :beds_number %>
       <%= form.hidden_field :beds_number, value: (params[:beds_number] || "").split(",").map(&:to_i).sort.join(",") %>
       <%= tag.div id: "beds-number-range", class: "range-slider !mb-0 mt-3 w-72",
-                  data: { controller: "rangeslider", rangeslider_min_value: 1, rangeslider_max_value: 5,
+                  data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
                           rangeslider_range_value: params[:beds_number], rangeslider_field_value: :beds_number } %>
     </div>
 
