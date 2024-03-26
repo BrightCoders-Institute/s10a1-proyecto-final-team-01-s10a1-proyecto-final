@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :rating, presence: true, inclusion: { in: 0..5 }
   validates :content, presence: true
-  validate :user_has_no_reviews, :user_is_a_guest, on: :create
+  validate :user_has_no_reviews, :user_is_a_guest, on: :save
 
   def user_has_no_reviews
     if Review.where(user_id: user_id, accommodation_id: accommodation_id).count >= 1
