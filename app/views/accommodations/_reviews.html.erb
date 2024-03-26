@@ -1,0 +1,10 @@
+<h1 class="font-bold text-4xl">Reviews</h1>
+
+<div id="reviews" class="min-w-full">
+  <% if accommodation.available_users_for_reviewing.length > 0 %>
+    <%= render "reviews/new", accommodation: accommodation %>
+  <% end %>
+  <%= render reviews %>
+</div>
+
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>

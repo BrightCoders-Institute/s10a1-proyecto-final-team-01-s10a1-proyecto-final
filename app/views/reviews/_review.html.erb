@@ -1,0 +1,25 @@
+<%= content_tag :div, id: (dom_id review), class: "mb-10", data: { controller: "places" } do %>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= review.user.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= review.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rating:</strong>
+    <%= review.rating %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= review.content %>
+  </p>
+
+  <% if action_name != "show" %>
+    <hr class="mt-6">
+  <% end %>
+<% end %>
