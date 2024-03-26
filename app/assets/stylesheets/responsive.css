@@ -6,7 +6,7 @@
   .left-side {
     display: none;
   }
-  
+
   .right-side {
     flex: none;
     padding: 0 20px;
@@ -21,16 +21,21 @@
     font-size: 24px;
   }
 
-  .form-input, .btn-primary {
-    padding: 10px; 
+  .form-input,
+  .btn-primary {
+    padding: 10px;
   }
 
-  .btn-primary, .btn-google, .btn-facebook {
+  .btn-primary,
+  .btn-google,
+  .btn-facebook {
     padding: 15px 25px;
   }
 
-  .field, .actions, .links-wrapper {
-    margin: 10px 0; 
+  .field,
+  .actions,
+  .links-wrapper {
+    margin: 10px 0;
   }
 
   .sign-up form {
@@ -46,5 +51,25 @@
 
   .links-wrapper .sign-in-link {
     padding: 8px;
+  }
+
+  .places-list .places-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .places-list .taxes-container {
+    width: 100%;
+  }
+
+  .places-list .next-button {
+    right: 0;
+  }
+
+  .places-list .prev-button {
+    left: 0;
+  }
+
+  .places-list .places-wrapper {
+    padding-bottom: 25px;
   }
 }

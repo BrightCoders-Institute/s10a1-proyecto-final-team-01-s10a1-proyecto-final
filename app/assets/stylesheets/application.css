@@ -1,13 +1,18 @@
 @import 'actiontext.css';
-@import 'vanilla-datetimerange-picker.css';
+@import "vanilla-datetimerange-picker.css";
 @import 'pagy.css';
+@import "places.css";
+@import "responsive.css";
+@import "profile.css";
+@import "profile_form.css";
 /*
  *= require_self
  *= require application
- *= require responsive
- *= require profile
- *= require profile_form
 */
+
+* {
+  font-family: "Roboto", sans-serif;;
+}
 
 .w-100 {
   width: 100%;
@@ -34,17 +39,17 @@
 }
 
 .sign-up .right-side {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   gap: 15px;
   justify-content: center;
-  align-items: flex-start;
   padding: 25px;
 }
 
 .title {
-  font-size: 32px;
   color:black;
+  font-size: 32px;
   font-weight: bold;
   margin: 0;
 }
@@ -56,15 +61,15 @@
 }
 
 .btn-primary {
+  background:1px solid #190482;
+  background-color: #190482;
+  border-radius: 5px;
   color:white;
   font-size: 14px;
-  background-color: #190482;
-  background:1px solid #190482;
-  width: 100%;
-  border-radius: 5px;
-  padding: 15px 25px;
   font-weight: bold;
+  padding: 15px 25px;
   transition: 1s all ease;
+  width: 100%;
 }
 
 .btn-google {
@@ -112,10 +117,10 @@
 }
 
 .sign-up form, .log-in form {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 label {
@@ -131,16 +136,16 @@ label {
 .form-input {
   border:1px solid #1D1C3F;
   border-radius: 5px;
-  padding: 7.5px;
-  font-size: 12px;
   color: #1D1C3F;
+  font-size: 12px;
+  padding: 7.5px;
 }
 
 .links-wrapper {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   margin-top: 20px;
+  width: 100%;
 }
 
 .sign-in-link {
@@ -154,9 +159,6 @@ label {
   font-weight: bold;
 }
 
-
-
-/* */
 .contenedor {
   display: flex;
   min-height: 100vh;
@@ -167,11 +169,11 @@ label {
 }
 
 .log-in .right {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   gap: 15px;
   justify-content: center;
-  align-items: flex-start;
   padding: 25px;
 }
 
@@ -179,20 +181,11 @@ label {
   text-align: center;
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px 0;
-}
-
 .links1{
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   gap: 15px;
+  justify-content: center;
+  width: 100%;
 }
