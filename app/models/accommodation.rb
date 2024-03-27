@@ -50,23 +50,9 @@ class Accommodation < ApplicationRecord
 
   scope :filter_by_dates_range, lambda { |date_interval|
     where(id: select { |accommodation|
-      dates_range_overlap?(dates_range, accommodation.dates_range)
+      ApplicationHelper.dates_range_overlap?(date_interval, accommodation.dates_range)
     }.map(&:id))
   }
-
-  def self.dates_range_overlap?(first_dates_range, second_dates_range)
-    (Range.new(*convert_range_string_to_dates(first_dates_range)))
-    .overlaps?(Range.new(*convert_range_string_to_dates(second_dates_range)))
-  end
-
-  def self.dates_range_covers_the_second_one?(first_dates_range, second_dates_range)
-    (Range.new(*convert_range_string_to_dates(first_dates_range)))
-    .cover?(Range.new(*convert_range_string_to_dates(second_dates_range)))
-  end
-
-  def self.convert_range_string_to_dates(dates_range)
-    dates_range.split('-').map { |date| Date.parse(date) }.sort
-  end
 
   def available_users_for_reviewing
     User.all.reject { |user| user.already_reviewed_accommodation?(id) || !user.is_a_guest? }

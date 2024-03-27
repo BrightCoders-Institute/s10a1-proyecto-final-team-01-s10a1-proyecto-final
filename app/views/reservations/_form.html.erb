@@ -1,0 +1,44 @@
+<%= form_with(model: reservation, class: "contents") do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% reservation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :user %>
+    <%= form.select(:user_id, User.where(role_id: 4).collect { |user| [user.email, user.id] }, { include_blank: false },
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :accommodation %>
+    <%= form.select(:accommodation_id, Accommodation.all.collect { |accommodation| [accommodation.title, accommodation.id] }, { include_blank: false },
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :dates_range %>
+    <%= form.text_field :dates_range, value: reservation.dates_range,
+                        data: {controller: "daterangepicker"}, class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+  </div>
+  
+  <% if %w[new create].exclude?(action_name) %>
+    <div class="my-5 flex items-center">
+      <%= form.check_box :active %>
+      <%= form.label :active, 'Active?', class: 'ml-2 text-start font-semibold' %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :active, value: true %>
+  <% end %>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

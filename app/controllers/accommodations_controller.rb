@@ -9,7 +9,6 @@ class AccommodationsController < ApplicationController
 
     filtering_params(params).each do |key, value|
       if value.present? && !value.empty? && (date_filter.present? || key != "dates_range")
-        puts "#{key} => #{value}"
         @accommodations = @accommodations.public_send("filter_by_#{key}", value)
       end
     end

@@ -14,20 +14,20 @@
   <div class="my-5">
     <%= form.label :user %>
     <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
-                    { class: "w-full", data: { controller: "tomselect" } }) %>
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
     <%= form.label :category %>
     <%= form.select(:category_id, Category.all.collect { |category| [category.name, category.id] }, { include_blank: true },
-                    { class: "w-full", data: { controller: "tomselect" } }) %>
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
     <%= form.label :details %>
     <%= form.select(:detail_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
                     accommodation.detail_ids), { include_blank: false },
-                    { class: "w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
+                    { class: "shadow w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
   </div>
 
   <div class="my-5">
