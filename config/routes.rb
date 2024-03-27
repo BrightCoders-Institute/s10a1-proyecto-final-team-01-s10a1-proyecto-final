@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chat_rooms/index'
   get 'google_maps_api/show'
   resources :accommodations do
     resources :details
