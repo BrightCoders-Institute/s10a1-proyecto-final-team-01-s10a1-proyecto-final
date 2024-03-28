@@ -62,4 +62,16 @@ class Accommodation < ApplicationRecord
     reviews_list = reviews.map(&:rating)
     reviews_list.size > 0 ? (reviews_list.sum(0.0) / reviews_list.size).round : 0
   end
+
+  def another_guests_occupied_reservation_dates(reservation_id)
+    reservations.where(active: true).where.not(id: reservation_id).map(&:dates_range)
+  end
+
+  def min_date
+    dates_range.split('-')[0].squish
+  end
+
+  def max_date
+    dates_range.split('-')[1].squish
+  end
 end
