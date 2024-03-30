@@ -35,19 +35,21 @@ export default class extends Controller {
     }
 
     let updateValidDatesInPicker = (function updateValidDatesInPicker(event) {
-      fetch("/accommodation_occupation/show/" + this.accommodationTarget.value + "/" + this.reservationIdValue)
-      .then(response => response.json())
-      .then((data) => {
-        let currentDate = moment().format("YYYY/MM/DD");
+      if(this.accommodationTarget.value !== undefined && this.accommodationTarget.value !== "") {
+        fetch("/accommodation_occupation/show/" + this.accommodationTarget.value + "/" + this.reservationIdValue)
+        .then(response => response.json())
+        .then((data) => {
+          let currentDate = moment().format("YYYY/MM/DD");
 
-        let range = [data.min_date, data.max_date].sort((a, b) => a - b);
-        range.forEach((value, i) => setDateProperty(fieldNames[i], value, dateRangeObject));
+          let range = [data.min_date, data.max_date].sort((a, b) => a - b);
+          range.forEach((value, i) => setDateProperty(fieldNames[i], value, dateRangeObject));
 
-        occupiedDatesList = data.dates_ranges;
-        if(this.datesrangeTarget.value == "") this.datesrangeTarget.value = currentDate + " - " + currentDate;
-        new DateRangePicker(this.datesrangeTarget, dateRangeObject);
-      })
-      .catch((error) => { console.error("Error while fetching accommodation data. " + error); })
+          occupiedDatesList = data.dates_ranges;
+          if(this.datesrangeTarget.value == "") this.datesrangeTarget.value = currentDate + " - " + currentDate;
+          new DateRangePicker(this.datesrangeTarget, dateRangeObject);
+        })
+        .catch((error) => { console.error("Error while fetching accommodation data. " + error); });
+      }
     }).bind(this);
 
     function setDateProperty(property, value, object) {

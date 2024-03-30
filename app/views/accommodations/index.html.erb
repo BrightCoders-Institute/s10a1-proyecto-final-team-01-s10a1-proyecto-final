@@ -5,9 +5,12 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Accommodations</h1>
-    <% if User.hosts_count > 0 %>
-      <%= link_to "New accommodation", new_accommodation_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    <% end %>
+    <div>
+      <%= link_to "Home", root_path, class: "inline-block rounded-lg text-center py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <% if current_user.is_a_host_or_admin? %>
+        <%= link_to "New accommodation", new_accommodation_path, class: "inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <% end %>
+    </div>
   </div>
 
   <div>
@@ -18,7 +21,9 @@
     <% @accommodations.each do |accommodation| %>
       <h2><%= accommodation.title %></h2>
       <%= link_to "Show this accommodation", accommodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= link_to "Edit this accommodation", edit_accommodation_path(accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% if accommodation.user.id == current_user.id || current_user.is_an_admin? %>
+        <%= link_to "Edit this accommodation", edit_accommodation_path(accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
       <hr class="mt-6">
     <% end %>
   </div>

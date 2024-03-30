@@ -1,4 +1,6 @@
 class AccommodationsOccupationController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     accommodation_id = params[:accommodation_id]
     accommodation = Accommodation.exists?(id: accommodation_id) ?

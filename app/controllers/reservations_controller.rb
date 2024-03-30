@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_reservation, only: %i[ show edit update destroy ]
+  before_action :check_if_guests_are_available, only: %i[ new ]
+  before_action :check_if_is_owner_or_admin, only: %i[ edit update destroy ]
+  before_action :check_if_is_guest_or_admin, only: %i[ new create ]
 
   def index
     @reservations = Reservation.all
@@ -51,6 +55,22 @@ class ReservationsController < ApplicationController
   private
     def set_reservation
       @reservation = Reservation.find(params[:id])
+    end
+
+    def check_if_is_guest_or_admin
+      unless current_user.is_a_guest_or_admin?
+        redirect_to reservations_path(page: 1), notice: "Only guests and admin are allowed to create reservations."
+      end
+    end
+
+    def check_if_is_owner_or_admin
+      unless @reservation.user.id == current_user.id || current_user.is_an_admin?
+        redirect_to reservations_path(page: 1), notice: "Only owners and admin are allowed to manage reservations."
+      end
+    end
+
+    def check_if_guests_are_available
+      redirect_to accommodations_path(page: 1) unless User.guests_count > 0
     end
 
     def reservation_params
