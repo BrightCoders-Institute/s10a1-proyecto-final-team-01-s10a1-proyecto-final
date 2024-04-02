@@ -6,10 +6,16 @@
 
     <%= render @accommodation %>
 
-    <%= link_to "Edit this accommodation", edit_accommodation_path(@accommodation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this accommodation", accommodation_path(@accommodation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="mb-10">
+      <%= link_to "Edit this accommodation", edit_accommodation_path(@accommodation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to "Destroy this accommodation", accommodation_path(@accommodation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
+      <%= link_to "Back to accommodations", accommodations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>
-    <%= link_to "Back to accommodations", accommodations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <% if @accommodation.available_users_for_reviewing.length > 0 || @accommodation.reviews.count > 0 %>
+      <%= render "accommodations/reviews", accommodation: @accommodation, reviews: @reviews %>
+    <% end %>
   </div>
 </div>

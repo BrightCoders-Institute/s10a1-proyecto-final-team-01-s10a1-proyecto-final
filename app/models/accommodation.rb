@@ -49,4 +49,13 @@ class Accommodation < ApplicationRecord
       (lower_date..upper_date).overlaps?(Range.new(*accommodation.dates_range.split('-').map { |date| Date.parse(date) }.sort))
     }.map(&:id))
   }
+
+  def available_users_for_reviewing
+    User.all.reject { |user| user.already_reviewed_accommodation?(id) || !user.is_a_guest? }
+  end
+
+  def calculate_rating
+    reviews_list = reviews.map(&:rating)
+    reviews_list.size > 0 ? (reviews_list.sum(0.0) / reviews_list.size).round : 0
+  end
 end

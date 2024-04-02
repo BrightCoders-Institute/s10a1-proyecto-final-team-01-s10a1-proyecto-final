@@ -1,6 +1,7 @@
 class AccommodationsController < ApplicationController
   before_action :get_detail_ids, only: %i[ create update ]
   before_action :set_accommodation, only: %i[ show edit update destroy ]
+  before_action :check_if_hosts_are_available, only: %i[ new ]
 
   def index
     @accommodations = Accommodation.all
@@ -19,6 +20,9 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @pagy, @reviews = pagy(@accommodation.reviews)
+  rescue Pagy::VariableError
+    redirect_to accommodation_path(@accommodation, page: 1)
   end
 
   def new
@@ -67,6 +71,10 @@ class AccommodationsController < ApplicationController
 
     def get_detail_ids
       @detail_ids = params.require(:accommodation).extract!("detail_ids").values[0].map { |id| id.to_i } - [0]
+    end
+
+    def check_if_hosts_are_available
+      redirect_to accommodations_path(page: 1) unless User.hosts_count > 0
     end
 
     def accommodation_params
