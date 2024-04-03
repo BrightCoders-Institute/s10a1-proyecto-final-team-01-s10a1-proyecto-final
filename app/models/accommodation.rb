@@ -51,7 +51,7 @@ class Accommodation < ApplicationRecord
   scope :filter_by_dates_range, lambda { |date_interval|
     where(id: select { |accommodation|
       ApplicationHelper.dates_range_overlap?(date_interval, accommodation.dates_range)
-    }.map(&:id))
+    }.pluck(:id))
   }
 
   def available_users_for_reviewing
@@ -59,12 +59,12 @@ class Accommodation < ApplicationRecord
   end
 
   def calculate_rating
-    reviews_list = reviews.map(&:rating)
+    reviews_list = reviews.pluck(:rating)
     reviews_list.size > 0 ? (reviews_list.sum(0.0) / reviews_list.size).round : 0
   end
 
   def another_guests_occupied_reservation_dates(reservation_id)
-    reservations.where(active: true).where.not(id: reservation_id).map(&:dates_range)
+    reservations.where(active: true).where.not(id: reservation_id).pluck(:dates_range)
   end
 
   def min_date

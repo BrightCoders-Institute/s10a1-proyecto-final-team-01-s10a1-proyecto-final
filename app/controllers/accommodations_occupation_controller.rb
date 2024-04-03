@@ -3,7 +3,7 @@ class AccommodationsOccupationController < ApplicationController
     accommodation_id = params[:accommodation_id]
     accommodation = Accommodation.exists?(id: accommodation_id) ?
                     Accommodation.find(accommodation_id) :
-                    Accommodation.all.first
+                    Accommodation.first
 
     render json: {
       min_date: accommodation.min_date,

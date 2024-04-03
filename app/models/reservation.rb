@@ -32,7 +32,7 @@ class Reservation < ApplicationRecord
     end
   end
 
-  def is_active?
+  def print_is_active_text
     active ? "Yes" : "No"
   end
 
