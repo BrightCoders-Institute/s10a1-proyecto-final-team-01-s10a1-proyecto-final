@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_000945) do
     t.bigint "category_id", null: false
     t.string "title"
     t.decimal "price_per_day"
-    t.integer "rating"
     t.integer "bedrooms_number"
     t.integer "bathrooms_number"
     t.integer "beds_number"
@@ -41,16 +40,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_000945) do
     t.datetime "updated_at", null: false
     t.index ["accommodation_id"], name: "index_accommodations_details_on_accommodation_id"
     t.index ["detail_id"], name: "index_accommodations_details_on_detail_id"
-  end
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -98,7 +87,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_000945) do
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
     t.string "title"
-    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -124,7 +112,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_000945) do
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
-    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -146,7 +133,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_000945) do
     t.bigint "user_id", null: false
     t.bigint "accommodation_id", null: false
     t.string "title"
-    t.string "description"
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

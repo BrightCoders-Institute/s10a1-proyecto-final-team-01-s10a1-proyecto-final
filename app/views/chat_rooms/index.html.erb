@@ -1,4 +1,7 @@
-<div>
-  <h1 class="font-bold text-4xl">ChatRooms#index</h1>
-  <p>Find me in app/views/chat_rooms/index.html.erb</p>
+<div class="container">
+  <h5> Hi <%= @current_user.email %> </h5>
+  <h4> Users </h4>
+  <%= render @users %>
+  <h4> Rooms </h4>
+  <%= render @rooms %>
 </div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'chat_rooms/index'
   get 'google_maps_api/show'
   resources :accommodations do
     resources :details
@@ -44,4 +43,7 @@ Rails.application.routes.draw do
   get '/404', to: 'errors#not_found'
   get '/500', to: 'errors#internal_server_error'
   get '/internal_server_error', to: 'errors#internal_server_error'
+
+  resources :chat_rooms
+  
 end
