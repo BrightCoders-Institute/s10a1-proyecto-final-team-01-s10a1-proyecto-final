@@ -4,6 +4,8 @@ class User < ApplicationRecord
   before_create :set_default_role
   after_destroy :delete_messages
 
+  after_create_commit { broadcast_append_to "users" }
+
   belongs_to :role
   has_many :messages
   has_many :posts, dependent: :destroy, autosave: true
