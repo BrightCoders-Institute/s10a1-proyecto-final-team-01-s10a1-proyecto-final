@@ -37,6 +37,9 @@ details_list.each { |detail| Detail.find_or_create_by(name: detail) }
   rules.update(body: Faker::Lorem.sentence)
   description.update(body: Faker::Lorem.sentence)
 
+  reservation = Reservation.where(user_id: 32, accommodation_id: accommodation.id).first_or_initialize
+  reservation.update(active: 1, dates_range: "2024/03/10 - 2024/03/12")
+
   review = Review.where(title: "Review no. #{accommodation.id}").first_or_initialize
   review.update(user_id: 32, accommodation_id: accommodation.id, rating: rand(0..5))
 

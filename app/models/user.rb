@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
+  validates :role_id, presence: true
+  validates :name, length: { maximum: 50 }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]

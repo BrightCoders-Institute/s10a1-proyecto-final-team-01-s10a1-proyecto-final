@@ -2,7 +2,7 @@
   <div class="my-5">
     <%= form.label :user %>
     <%= form.select(:user_id, accommodation.available_users_for_reviewing.collect { |user| [user.email, user.id] }, { include_blank: false },
-                    { class: "w-full", data: { controller: "tomselect" } }) %>
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
