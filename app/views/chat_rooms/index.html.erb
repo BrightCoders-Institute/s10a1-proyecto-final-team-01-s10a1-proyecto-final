@@ -1,19 +1,31 @@
-<div class="container">
-  <h5> Hi <%= @current_user.email %> </h5>
+<div class="border border-gray-200 w-screen h-screen flex flex-row">
+  <div class="w-fit m-5 p-2 border rounded-md shadow-md shadow-slate-600">
+    <h5 class="border rounded-md bg-blue-100 w-fit p-2"> Hi <%= @current_user.email %> </h5>
 
-  <h4> Users </h4>
-  <%= turbo_stream_from "users" %>
-  <div id="users">
-    <%= render @users %>
+    <h4> Users </h4>
+    <%= turbo_stream_from "users" %>
+    <div id="users">
+      <%@users.each do |i| %>
+        <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.email}", i, class: "no-underline" %></div>
+      <%end %>
+    </div>
+
+    <h4> Rooms </h4>
+    <%= turbo_stream_from "chat_rooms" %>
+    <div id="chat_rooms">
+      <%@chat_rooms.each do |i| %>
+        <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.name}", i, class: "no-underline" %></div>
+      <%end %>
+    </div>
+
+
+    <%= render partial: "layouts/new_chat_room_form" %>
+  </div>
+  <div class="border flex flex-row justify-center w-full h-fit rounded-md m-5">
+    <% if @single_chat_room %>
+      <h4 class="m-0"> <%= @single_chat_room.name %> </h4>
+    <% end %>
   </div>
 
-  <h4> Rooms </h4>
-  <%= turbo_stream_from "rooms" %>
-  <div id="rooms">
-    <%= render @chat_rooms %>
-  </div>
-
-
-  <%= render partial: "layouts/new_chat_room_form" %>
 
 </div>
