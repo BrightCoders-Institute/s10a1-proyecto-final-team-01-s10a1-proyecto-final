@@ -1,0 +1,6 @@
+<div class="">
+  <%= form_with(model: [@single_chat_room ,@message], remote: true, class: "flex" ) do |f| %>
+    <%= f.text_field :content, id: 'chat-text', class: "", autocomplete: 'off' %>
+    <%= f.submit data: { disable_with: false }, class: "btn" %>
+  <% end %>
+</div>

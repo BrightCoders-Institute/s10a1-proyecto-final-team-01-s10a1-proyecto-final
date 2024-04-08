@@ -19,13 +19,19 @@
     </div>
 
 
-    <%= render partial: "layouts/new_chat_room_form" %>
+    <%= render partial: "new_chat_room_form" %>
   </div>
   <div class="border flex flex-row justify-center w-full h-fit rounded-md m-5">
     <% if @single_chat_room %>
       <h4 class="m-0"> <%= @single_chat_room.name %> </h4>
     <% end %>
   </div>
+
+  <%= turbo_stream_from @single_chat_room %>
+  <div id="messages">
+    <%= render @messages %>
+  </div>
+  <%= render partial: 'messages/new_message_form' %>
 
 
 </div>

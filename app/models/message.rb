@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
-  belongs_to :sender, class_name: 'User'
-  belongs_to :receiver, class_name: 'User'
-  
-  validates :text, presence: true
+  belongs_to :chat_room
+  belongs_to :user
+  validates :content, presence: true
+  after_create_commit { broadcast_append_to self.chat_room }
 end

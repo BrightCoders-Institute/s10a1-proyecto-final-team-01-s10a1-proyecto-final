@@ -1,7 +1,7 @@
 class ChatRoomsController < ApplicationController
   def index
     @current_user = current_user
-    redirect_to '/signin' unless @current_user
+    redirect_to '/users/sign_in' unless @current_user
     @chat_rooms = ChatRoom.public_rooms
     @users = User.all_except(@current_user)
     @chat_room = ChatRoom.new
@@ -16,6 +16,8 @@ class ChatRoomsController < ApplicationController
     @users = User.all_except(@current_user)
     @chat_room = ChatRoom.new
 
+    @message = Message.new
+    @messages = @single_chat_room.messages
     render "index"
   end
 end
