@@ -94,8 +94,8 @@
     width: 100%;
   }
 
-  .m-50 {
-    margin: 30px 0 15px 0;
+  .m-30 {
+    margin: 50px 0 15px 0;
   }
 
   .cards-wrapper {
@@ -125,6 +125,16 @@
 
   .resources-wrapper .card-body {
     padding: 25px 15px;
+  }
+
+  .resource-wrapper {
+    display: flex;
+    gap: 15px;
+  }
+
+  .resource-wrapper .card {
+    flex:1;
+    margin: 0;
   }
 }
 
