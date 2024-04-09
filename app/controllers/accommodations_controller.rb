@@ -1,12 +1,30 @@
 class AccommodationsController < ApplicationController
-  before_action :get_detail_ids, only: %i[ create update ]
+  before_action :authenticate_user!
   before_action :set_accommodation, only: %i[ show edit update destroy ]
+  before_action :check_if_hosts_are_available, only: %i[ new ]
+  before_action :check_if_is_owner_or_admin, only: %i[ edit remove_image update destroy ]
+  before_action :check_if_is_host_or_admin, only: %i[ new create ]
+  before_action :get_detail_ids, only: %i[ create update ]
 
   def index
     @accommodations = Accommodation.all
+    date_filter = params[:date_filter]
+
+    filtering_params(params).each do |key, value|
+      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range")
+        @accommodations = @accommodations.public_send("filter_by_#{key}", value)
+      end
+    end
+
+    @pagy, @accommodations = pagy(@accommodations)
+  rescue Pagy::VariableError
+    redirect_to accommodations_path(page: 1)
   end
 
   def show
+    @pagy, @reviews = pagy(@accommodation.reviews)
+  rescue Pagy::VariableError
+    redirect_to accommodation_path(@accommodation, page: 1)
   end
 
   def new
@@ -57,10 +75,31 @@ class AccommodationsController < ApplicationController
       @detail_ids = params.require(:accommodation).extract!("detail_ids").values[0].map { |id| id.to_i } - [0]
     end
 
+    def check_if_is_host_or_admin
+      unless current_user.is_a_host_or_admin?
+        redirect_to accommodations_path(page: 1), notice: "Only hosts and admin are allowed to create accommodations."
+      end
+    end
+
+    def check_if_is_owner_or_admin
+      unless @accommodation.user.id == current_user.id || current_user.is_an_admin?
+        redirect_to accommodations_path(page: 1), notice: "Only owners and admin are allowed to manage accommodations."
+      end
+    end
+
+    def check_if_hosts_are_available
+      redirect_to accommodations_path(page: 1) unless User.hosts_count > 0
+    end
+
     def accommodation_params
-      params.require(:accommodation).permit(:user_id, :category_id, :name, :price_per_day, :main_image,
+      params.require(:accommodation).permit(:user_id, :category_id, :title, :price_per_day, :main_image,
                                             :rules, :description, :rating, :dates_range, :bedrooms_number,
                                             :bathrooms_number, :beds_number, :max_guests_number, :address, :latitude,
                                             :longitude, secondary_images: [])
+    end
+
+    def filtering_params(params)
+      params.slice(:hosts_ids, :categories_ids, :details_ids, :title, :price_per_day, :rating, :bedrooms_number,
+                   :bathrooms_number, :beds_number, :max_guests_number, :dates_range, :address)
     end
 end

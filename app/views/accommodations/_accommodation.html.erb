@@ -1,4 +1,6 @@
 <%= content_tag :div, id: (dom_id accommodation), data: { controller: "places" } do %>
+  <h1 class="font-bold text-4xl"><%= accommodation.title %></h1>
+
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
     <%= accommodation.user.email %>
@@ -19,11 +21,6 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= accommodation.name %>
-  </p>
-
-  <p class="my-5">
     <strong class="block font-medium mb-1">Price per day:</strong>
     <%= accommodation.price_per_day %>
   </p>
@@ -35,7 +32,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Rating:</strong>
-    <%= accommodation.rating %>
+    <%= accommodation.calculate_rating %>
   </p>
 
   <p class="my-5">
