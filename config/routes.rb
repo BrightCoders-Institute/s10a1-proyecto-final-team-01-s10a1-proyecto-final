@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   }
 
   resources :users
+  resources :users_management do
+    member do
+      delete :remove_image
+    end
+  end
 
   resource :profile do
     member do
