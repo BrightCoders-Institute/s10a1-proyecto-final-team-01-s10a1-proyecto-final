@@ -38,11 +38,11 @@
   }
 
   .nav ol {
-    display: flex;
     align-items: center;
+    display: flex;
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 
   .nav ol li {
@@ -51,14 +51,14 @@
 
   .nav ol li span a {
     color: hsl(240, 100%, 34%);
-    text-decoration: underline;
     font-size: 16px;
+    text-decoration: underline;
   }
   .nav ol li span a:hover,
   .nav ol li span a:focus {
-    text-decoration: none;
     background-color: #eef;
     outline: 2px solid #0000ee;
+    text-decoration: none;
   }
 
   .container-data {
@@ -74,10 +74,10 @@
   }
 
   .action a {
-    padding: 1.2rem 6rem;
-    color: #fff;
     background-color: #190482;
     border-radius: 10px;
+    color: #fff;
+    padding: 1.2rem 6rem;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease,
       border-color 0.3s ease;
@@ -95,8 +95,8 @@
   }
 
   .action a.edit-btn {
-    color: #190482;
     background-color: transparent;
+    color: #190482;
   }
 
   .action a.edit-btn:hover {
