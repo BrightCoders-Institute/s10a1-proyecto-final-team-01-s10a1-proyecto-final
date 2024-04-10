@@ -62,19 +62,19 @@ class User < ApplicationRecord
   end
 
   def is_a_guest?
-    role_id == 4
+    role_id == Role.find_by(name: 'guest').id
   end
 
   def is_a_host?
-    role_id == 3
+    role_id == Role.find_by(name: 'host').id
   end
 
   def is_staff?
-    role_id == 2
+    role_id == Role.find_by(name: 'staff').id
   end
 
   def is_an_admin?
-    role_id == 1
+    role_id == Role.find_by(name: 'superadmin').id
   end
 
   def is_a_host_or_admin?
