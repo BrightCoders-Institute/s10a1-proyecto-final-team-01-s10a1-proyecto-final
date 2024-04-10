@@ -42,7 +42,6 @@ end
                        bathrooms_number: 5, beds_number: 3, max_guests_number: 3,
                        address: 'Mexico City', latitude: 0.19433e2, longitude: -0.99133e2,
                        dates_range: "2024/03/10 - 2024/03/16")
-
   rules = ActionText::RichText.where(record_type: 'Accommodation', record_id: accommodation.id,
                                      name: 'rules').first_or_initialize
   description = ActionText::RichText.where(record_type: 'Accommodation', record_id: accommodation.id,
@@ -53,10 +52,24 @@ end
   reservation = Reservation.where(user_id: 32, accommodation_id: accommodation.id).first_or_initialize
   reservation.update(active: 1, dates_range: "2024/03/10 - 2024/03/12")
 
-  review = Review.where(user_id: 32, accommodation_id: accommodation.id, title: "Review no. #{accommodation.id}").first_or_initialize
-  review.update(rating: rand(0..5))
+  review = Review.where(title: "Review no. #{accommodation.id}").first_or_initialize
+  review.update(user_id: 32, accommodation_id: accommodation.id, rating: rand(0..5))
+  content = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
+                                           name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+end
 
-  description = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
-                                          name: 'content').first_or_initialize
-  description.update(body: Faker::Lorem.sentence)
+30.times do |number|
+  count = number + 1
+  post = Post.where(title: "Post no. #{count}").first_or_initialize
+  post.update(user_id: 33)
+  content = ActionText::RichText.where(record_type: 'Post', record_id: post.id,
+                                     name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+
+  comment = Comment.where(title: "Comment no. #{post.id}", post_id: post.id).first_or_initialize
+  comment.update(user_id: 32)
+  content = ActionText::RichText.where(record_type: 'Comment', record_id: comment.id,
+                                     name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
 end
