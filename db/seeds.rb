@@ -10,6 +10,12 @@
 
 require 'faker'
 
+users_list = [
+  {role_id: 4, email: 'guestest@brightcoders.com'},
+  {role_id: 3, email: 'hostest@brightcoders.com'},
+  {role_id: 2, email: 'stafftest@brightcoders.com'},
+  {role_id: 1, email: 'admintest@brightcoders.com'},
+]
 roles_list = %i[superadmin staff host guest]
 categories_list = %i[room farm amazing_pool countryside national_park
                      historical_home lakefront cabin beachfront castle
@@ -21,6 +27,13 @@ details_list = %i[wifi kitchen working_place washing_mashine administration
 roles_list.each { |role| Role.find_or_create_by(name: role) }
 categories_list.each { |category| Category.find_or_create_by(name: category) }
 details_list.each { |detail| Detail.find_or_create_by(name: detail) }
+
+users_list.each do |user|
+  db_user = User.find_or_create_by(email: user[:email])
+  db_user.update(role_id: user[:role_id], password: '123123', password_confirmation: '123123')
+  db_user.skip_confirmation!
+  db_user.save!
+end
 
 30.times do |number|
   count = number + 1
@@ -37,10 +50,13 @@ details_list.each { |detail| Detail.find_or_create_by(name: detail) }
   rules.update(body: Faker::Lorem.sentence)
   description.update(body: Faker::Lorem.sentence)
 
-  review = Review.where(title: "Review no. #{accommodation.id}").first_or_initialize
-  review.update(user_id: 32, accommodation_id: accommodation.id, rating: rand(0..5))
+  reservation = Reservation.where(user_id: 32, accommodation_id: accommodation.id).first_or_initialize
+  reservation.update(active: 1, dates_range: "2024/03/10 - 2024/03/12")
+
+  review = Review.where(user_id: 32, accommodation_id: accommodation.id, title: "Review no. #{accommodation.id}").first_or_initialize
+  review.update(rating: rand(0..5))
 
   description = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
-                                          name: 'content').first_or_initialize
+  name: 'content').first_or_initialize
   description.update(body: Faker::Lorem.sentence)
 end

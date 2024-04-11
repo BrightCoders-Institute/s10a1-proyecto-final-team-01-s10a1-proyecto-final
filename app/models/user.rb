@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
+  validates :role_id, presence: true
+  validates :name, length: { maximum: 50 }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
@@ -44,6 +47,26 @@ class User < ApplicationRecord
 
   def is_a_guest?
     role_id == 4
+  end
+
+  def is_a_host?
+    role_id == 3
+  end
+
+  def is_staff?
+    role_id == 2
+  end
+
+  def is_an_admin?
+    role_id == 1
+  end
+
+  def is_a_host_or_admin?
+    is_a_host? || is_an_admin?
+  end
+
+  def is_a_guest_or_admin?
+    is_a_guest? || is_an_admin?
   end
 
   private

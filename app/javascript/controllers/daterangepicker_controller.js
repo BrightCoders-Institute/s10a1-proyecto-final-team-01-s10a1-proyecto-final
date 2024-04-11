@@ -18,6 +18,6 @@ export default class extends Controller {
       locale: {
         format: "YYYY/MM/DD"
       }
-    })
+    });
   }
 }

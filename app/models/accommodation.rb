@@ -22,7 +22,13 @@ class Accommodation < ApplicationRecord
   validates :user_id, presence: true
   validates :category_id, presence: true
   validates :title, presence: true
-  validates :price_per_day, presence: true
+  validates :price_per_day, presence: true, inclusion: { in: 100..10000 }
+  validates :bedrooms_number, presence: true, inclusion: { in: 1..10 }
+  validates :bathrooms_number, presence: true, inclusion: { in: 1..5 }
+  validates :beds_number, presence: true, inclusion: { in: 1..5 }
+  validates :max_guests_number, presence: true, inclusion: { in: 1..20 }
+  validates :address, presence: true
+  validates :dates_range, presence: true
 
   scope :filter_by_hosts_ids, ->(hosts_ids) { where(user_id: hosts_ids).order(updated_at: :desc) }
   scope :filter_by_categories_ids, ->(categories_ids) { where(category_id: categories_ids).order(updated_at: :desc) }
@@ -43,11 +49,9 @@ class Accommodation < ApplicationRecord
   }
 
   scope :filter_by_dates_range, lambda { |date_interval|
-    lower_date, upper_date = date_interval.split('-').map { |date| Date.parse(date) }.sort
-
     where(id: select { |accommodation|
-      (lower_date..upper_date).overlaps?(Range.new(*accommodation.dates_range.split('-').map { |date| Date.parse(date) }.sort))
-    }.map(&:id))
+      ApplicationHelper.dates_range_overlap?(date_interval, accommodation.dates_range)
+    }.pluck(:id))
   }
 
   def available_users_for_reviewing
@@ -55,7 +59,19 @@ class Accommodation < ApplicationRecord
   end
 
   def calculate_rating
-    reviews_list = reviews.map(&:rating)
+    reviews_list = reviews.pluck(:rating)
     reviews_list.size > 0 ? (reviews_list.sum(0.0) / reviews_list.size).round : 0
+  end
+
+  def another_guests_occupied_reservation_dates(reservation_id)
+    reservations.where(active: true).where.not(id: reservation_id).pluck(:dates_range)
+  end
+
+  def min_date
+    dates_range.split('-')[0].squish
+  end
+
+  def max_date
+    dates_range.split('-')[1].squish
   end
 end

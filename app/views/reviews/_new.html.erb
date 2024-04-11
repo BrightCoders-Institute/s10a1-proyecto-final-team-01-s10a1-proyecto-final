@@ -1,9 +1,13 @@
 <%= form_with(model: [accommodation, Review.new], class: "contents") do |form| %>
-  <div class="my-5">
-    <%= form.label :user %>
-    <%= form.select(:user_id, accommodation.available_users_for_reviewing.collect { |user| [user.email, user.id] }, { include_blank: false },
-                    { class: "w-full", data: { controller: "tomselect" } }) %>
-  </div>
+  <% if current_user.is_an_admin? %>
+    <div class="my-5">
+      <%= form.label :user %>
+      <%= form.select(:user_id, accommodation.available_users_for_reviewing.collect { |user| [user.email, user.id] }, { include_blank: false },
+                      { class: "shadow w-full", data: { controller: "tomselect" } }) %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 
   <div class="my-5">
     <%= form.label :title %>

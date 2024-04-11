@@ -1,0 +1,33 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Reservations</h1>
+    <div>
+      <%= link_to "Home", root_path, class: "inline-block rounded-lg text-center py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <% if current_user.is_a_guest_or_admin? && Accommodation.all.count > 0 %>
+        <%= link_to "New reservation", new_reservation_path, class: "inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <%= render "search_filter_form" %>
+  </div>
+
+  <div id="reservations" class="min-w-full">
+    <% @reservations.each do |reservation| %>
+      <h2><%= reservation.accommodation.title %></h2>
+      <h4><%= reservation.user.email %></h4>
+      <%= link_to "Show this reservation", reservation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% if reservation.user.id == current_user.id || current_user.is_an_admin? %>
+        <%= link_to "Edit this reservation", edit_reservation_path(reservation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
