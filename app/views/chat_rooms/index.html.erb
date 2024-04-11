@@ -1,37 +1,48 @@
 <div class="border border-gray-200 w-screen h-screen flex flex-row">
-  <div class="w-fit m-5 p-2 border rounded-md shadow-md shadow-slate-600">
-    <h5 class="border rounded-md bg-blue-100 w-fit p-2"> Hi <%= @current_user.email %> </h5>
+  <div class="border rounded-md flex flex-col justify-between p-4 m-5 shadow shadow-md w-fit ">
+    <h5 class="border rounded-md bg-violet-100 w-full p-2 text-center"> Hi <%= @current_user.email %> </h5>
 
-    <h4> Users </h4>
-    <%= turbo_stream_from "users" %>
-    <div id="users">
-      <%@users.each do |i| %>
-        <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.email}", i, class: "no-underline" %></div>
-      <%end %>
+    <div>
+      <h4> Users </h4>
+      <%= turbo_stream_from "users" %>
+      <div id="users">
+        <%@users.each do |i| %>
+          <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.email}", i, class: "no-underline" %></div>
+        <%end %>
+      </div>
     </div>
 
-    <h4> Rooms </h4>
-    <%= turbo_stream_from "chat_rooms" %>
-    <div id="chat_rooms">
-      <%@chat_rooms.each do |i| %>
-        <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.name}", i, class: "no-underline" %></div>
-      <%end %>
+    <div>
+      <h4> Rooms </h4>
+      <%= turbo_stream_from "chat_rooms" %>
+      <div id="chat_rooms">
+        <%@chat_rooms.each do |i| %>
+          <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.name}", i, class: "no-underline" %></div>
+        <%end %>
+      </div>
     </div>
 
 
     <%= render partial: "new_chat_room_form" %>
   </div>
-  <div class="border flex flex-row justify-center w-full h-fit rounded-md m-5">
+
+<% if @single_chat_room %>
+<div class="border rounded-md flex flex-col justify-between p-4 m-5 shadow shadow-md w-fit ">
+  <div class="border flex flex-row justify-center w-full h-fit rounded-md my-5">
     <% if @single_chat_room %>
       <h4 class="m-0"> <%= @single_chat_room.name %> </h4>
     <% end %>
   </div>
 
-  <%= turbo_stream_from @single_chat_room %>
-  <div id="messages">
-    <%= render @messages %>
-  </div>
-  <%= render partial: 'messages/new_message_form' %>
+    <div>
+      <%= turbo_stream_from @single_chat_room %>
+      <div id="messages" class="flex flex-col">
+        <%= render @messages, partial: 'messages/message' %>
+      </div>
+    </div>
 
+    <%= render partial: 'messages/new_message_form'%>
 
+</div>
+<% end %>
 </div>

@@ -1,6 +1,6 @@
-<div>
+<div class="border rounded-lg w-fit p-2 my-4 <%= @current_user == message.user ? "place-self-end" : "place-self-start" %>">
   <% unless message.chat_room.is_private %>
-    <h6 class="name"> <%= message.user.email %> </h6>
+    <h6 class="text-xs "> <%= message.user.email %> </h6>
   <% end %>
   <%= message.content %>
 </div>

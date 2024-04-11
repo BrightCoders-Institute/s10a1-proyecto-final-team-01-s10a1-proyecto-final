@@ -1,4 +1,6 @@
-<%= form_with(model: @chat_room, remote: true, class: "d-flex" ) do |f| %>
-  <%= f.text_field :name, class: "", autocomplete: 'off' %>
-  <%= f.submit data: { disable_with: false }, class: "border bg-gray-100 hover:bg-gray-300 p-2 rounded-md"%>
-<% end %>
+<div class="w-full flex flex-row">
+  <%= form_with(model: @chat_room, remote: true, class: "d-flex" ) do |f| %>
+    <%= f.text_field :name, class: "m-2", autocomplete: 'off' %>
+    <%= f.submit data: { disable_with: false }, class: "btn bg-violet-500 hover:bg-violet-400 p-2 m-2 rounded-md"%>
+  <% end %>
+</div>

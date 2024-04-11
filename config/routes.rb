@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/500', to: 'errors#internal_server_error'
   get '/internal_server_error', to: 'errors#internal_server_error'
 
+  get :chat_rooms, to: 'chat_rooms#index'
   resources :chat_rooms do
     resources :messages
   end

@@ -1,6 +1,6 @@
-<div class="">
+<div>
   <%= form_with(model: [@single_chat_room ,@message], remote: true, class: "flex" ) do |f| %>
-    <%= f.text_field :content, id: 'chat-text', class: "", autocomplete: 'off' %>
-    <%= f.submit data: { disable_with: false }, class: "btn" %>
+    <%= f.text_field :content, id: 'chat-text', class: "m-2", autocomplete: 'off' %>
+    <%= f.submit data: { disable_with: false }, class: "btn bg-violet-500 hover:bg-violet-400 p-2 m-2 rounded-md" %>
   <% end %>
 </div>
