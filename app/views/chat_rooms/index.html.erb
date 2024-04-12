@@ -1,7 +1,6 @@
 <div class="border border-gray-200 w-screen h-screen flex flex-row">
   <div class="border rounded-md flex flex-col justify-between p-4 m-5 shadow shadow-md w-fit ">
-    <h5 class="border rounded-md bg-violet-100 w-full p-2 text-center"> Hi <%= @current_user.email %> </h5>
-
+    <h5 class=""> Hi <%= @current_user.email %> </h5>
     <div>
       <h4> Users </h4>
       <%= turbo_stream_from "users" %>
@@ -23,14 +22,14 @@
     </div>
 
 
-    <%= render partial: "new_chat_room_form" %>
+    <%= render partial: "chat_rooms/new_chat_room_form" %>
   </div>
 
 <% if @single_chat_room %>
 <div class="border rounded-md flex flex-col justify-between p-4 m-5 shadow shadow-md w-fit ">
   <div class="border flex flex-row justify-center w-full h-fit rounded-md my-5">
     <% if @single_chat_room %>
-      <h4 class="m-0"> <%= @single_chat_room.name %> </h4>
+      <h4 class="m-0"> <%= @user&.email || @single_chat_room.name %> </h4>
     <% end %>
   </div>
 
