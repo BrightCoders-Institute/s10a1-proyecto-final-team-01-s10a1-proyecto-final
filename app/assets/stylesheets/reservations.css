@@ -1,0 +1,29 @@
+.reservations {
+  padding:2rem 0;
+
+  .reservations-buttons {
+    width: 100%;
+    background-color: transparent;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(0, 0, 0,.2);
+    border-bottom: 1px solid rgba(0, 0, 0,.2);
+    display: flex;
+    gap: .5rem;
+    font-weight: 500;
+    color:black;
+  }
+
+  .reservations-buttons:hover {
+    background-color: rgb(247, 247, 247);
+    color:black!important;
+  }
+
+  .reservations-buttons.no-border {
+    border: none;
+  }
+
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}

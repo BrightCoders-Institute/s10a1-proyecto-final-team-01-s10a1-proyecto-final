@@ -2,9 +2,10 @@
 @import "vanilla-datetimerange-picker.css";
 @import 'pagy.css';
 @import "places.css";
-@import "responsive.css";
 @import "profile.css";
 @import "profile_form.css";
+@import "reservations.css";
+@import "responsive.css";
 /*
  *= require_self
  *= require application
@@ -188,4 +189,8 @@ label {
   gap: 15px;
   justify-content: center;
   width: 100%;
+}
+
+.prose :where(a):not(:where([class~=not-prose] *)) {
+  text-decoration: none;
 }
