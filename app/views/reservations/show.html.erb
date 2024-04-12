@@ -1,19 +1,21 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<head>
+  <link rel="stylesheet" href="/assets/show_reservation.css">
+</head>
+
+<div class="container">
+  <div class="reservation">
     <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+      <p class="notice" id="notice"><%= notice %></p>
     <% end %>
-
     <%= render @reservation %>
-
-    <div class="mb-10">
+    <div class="actions">
       <% if @reservation.user.id == current_user.id || current_user.is_an_admin? %>
-        <%= link_to "Edit this reservation", edit_reservation_path(@reservation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <a href="<%= edit_reservation_path(@reservation) %>" class="edit-link">Edit this reservation</a>
         <div class="inline-block ml-2">
-          <%= button_to "Destroy this reservation", reservation_path(@reservation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+          <%= button_to "Destroy this reservation", reservation_path(@reservation), method: :delete, class: "delete-button" %>
         </div>
       <% end %>
-      <%= link_to "Back to reservations", reservations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <a href="<%= reservations_path %>" class="back-link">Back to reservations</a>
     </div>
   </div>
 </div>

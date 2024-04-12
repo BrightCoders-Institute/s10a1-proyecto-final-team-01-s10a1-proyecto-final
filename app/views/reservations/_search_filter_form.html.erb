@@ -1,43 +1,43 @@
-<h2 class="break-all mt-0 mb-4">Filtering params</h2>
+
 <%= form_with url: reservations_path, method: :get do |form| %>
-  <div>
-    <div>
-      <div class="my-5">
-        <%= form.label :guests_ids, 'Guests' %>
+  <div class="flex flex-row justify-center items-center ">
+    <div class="flex flex-row bg-gray-100 w-11/12 rounded-sm shadow">
+      <div class="w-1/4 p-4">
+        <%= form.label :guests_ids, 'Guests', class: 'text-' %>
         <%= form.select(:guests_ids, options_for_select(User.where(role_id: 4).collect { |user| [user.email, user.id] },
                         params[:guests_ids]), { include_blank: false, include_hidden: false },
                         { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
       </div>
 
-      <div class="my-5">
+      <div class="w-1/4 p-4">
         <%= form.label :accommodations_ids, 'Accommodations' %>
         <%= form.select(:accommodations_ids, options_for_select(Accommodation.all.collect { |accommodation| [accommodation.title, accommodation.id] },
                         params[:accommodations_ids]), { include_blank: true, include_hidden: false },
                         { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
       </div>
 
-      <div class="mt-5 mb-4">
-        <%= form.label :dates_range, class: "block mb-2" %>
+      <div class="w-1/4 p-4">
+        <%= form.label :dates_range, class: "block" %>
         <%= form.text_field :dates_range, value: params[:dates_range], data: {controller: "daterangepicker"},
-                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mr-5 w-72" %>
+                            class: 'rounded-lg' %>
       </div>
 
-      <div class="flex items-center justify-start">
+      <div class="w-1/4 p-4 mt-3">
         <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
                             'true', 'false' %>
-        <%= form.label :date_filter, 'Filter with dates range', class: 'ml-2 text-start font-semibold' %>
+        <%= form.label :date_filter, 'Filter with dates range', class: 'text-start font-semibold' %>
       </div>
 
-      <div class="mt-3 mb-5 flex items-center justify-start">
+      <div class="w-1/4 p-4 mt-3">
         <%= form.check_box :active, { checked: ActiveModel::Type::Boolean.new.cast(params[:active]), include_hidden: false }, 
                               'true', 'false' %>
-        <%= form.label :active, 'Show only active reservations', class: 'ml-2 text-start font-semibold' %>
+        <%= form.label :active, 'Show only active reservations', class: 'text-start font-semibold' %>
       </div>
-    </div>
 
-    <div class='mt-4 mb-5 flex flex-col items-center min-[250px]:flex-row'>
-      <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-      <%= link_to 'Clear', reservations_path, class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-3 no-underline' %>
     </div>
+  </div>
+  <div class='flex justify-center p-6'>
+      <%= form.submit 'Search', class: 'bg-blue-500 text-white p-2 rounded-lg' %>
+      <%= link_to 'Clear', reservations_path, class: 'bg-gray-100 text-white p-2 rounded-lg' %>
   </div>
 <% end %>

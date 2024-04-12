@@ -6,13 +6,15 @@
 @import "profile.css";
 @import "profile_form.css";
 @import "home_page.css";
+@import "new_reservation.css";
+@import "show_reservation.css";
 /*
  *= require_self
  *= require application
 */
 
 * {
-  font-family: "Roboto", sans-serif;;
+  font-family: "Roboto", sans-serif;
 }
 
 .w-100 {
