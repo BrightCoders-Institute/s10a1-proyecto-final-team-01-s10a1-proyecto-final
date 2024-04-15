@@ -53,3 +53,4 @@
 .ts-dropdown .active {
   @apply bg-gray-100 text-gray-900;
 }
+@import 'actiontext.css';
