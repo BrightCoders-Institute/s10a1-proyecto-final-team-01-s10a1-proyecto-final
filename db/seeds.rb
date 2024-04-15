@@ -24,6 +24,8 @@ details_list = %i[wifi kitchen working_place washing_mashine administration
                   dryer_machine hair_dryer television air_conditioning pet_friendly
                   garden_view]
 
+roles_list.each { |role| Role.find_or_create_by(name: role) }
+
 users_list.each do |user|
   db_user = User.find_or_create_by(email: user[:email])
   db_user.update(role_id: user[:role_id], password: '123123', password_confirmation: '123123')
@@ -31,7 +33,6 @@ users_list.each do |user|
   db_user.save!
 end
 
-roles_list.each { |role| Role.find_or_create_by(name: role) }
 categories_list.each { |category| Category.find_or_create_by(name: category) }
 details_list.each { |detail| Detail.find_or_create_by(name: detail) }
 
