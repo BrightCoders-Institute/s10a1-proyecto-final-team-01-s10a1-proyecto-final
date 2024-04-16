@@ -11,45 +11,44 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :user %>
-    <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
-  </div>
+  <% if current_user.is_an_admin? %>
+    <div class="my-5">
+      <%= form.label :user %>
+      <%= form.select(:user_id, User.where(role_id: 3).collect { |user| [user.email, user.id] }, { include_blank: false },
+                      { class: "shadow w-full", data: { controller: "tomselect" } }) %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 
   <div class="my-5">
     <%= form.label :category %>
     <%= form.select(:category_id, Category.all.collect { |category| [category.name, category.id] }, { include_blank: true },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" }) %>
+                    { class: "shadow w-full", data: { controller: "tomselect" } }) %>
   </div>
 
   <div class="my-5">
     <%= form.label :details %>
     <%= form.select(:detail_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
                     accommodation.detail_ids), { include_blank: false },
-                    { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
-                      multiple: true, size: 10 }) %>
+                    { class: "shadow w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
   </div>
 
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :price_per_day %>
-    <%= form.number_field :price_per_day, step: 0.001, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.number_field :price_per_day, step: 0.001, min: 0, max: 10000, 
+                          class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :dates_range %>
     <%= form.text_field :dates_range, value: accommodation.dates_range,
                         data: {controller: "daterangepicker"}, class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :rating %>
-    <%= form.number_field :rating, min: 0, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -74,7 +73,7 @@
 
   <div class="my-5">
     <%= form.label :beds_number %>
-    <%= form.number_field :beds_number, min: 2, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.number_field :beds_number, min: 1, max: 5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

@@ -1,0 +1,105 @@
+<h2 class="break-all mt-0 mb-4">Filtering params</h2>
+<%= form_with url: accommodations_path, method: :get do |form| %>
+  <div>
+    <div>
+      <div class="my-5">
+        <%= form.label :hosts_ids, 'Hosts' %>
+        <%= form.select(:hosts_ids, options_for_select(User.where(role_id: 3).collect { |user| [user.email, user.id] },
+                        params[:hosts_ids]), { include_blank: false, include_hidden: false },
+                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :categories_ids, 'Categories' %>
+        <%= form.select(:categories_ids, options_for_select(Category.all.collect { |category| [category.name, category.id] },
+                        params[:categories_ids]), { include_blank: true, include_hidden: false },
+                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :details_ids, 'Details' %>
+        <%= form.select(:details_ids, options_for_select(Detail.all.collect { |detail| [detail.name, detail.id] },
+                        params[:details_ids]), { include_blank: true, include_hidden: false },
+                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :title %>
+        <%= form.text_field :title, value: params[:title],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+      
+      <div class="mt-5 mb-7">
+        <%= form.label :price_per_day %>
+        <%= form.hidden_field :price_per_day, value: (params[:price_per_day] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "price-range", class: "range-slider !mb-0 mt-3 w-72", 
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 10000,
+                            rangeslider_range_value: params[:price_per_day], rangeslider_field_value: :price_per_day } %>
+      </div>
+
+      <div class="mt-5 mb-7">
+        <%= form.label :rating %>
+        <%= form.hidden_field :rating, value: (params[:rating] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "rating-range", class: "range-slider !mb-0 mt-3 w-72",
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                            rangeslider_range_value: params[:rating], rangeslider_field_value: :rating } %>
+      </div>
+
+      <div class="mt-5 mb-7">
+        <%= form.label :bedrooms_number %>
+        <%= form.hidden_field :bedrooms_number, value: (params[:bedrooms_number] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "bedrooms-number-range", class: "range-slider !mb-0 mt-3 w-72",
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 10,
+                            rangeslider_range_value: params[:bedrooms_number], rangeslider_field_value: :bedrooms_number } %>
+      </div>
+
+      <div class="mt-5 mb-7">
+        <%= form.label :bathrooms_number %>
+        <%= form.hidden_field :bathrooms_number, value: (params[:bathrooms_number] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "bathrooms-number-range", class: "range-slider !mb-0 mt-3 w-72",
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                            rangeslider_range_value: params[:bathrooms_number], rangeslider_field_value: :bathrooms_number } %>
+      </div>
+
+      <div class="mt-5 mb-7">
+        <%= form.label :beds_number %>
+        <%= form.hidden_field :beds_number, value: (params[:beds_number] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "beds-number-range", class: "range-slider !mb-0 mt-3 w-72",
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 5,
+                            rangeslider_range_value: params[:beds_number], rangeslider_field_value: :beds_number } %>
+      </div>
+
+      <div class="mt-5 mb-7">
+        <%= form.label :max_guests_number %>
+        <%= form.hidden_field :max_guests_number, value: (params[:max_guests_number] || "").split(",").map(&:to_i).sort.join(",") %>
+        <%= tag.div id: "max-guests-number-range", class: "range-slider !mb-0 mt-3 w-72",
+                    data: { controller: "rangeslider", rangeslider_min_value: 0, rangeslider_max_value: 20,
+                            rangeslider_range_value: params[:max_guests_number], rangeslider_field_value: :max_guests_number } %>
+      </div>
+
+      <div class="mt-5">
+        <%= form.label :dates_range, class: "block mb-2" %>
+        <%= form.text_field :dates_range, value: params[:dates_range], data: {controller: "daterangepicker"},
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mr-5 w-72" %>
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-start">
+        <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
+                            'true', 'false' %>
+        <%= form.label :date_filter, 'Filter with dates range', class: 'ml-2 text-start font-semibold' %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :address %>
+        <%= form.text_field :address, value: params[:address],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+    </div>
+
+    <div class='flex flex-col items-center min-[250px]:flex-row'>
+      <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <%= link_to 'Clear', accommodations_path, class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-3 no-underline' %>
+    </div>
+  </div>
+<% end %>

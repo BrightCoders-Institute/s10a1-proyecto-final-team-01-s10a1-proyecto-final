@@ -9,4 +9,5 @@ class MessagesController < ApplicationController
   def msg_params
     params.require(:message).permit(:content)
   end
+  before_action :authenticate_user!
 end
