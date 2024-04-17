@@ -1,28 +1,14 @@
-
 <div class="degradado">
-  <div >
+  <div>
     <%= render 'shared/navbar' %>
   </div>
-  <div class="slider-box">
-    <ul>
-      <li>
-        <%= image_tag 'fondo01.jpg', class: 'images'%>
-      </li>
-      <li>
-        <%= image_tag 'fondo02.jpg', class: 'images'%>
-      </li>
-      <li>
-        <%= image_tag 'fondo03.jpeg', class: 'images'%>
-      </li>
-      <li>
-        <%= image_tag 'fondo04.jpg', class: 'images'%>
-      </li>
-      <li>
-        <%= image_tag 'fondo05.jpg', class: 'images'%>
-      </li>
-      <li>
-        <%= image_tag 'fondo06.jpg', class: 'images'%>
-      </li>
-    </ul>
+
+  <div class="carrusel">
+
+    <% @images.each do |image| %>
+      <div class="slide">
+        <%= image_tag image, alt: 'Imagen', class:' rounded-lg' %>
+      </div>
+    <% end %>
   </div>
 </div>
