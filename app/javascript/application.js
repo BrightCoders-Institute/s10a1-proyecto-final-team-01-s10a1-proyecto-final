@@ -17,7 +17,6 @@ window.TomSelect = TomSelect
 import RangeSlider from '@spreadtheweb/multi-range-slider'
 window.RangeSlider = RangeSlider
 
-// app/assets/javascripts/application.js
 document.addEventListener("DOMContentLoaded", function() {
     let currentSlide = 0;
     const slides = document.querySelectorAll(".slide");
@@ -33,5 +32,5 @@ document.addEventListener("DOMContentLoaded", function() {
     showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 4000); // Cambia la imagen cada 3 segundos (3000 ms)
+    setInterval(nextSlide, 4000);
 });

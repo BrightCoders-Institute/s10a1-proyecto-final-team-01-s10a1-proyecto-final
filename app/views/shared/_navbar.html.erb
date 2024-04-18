@@ -1,19 +1,17 @@
 <div class="nav-index">
-    <div class="part1">
-      <%= link_to 'Reservations', reservations_path , class:"no-underline text-white mr-5 hover:underline"%>
-      <%= link_to 'Acommodations',accommodations_path , class:"no-underline text-white mr-5 hover:underline" %>
+    <div class="part1 bg-black">
+      <%= link_to 'Reservations', reservations_path , class:"text-lg no-underline text-white mr-5 hover:underline"%>
+      <%= link_to 'Acommodations',accommodations_path , class:"text-lg no-underline text-white mr-5 hover:underline" %>
     </div>
-    <div class="part2 active">
+    <div class="part2 active bg-black">
       <%= link_to 'Become a host ','aqui va la ruta',class:"no-underline" %>
-      <input type="checkbox" class="menu-btn" id="menu-btn">
-      <label class="menu-icon" for="menu-btn">&#9776;</label>
-      <ul class="menu">
         <% unless user_signed_in? %>
           <%= link_to 'Log In', new_user_session_path %>
         <% else %>
-        <%= link_to 'Profile', profile_path, class:"no-underline"%>
-        <%= link_to 'Cerrar sesión', destroy_user_session_path, data: { turbo_method: :delete } %>
+          <%= link_to profile_path, class: "no-underline" do %>
+            <span class="custom-icon-circle">
+            <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
+          <% end %>
         <% end %>
-      </ul>
     </div>
 </div>

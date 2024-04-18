@@ -192,3 +192,16 @@ label {
   justify-content: center;
   width: 100%;
 }
+
+.custom-icon-circle {
+  display: inline-block;
+  background-color: white;
+  border-radius: 50%; 
+  padding: 8px; 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 10px;
+}
+
+.custom-icon-circle i {
+  color: #000000; 
+}
