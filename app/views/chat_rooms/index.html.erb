@@ -43,14 +43,14 @@
         <% end %>
       </div>
 
-        <div>
-          <%= turbo_stream_from @single_chat_room %>
-          <div id="messages" class="flex flex-col">
-            <%= render @messages, partial: 'messages/message' %>
-          </div>
+      <div class="overflow-y-scroll">
+        <%= turbo_stream_from @single_chat_room %>
+        <div id="messages" class="flex flex-col">
+          <%= render @messages, partial: 'messages/message' %>
         </div>
+      </div>
 
-        <%= render partial: 'messages/new_message_form', class: "w-full space-around"%>
+      <%= render partial: 'messages/new_message_form', class: "w-full space-around"%>
 
     </div>
   <% end %>
