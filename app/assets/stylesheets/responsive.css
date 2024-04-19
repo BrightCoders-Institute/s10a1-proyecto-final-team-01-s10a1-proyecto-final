@@ -72,4 +72,24 @@
   .places-list .places-wrapper {
     padding-bottom: 25px;
   }
+
+  .reservations .btn-outline {
+    width: 48%;
+  }
+
+  .reservations .buttons-container {
+    flex-wrap: wrap;
+  }
+
+  .reservations .cards-wrapper {
+    flex-direction: column;
+  }
+
+  .reservations .cards-wrapper .card {
+    width: 100%;
+  }
+
+  .reservations .resource-wrapper {
+    flex-direction: column;
+  }
 }
