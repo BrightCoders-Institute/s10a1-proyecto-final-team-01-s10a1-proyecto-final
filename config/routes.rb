@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'places/list'
+  get 'reservations/index'
   get 'google_maps_api/show'
   get '/accommodation_occupation/show/:accommodation_id/:reservation_id', to: 'accommodations_occupation#show'
 

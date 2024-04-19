@@ -2,9 +2,10 @@
 @import "vanilla-datetimerange-picker.css";
 @import 'pagy.css';
 @import "places.css";
-@import "responsive.css";
 @import "profile.css";
 @import "profile_form.css";
+@import "reservations.css";
+@import "responsive.css";
 /*
  *= require_self
  *= require application
@@ -12,6 +13,10 @@
 
 * {
   font-family: "Roboto", sans-serif;;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .w-100 {
@@ -188,4 +193,36 @@ label {
   gap: 15px;
   justify-content: center;
   width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
 }
