@@ -1,0 +1,49 @@
+<h2 class="break-all mt-0 mb-4">Filtering params</h2>
+<%= form_with url: users_management_index_path, method: :get do |form| %>
+  <div>
+    <div>
+      <div class="my-5">
+        <%= form.label :users_ids, 'Users' %>
+        <%= form.select(:users_ids, options_for_select(User.where(role_id: [2, 3, 4]).collect { |user| [user.email, user.id] },
+                        params[:users_ids]), { include_blank: false, include_hidden: false },
+                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :name %>
+        <%= form.text_field :name, value: params[:name],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :email %>
+        <%= form.text_field :email, value: params[:email],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, value: params[:phone],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :emergency_contact %>
+        <%= form.text_field :emergency_contact, value: params[:emergency_contact],
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :roles_ids, 'Roles' %>
+        <%= form.select(:roles_ids, options_for_select(Role.where(id: [2, 3, 4]).collect { |role| [role.name.capitalize, role.id] },
+                        params[:roles_ids]), { include_blank: false, include_hidden: false },
+                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+      </div>
+    </div>
+
+    <div class='mt-4 mb-5 flex flex-col items-center min-[250px]:flex-row'>
+      <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <%= link_to 'Clear', users_management_index_path, class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-3 no-underline' %>
+    </div>
+  </div>
+<% end %>

@@ -14,6 +14,12 @@
       </div>
 
       <div class="field">
+        <%= f.label :role_id %>
+        <%= f.select(:role_id, Role.where(id: [3, 4]).collect { |role| [role.name.capitalize, role.id] }, { include_blank: false },
+                      { class: "form-input" }) %>
+      </div>
+
+      <div class="field">
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: "Enter password" %>
       </div>
@@ -22,7 +28,6 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: "Confirm password" %>
       </div>
-      <%= f.hidden_field :role_id, value: 4 %>
 
       <div class="actions">
         <%= f.submit "Sign up", class: "btn-primary" %>
@@ -30,17 +35,16 @@
     <% end %>
 
   <label for="" class="text-center w-100"> or </label>
-    <%= link_to 'Sign up as host', new_user_session_path, class: "btn-primary btn-host" %>
-  <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-google w-100" do %>
-  <%= image_tag 'google.png', class: 'img-google' %>
-  <span>Sign up with Google</span>
-<% end %>
+    <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-google w-100" do %>
+    <%= image_tag 'google.png', class: 'img-google' %>
+    <span>Sign up with Google</span>
+  <% end %>
 
-  <%= button_to user_facebook_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-facebook w-100" do %>
-  <i class="fa-brands fa-facebook-f"></i>
-  <span>Sign up with Facebook</span>
-  <span></span>
-<% end %>
+    <%= button_to user_facebook_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "block text-center btn-primary btn-facebook w-100" do %>
+    <i class="fa-brands fa-facebook-f"></i>
+    <span>Sign up with Facebook</span>
+    <span></span>
+  <% end %>
 <%= link_to 'Sign in', new_user_session_path, class: "text-center btn-primary btn-sign-in" %>
   <div class="links-wrapper">
    <%= link_to 'Cookies', new_user_session_path, class: "sign-in-link" %>

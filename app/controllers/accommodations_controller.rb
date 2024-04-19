@@ -1,8 +1,8 @@
 class AccommodationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_accommodation, only: %i[ show edit update destroy ]
+  before_action :set_accommodation, only: %i[ show edit update remove_image destroy ]
   before_action :check_if_hosts_are_available, only: %i[ new ]
-  before_action :check_if_is_owner_or_admin, only: %i[ edit remove_image update destroy ]
+  before_action :check_if_is_owner_or_admin, only: %i[ edit remove_image update remove_image destroy ]
   before_action :check_if_is_host_or_admin, only: %i[ new create ]
   before_action :get_detail_ids, only: %i[ create update ]
 
