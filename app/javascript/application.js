@@ -21,16 +21,19 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentSlide = 0;
     const slides = document.querySelectorAll(".slide");
     const totalSlides = slides.length;
-
+  
     function showSlide(n) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[n].classList.add("active");
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[n].classList.add("active");
     }
-
-    function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
+  
     showSlide(currentSlide);
+  
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
     }
-
+  
     setInterval(nextSlide, 4000);
-});
+  });
+  

@@ -1,13 +1,14 @@
-<div class="degradado">
+<div class="dark:bg-gray-800 h-auto">
   <div>
     <%= render 'shared/navbar' %>
   </div>
-
-  <div class="carrusel">
-    <% @images.each do |image| %>
-      <div class="slide">
-        <%= image_tag image, alt: 'Imagen', class:'rounded-lg' %>
-      </div>
-    <% end %>
+  <div class="content">
+    <div class="carrusel mt-1">
+      <% @images.each do |image| %>
+        <div class="slide">
+          <%= image_tag image, alt: 'Imagen' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

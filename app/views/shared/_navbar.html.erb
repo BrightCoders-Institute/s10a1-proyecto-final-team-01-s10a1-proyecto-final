@@ -1,17 +1,19 @@
-<div class="nav-index">
-    <div class="part1 bg-black">
-      <%= link_to 'Reservations', reservations_path , class:"text-lg no-underline text-white mr-5 hover:underline"%>
-      <%= link_to 'Acommodations',accommodations_path , class:"text-lg no-underline text-white mr-5 hover:underline" %>
+<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+      <%= image_tag 'logoZzzlepy.png', class:"h-8"%>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Zzzlepy</span>
     </div>
-    <div class="part2 active bg-black">
-      <%= link_to 'Become a host ','aqui va la ruta',class:"no-underline" %>
-        <% unless user_signed_in? %>
+    <div class="hidden w-full md:block md:w-auto p-6" id="navbar-solid-bg">
+      <%= link_to 'Reservations', reservations_path , class:" fa-solid fa-sm no-underline text-white mr-5 hover:underline"%>
+      <%= link_to 'Acommodations',accommodations_path , class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
+      <% unless user_signed_in? %>
           <%= link_to 'Log In', new_user_session_path %>
         <% else %>
           <%= link_to profile_path, class: "no-underline" do %>
-            <span class="custom-icon-circle">
-            <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
+            <i class="fa-solid fa-user fa-xl" style="color: white;"> profile</i>
           <% end %>
         <% end %>
     </div>
-</div>
+  </div>
+</nav>
