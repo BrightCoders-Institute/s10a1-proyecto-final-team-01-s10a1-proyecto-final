@@ -1,16 +1,38 @@
-<h2>Forgot your password?</h2>
+<div class ="shadow shadow-md rounded-md w-fit p-5 my-5 mx-auto self-center justify-self-center">
+  <h2 class="my-4">Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class:"text-center btn-primary btn-sign-in w-100 mt-4" %>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col space-between">
+    <div class="mt-4">
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "Log in", new_session_path(resource_name) %>
+      <% end %>
+    </div>
+
+    <div class="mt-3">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name) %>
+      <% end %>
+    </div>
+
+    <div class="mt-3">
+      <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+        <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+      <% end %>
+    </div>
+
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
