@@ -1,9 +1,48 @@
+.actions {
+  margin-bottom: 2.5rem;
+}
+
+.back-link {
+  margin-left: 0.5rem;
+  border-radius: 0.375rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #f3f4f6;
+  font-weight: 500;
+  display: inline-block;
+}
+
 .container {
   max-width: 66.666667%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
+}
+
+.delete-button {
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #f3f4f6;
+  font-weight: 500;
+}
+
+.edit-link {
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #f3f4f6;
+  font-weight: 500;
+  display: inline-block;
 }
 
 .notice {
@@ -24,41 +63,4 @@
   margin-right: auto;
 }
 
-.actions {
-  margin-bottom: 2.5rem;
-}
 
-.edit-link {
-  margin-top: 0.5rem;
-  border-radius: 0.375rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  background-color: #f3f4f6;
-  font-weight: 500;
-  display: inline-block;
-}
-
-.delete-button {
-  margin-top: 0.5rem;
-  border-radius: 0.375rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  background-color: #f3f4f6;
-  font-weight: 500;
-}
-
-.back-link {
-  margin-left: 0.5rem;
-  border-radius: 0.375rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  background-color: #f3f4f6;
-  font-weight: 500;
-  display: inline-block;
-}

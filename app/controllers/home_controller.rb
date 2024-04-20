@@ -6,6 +6,6 @@ class HomeController < ApplicationController
 
   def index
     @user = current_user
-    @images = ['fondo01.jpg', 'fondo02.jpg', 'fondo03.jpg','fondo04.jpg','fondo05.jpg','fondo06.jpg']
+    @images = ['fondo01.webp', 'fondo02.webp', 'fondo03.webp', 'fondo04.webp', 'fondo05.webp', 'fondo06.webp']
   end
 end
