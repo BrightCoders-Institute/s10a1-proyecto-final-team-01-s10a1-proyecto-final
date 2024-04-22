@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_one_attached :image
-
   before_create :set_default_role
   after_destroy :delete_messages
 
@@ -14,8 +12,13 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
+  has_one_attached :image do |attachable|
+    attachable.variant :preview, resize_to_limit: [200, 200]
+  end
+
   validates :role_id, presence: true
   validates :name, length: { maximum: 50 }
+  validates :image, size: { less_than: 10.megabytes }, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -26,6 +29,14 @@ class User < ApplicationRecord
   scope :hosts_count, ->() { count_users_by_role(3) }
   scope :staff_count, ->() { count_users_by_role(2) }
   scope :count_users_by_role, ->(role_id) { where(role_id: role_id).count }
+
+  scope :filter_by_users_ids, ->(users_ids) { where(id: users_ids).order(updated_at: :desc) }
+  scope :filter_by_name, ->(name) { filter_by_text('name', name) }
+  scope :filter_by_email, ->(email) { filter_by_text('email', email) }
+  scope :filter_by_phone, ->(phone) { filter_by_text('phone', phone)}
+  scope :filter_by_emergency_contact, ->(emergency_contact) { filter_by_text('emergency_contact', emergency_contact) }
+  scope :filter_by_roles_ids, ->(roles_ids) { where(role_id: roles_ids).order(updated_at: :desc) }
+  scope :filter_by_text, ->(field, text) { where("#{field} LIKE ?", "%#{text}%").order(updated_at: :desc) }
 
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
@@ -40,6 +51,11 @@ class User < ApplicationRecord
     self.role_id = role.id if role.present?
   end
 
+  def image_is_saved_and_exists?
+    image_blob = image.blob
+    image.attached? && image_blob.present? && image_blob.persisted?
+  end
+
   def messages
     Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
   end
@@ -49,19 +65,19 @@ class User < ApplicationRecord
   end
 
   def is_a_guest?
-    role_id == 4
+    role_id == Role.find_by(name: 'guest').id
   end
 
   def is_a_host?
-    role_id == 3
+    role_id == Role.find_by(name: 'host').id
   end
 
   def is_staff?
-    role_id == 2
+    role_id == Role.find_by(name: 'staff').id
   end
 
   def is_an_admin?
-    role_id == 1
+    role_id == Role.find_by(name: 'superadmin').id
   end
 
   def is_a_host_or_admin?
