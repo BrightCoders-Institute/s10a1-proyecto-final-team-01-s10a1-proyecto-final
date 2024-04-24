@@ -30,8 +30,8 @@
       <div class="image-container">
         <%= link_to purge_image_profile_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do%>
           <i class="fas fa-trash-alt"></i> Eliminar imagen
-        <% end if @user.image.representable? %>
-        <%= image_tag @user.image if @user.image.representable? %>
+        <% end if @user.image_is_saved_and_exists? %>
+        <%= image_tag @user.image if @user.image_is_saved_and_exists? %>
     </div>
       <%= form.file_field :image, class:"form-control", accept:"image/png, image/jpg, image/jpeg" %>
     </div>

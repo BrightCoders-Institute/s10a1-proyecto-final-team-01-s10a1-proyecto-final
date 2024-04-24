@@ -1,3 +1,55 @@
+
+<div class="container reservations">
+  <h2 class="title">Te damos la bienvenida, <span>Fernando</span></h2>
+  <div class="card">
+    <p class="sub-subtitle bold">Confirma datos importantes</p>
+    <div class="d-flex">
+      <div class="text-wrapper">
+        <p class="sub-subtitle red">Es obligatorio para publicar</p>
+        <p class="sub-subtitle gray">asdasa</p>
+      </div>
+      <div class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-exclamation-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+          <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+        </svg>
+      </div>
+    </div>
+    <a href="">
+      <p class="sub-subtitle bold">Comenzar</p>
+    </a>
+  </div>
+  <div class="filters-container">
+    <h2 class="title">Tus reservaciones</h2>
+    <a href="">
+      <p class="sub-subtitle bold">Todas las reservaciones (0)</p>
+    </a>
+  </div>
+  <div class="buttons-container">
+   <%= render 'button-filters' %>
+  </div>
+  <div class="reservations-status">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#717171" class="bi bi-file-earmark-check"
+      viewBox="0 0 16 16">
+      <path
+        d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+      <path
+        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+    </svg>
+    <p class="sub-subtitle gray text-center">Ninguna estancia termina hoy <br>o mañana.</p>
+  </div>
+  <h2 class="title m-30">Estamos aquí para ayudarte</h2>
+  <div class="cards-wrapper">
+    <%= render 'help' %>
+  </div>
+  <h2 class="title m-30">Recursos y consejos</h2>
+  <div class="resources-wrapper">
+    <div class="resource-wrapper">
+     <%= render 'resources' %>
+    </div>
+  </div>
 <div class="w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>

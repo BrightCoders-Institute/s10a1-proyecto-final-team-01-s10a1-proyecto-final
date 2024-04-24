@@ -1,0 +1,28 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Users</h1>
+    <div>
+      <%= link_to "Home", root_path, class: "inline-block rounded-lg text-center py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to "New user", new_users_management_path, class: "inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+  </div>
+
+  <div>
+    <%= render "search_filter_form" %>
+  </div>
+
+  <div id="users" class="min-w-full">
+    <% @users.each do |user| %>
+      <h2><%= user.email %></h2>
+      <%= link_to "Show this user", users_management_path(user), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Edit this user", edit_users_management_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
