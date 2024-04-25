@@ -54,6 +54,13 @@ class Accommodation < ApplicationRecord
     }.pluck(:id))
   }
 
+  def main_image_is_saved_and_exists?
+    return false if main_image.blob.nil?
+    
+    image_blob = main_image.blob
+    image_blob.attached? && image_blob.present? && image_blob.persisted?
+  end
+
   def available_users_for_reviewing
     User.all.reject { |user| user.already_reviewed_accommodation?(id) || !user.is_a_guest? }
   end

@@ -1,5 +1,6 @@
 <section class="container-profile">
-  <%= render '/shared/profile_head' %>
+  <%= render '/shared/head' %>
+  <h1>Personal Information</h1>
   <div class="profile">
     <div class="row">
       <div class="info">
@@ -47,7 +48,8 @@
       </div>
     <% end %>
     <div class="action">
-        <%= link_to 'Edit Profile', edit_profile_path %>
+        <%= link_to 'Edit Profile', edit_profile_path, class:"mr-7" %>
+        <%= link_to 'Cerrar sesión', destroy_user_session_path, data: { turbo_method: :delete } %>
     </div>
   </div>
 </section>

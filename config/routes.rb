@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'places/list'
+  get 'reservations/index'
   get 'google_maps_api/show'
   get '/accommodation_occupation/show/:accommodation_id/:reservation_id', to: 'accommodations_occupation#show'
 
@@ -26,6 +27,11 @@ Rails.application.routes.draw do
   }
 
   resources :users
+  resources :users_management do
+    member do
+      delete :remove_image
+    end
+  end
 
   resource :profile do
     member do
