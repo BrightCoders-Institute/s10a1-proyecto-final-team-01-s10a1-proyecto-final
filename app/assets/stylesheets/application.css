@@ -201,6 +201,9 @@ label {
   width: 100%;
 }
 
+.prose :where(a):not(:where([class~=not-prose] *)) {
+  text-decoration: none;
+
 .custom-icon-circle {
   display: inline-block;
   background-color: white;
