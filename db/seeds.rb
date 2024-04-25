@@ -10,6 +10,12 @@
 
 require 'faker'
 
+users_list = [
+  {role_id: 4, email: 'guestest@brightcoders.com'},
+  {role_id: 3, email: 'hostest@brightcoders.com'},
+  {role_id: 2, email: 'stafftest@brightcoders.com'},
+  {role_id: 1, email: 'admintest@brightcoders.com'},
+]
 roles_list = %i[superadmin staff host guest]
 categories_list = %i[room farm amazing_pool countryside national_park
                      historical_home lakefront cabin beachfront castle

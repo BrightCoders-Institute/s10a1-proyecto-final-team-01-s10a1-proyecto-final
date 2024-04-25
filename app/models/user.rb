@@ -88,6 +88,26 @@ class User < ApplicationRecord
     is_a_guest? || is_an_admin?
   end
 
+  def is_a_host?
+    role_id == 3
+  end
+
+  def is_staff?
+    role_id == 2
+  end
+
+  def is_an_admin?
+    role_id == 1
+  end
+
+  def is_a_host_or_admin?
+    is_a_host? || is_an_admin?
+  end
+
+  def is_a_guest_or_admin?
+    is_a_guest? || is_an_admin?
+  end
+
   private
 
   def delete_messages

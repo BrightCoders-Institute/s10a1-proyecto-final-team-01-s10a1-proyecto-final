@@ -1,20 +1,14 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-  <li class="nav-item active">
-    <% unless user_signed_in? %>
-      <%= link_to 'Sign in', new_user_session_path %>
-    <% else %>
-      <% unless current_user.is_staff? %>
-        <%= link_to 'Accommodations', accommodations_path %>
-        <%= link_to 'Reservations', reservations_path %>
+<div class="dark:bg-gray-800 h-auto">
+  <div>
+    <%= render 'shared/navbar' %>
+  </div>
+  <div class="content">
+    <div class="carrusel mt-1">
+      <% @images.each do |image| %>
+        <div class="slide">
+          <%= image_tag image, alt: 'Imagen' %>
+        </div>
       <% end %>
-      <% if current_user.is_an_admin? %>
-        <%= link_to 'Users', users_management_index_path %>
-      <% end %>
-      <%= link_to 'Profile', profile_path %>
-      <%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete } %>
-      <%= link_to 'Chat Rooms', chat_rooms_path %>
-    <% end %>
-  </li>
+    </div>
+  </div>
 </div>
