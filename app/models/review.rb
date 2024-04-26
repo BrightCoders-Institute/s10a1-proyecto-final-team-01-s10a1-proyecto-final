@@ -8,6 +8,8 @@ class Review < ApplicationRecord
   validates :accommodation_id, presence: true
   validates :title, presence: true, length: { maximum: 100 }
   validates :rating, presence: true, inclusion: { in: 0..5 }
+  validates :content, presence: true
+
   validate :user_has_no_reviews, :user_is_a_guest
 
   def user_has_no_reviews

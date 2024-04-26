@@ -1,6 +1,41 @@
 .reservations {
-  padding: 50px 0;
+  padding: 2rem 0;
 
+  .reservations-buttons {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    color: black;
+    display: flex;
+    font-weight: 500;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    width: 100%;
+  }
+
+  .reservations-buttons:hover {
+    background-color: rgb(247, 247, 247);
+    color: black !important;
+  }
+
+  .reservations-buttons.no-border {
+    border: none;
+  }
+
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .border-b-none {
+    border-bottom: none;
+  }
+
+  .ts-control {
+    border:none;
+    padding: 0;
+  }
+  
   .prose :where(p):not(:where([class~="not-prose"] *)) {
     margin: 0;
   }

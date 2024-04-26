@@ -11,7 +11,7 @@ module S10a1ProyectoFinalTeam01S10a1ProyectoFinal
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
     config.exceptions_app = self.routes
-    config.action_dispatch.show_exceptions = true
+    config.action_dispatch.show_exceptions = :all
     config.assets.enabled = true
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do

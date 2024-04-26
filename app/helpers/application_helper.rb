@@ -14,4 +14,8 @@ module ApplicationHelper
   def self.convert_range_string_to_dates(dates_range)
     dates_range.split('-').map { |date| Date.parse(date) }.sort
   end
+
+  def navigation_text
+    controller_name.singularize.humanize
+  end
 end

@@ -1,0 +1,54 @@
+.carrusel {
+    width: 100%;
+    height: 90vh; 
+    overflow: hidden;
+    margin-bottom: 5px; 
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    position: relative;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.degradado {
+    height: 100%;
+}
+
+.nav{
+    border-bottom: 5px solid grey;
+}
+.part1{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 50px;
+}
+
+.part2{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.slide {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; 
+    transition: opacity 0.8s ease; 
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.slide.active {
+    opacity: 1; 
+}
