@@ -1,0 +1,24 @@
+<%= content_tag :div, id: (dom_id comment), class: "mb-10" do %>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= comment.user.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= comment.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= comment.content %>
+  </p>
+
+  <% if comment.post.user.id == current_user.id || current_user.is_an_admin? %>
+    <%= button_to "Destroy this comment", [comment.post, comment], method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <% end %>
+
+  <% if action_name != "show" %>
+    <hr class="mt-6">
+  <% end %>
+<% end %>
