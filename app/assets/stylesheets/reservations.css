@@ -176,3 +176,34 @@
 .reservations .btn-outline.active {
   border: 2px solid black;
 }
+
+#reservations {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  margin: 1rem 0 0 0;
+  padding-bottom: 50px;
+}
+
+.reservation-container {
+  background-color: rgba(211, 211, 211, 0.363);
+  border-radius: 25px;
+  padding: 2rem;
+  text-decoration: none;            
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-container:hover,
+.reservation-container:focus {
+  color: #01408e;
+  text-decoration: underline;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.reservation-container:active {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+}
