@@ -16,6 +16,19 @@ module ApplicationHelper
   end
 
   def navigation_text
-    controller_name.singularize.humanize
+    controller_name.humanize
+  end
+
+  def navigation_path
+    case controller_name
+    when 'users'
+      users_path
+    when 'profile'
+      profiles_path
+    when 'accommodations'
+      accommodations_path
+    else
+      root_path
+    end
   end
 end
