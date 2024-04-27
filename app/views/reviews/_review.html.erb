@@ -1,23 +1,19 @@
 <%= content_tag :div, id: (dom_id review), class: "mb-10", data: { controller: "places" } do %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= review.user.email %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= review.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rating:</strong>
-    <%= review.rating %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= review.content %>
-  </p>
+  <div class="card-review">
+    <div class="card-header">
+      <div class="user-name">
+        <h4><%= review.user.name %></h4>
+        <h5><%= review.title %></h5>
+      </div>
+      <div class="info-container">
+        <i class="fa-solid fa-star" style="color: #7752fe;"></i>
+        <%= review.rating %>
+      </div>
+    </div>
+    <div class="card-body">
+      <p><%= review.content %></p>
+    </div>
+  </div>
 
   <% if action_name != "show" %>
     <hr class="mt-6">

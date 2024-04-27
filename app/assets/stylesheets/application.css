@@ -6,8 +6,10 @@
 @import "profile_form.css";
 @import "filter.css";
 @import "accommodations.css";
+@import "accommodation.css";
 @import "reservations.css";
 @import "responsive.css";
+@import "reviews.css";
 /*
  *= require_self
  *= require application
