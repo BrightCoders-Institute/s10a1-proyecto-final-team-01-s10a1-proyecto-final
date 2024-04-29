@@ -19,14 +19,6 @@
   <body class="prose min-h-dvh min-w-full flex flex-col">
     <div>
       <div>
-        <% flash.each do |name, msg| %>
-        <div class="flex justify-center">
-          <div class="p-4 text-lg text-blue-800 rounded-lg w-full sm:w-2/3 mb-6
-                          bg-blue-50 dark:bg-gray-800 dark:text-blue-400 text-center" role="alert">
-            <%= content_tag(:span, msg, class: "font-semibold") %>
-          </div>
-        </div>
-        <% end %>
         <%= yield %>
       </div>
     </div>

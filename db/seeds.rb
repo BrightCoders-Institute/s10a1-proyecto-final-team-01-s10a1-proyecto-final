@@ -10,12 +10,6 @@
 
 require 'faker'
 
-users_list = [
-  {role_id: 4, email: 'guestest@brightcoders.com'},
-  {role_id: 3, email: 'hostest@brightcoders.com'},
-  {role_id: 2, email: 'stafftest@brightcoders.com'},
-  {role_id: 1, email: 'admintest@brightcoders.com'},
-]
 roles_list = %i[superadmin staff host guest]
 categories_list = %i[room farm amazing_pool countryside national_park
                      historical_home lakefront cabin beachfront castle
@@ -64,5 +58,20 @@ end
   review.update(user_id: guest_id, accommodation_id: accommodation.id, rating: rand(0..5))
   content = ActionText::RichText.where(record_type: 'Review', record_id: review.id,
                                            name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+end
+
+30.times do |number|
+  count = number + 1
+  post = Post.where(title: "Post no. #{count}").first_or_initialize
+  post.update(user_id: staff_id)
+  content = ActionText::RichText.where(record_type: 'Post', record_id: post.id,
+                                     name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+
+  comment = Comment.where(title: "Comment no. #{post.id}", post_id: post.id).first_or_initialize
+  comment.update(user_id: guest_id)
+  content = ActionText::RichText.where(record_type: 'Comment', record_id: comment.id,
+                                     name: 'content').first_or_initialize
   content.update(body: Faker::Lorem.sentence)
 end
