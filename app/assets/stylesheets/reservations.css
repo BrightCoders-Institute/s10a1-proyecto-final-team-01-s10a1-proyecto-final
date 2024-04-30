@@ -179,7 +179,6 @@
 
 #reservations {
   display: grid;
-  gap: 30px;
   grid-template-columns: 1fr;
   margin: 1rem 0 0 0;
   padding-bottom: 50px;
@@ -196,8 +195,6 @@
 
 .reservation-container:hover,
 .reservation-container:focus {
-  color: #01408e;
-  text-decoration: underline;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   transform: scale(1.02);
 }
