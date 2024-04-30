@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @chat_room = ChatRoom.new
     @message = Message.new
     @chat_room_name = get_name(@user, @current_user)
-    @single_chat_room = ChatRoom.where(name: @chat_room_name).first || ChatRoom.create_private_room([@user, @current_user], @chat_room_name)
+    @single_chat_room = ChatRoom.find_by_name(@chat_room_name) || ChatRoom.create_private_room([@user, @current_user], @chat_room_name)
     @messages = @single_chat_room.messages.order(created_at: :asc)
 
     render "chat_rooms/index"

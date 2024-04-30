@@ -7,8 +7,8 @@ class Message < ApplicationRecord
 
   def confirm_participant
     return unless chat_room.is_private
-      is_participant = Participant.where(user_id: user.id, chat_room_id: chat_room.id).first
-      throw :abort unless is_participant
-    end
+    is_participant = Participant.find_by(user_id: user.id, chat_room_id: chat_room.id)
+    throw :abort unless is_participant
   end
+end
 
