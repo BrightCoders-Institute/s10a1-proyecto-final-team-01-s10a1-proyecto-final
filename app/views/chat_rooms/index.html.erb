@@ -12,7 +12,6 @@
       <%= turbo_stream_from "users" %>
       <div id="users">
         <%@users.each do |i| %>
-
           <div class="border rounded-md p-1 m-1  ">
             <%= link_to "#{!i.name.nil? ? i.name : i.email}", i, class: "no-underline" %>
           </div>
@@ -51,7 +50,6 @@
       </div>
 
       <%= render partial: 'messages/new_message_form', class: "w-full space-around"%>
-
     </div>
   <% end %>
 </div>
