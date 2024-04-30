@@ -86,6 +86,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_211532) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -103,13 +110,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_211532) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "text", null: false
-    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
-    t.index ["sender_id"], name: "index_messages_on_sender_id"
+    t.string "content", null: false
+    t.bigint "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_participants_on_chat_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -180,8 +196,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_211532) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "messages", "users", column: "receiver_id"
-  add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "chat_rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reservations", "accommodations"
   add_foreign_key "reservations", "users"

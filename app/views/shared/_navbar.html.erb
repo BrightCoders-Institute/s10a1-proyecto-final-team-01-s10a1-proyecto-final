@@ -2,13 +2,13 @@
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
     <div class="flex items-center space-x-3 rtl:space-x-reverse">
       <%= image_tag 'LogoZzzlepy.png', class:"h-8"%>
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Zzzlepy</span>
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Zzzlepy</span>
     </div>
     <div class="hidden w-full md:block md:w-auto p-6" id="navbar-solid-bg">
       <%= link_to 'Reservations', reservations_path , class:" fa-solid fa-sm no-underline text-white mr-5 hover:underline"%>
       <%= link_to 'Acommodations',accommodations_path , class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
       <%= link_to 'Blog', posts_path, class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
-
+      <%= link_to 'Messages',chat_rooms_path , class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
       <% unless user_signed_in? %>
         <%= link_to 'Log In', new_user_session_path %>
       <% else %>

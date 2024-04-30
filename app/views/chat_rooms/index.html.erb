@@ -1,0 +1,55 @@
+<div class="flex flex-row border border-gray-200 w-screen h-screen ">
+  <div class="flex flex-col border rounded-md p-4 my-5 ml-5 shadow shadow-md w-fit ">
+    <div class="flex flex-row items-center h-16 my-2">
+      <h5 class="w-fit mx-2"><%= !@current_user.name.nil? ? @current_user.name : @current_user.email %></h5>
+      <div class="w-16 h-16 overflow-hidden rounded-full mx-2">
+        <%= image_tag(@current_user.image, class: "object-cover w-full h-full") if @current_user.image.representable? %>
+      </div>
+    </div>
+
+    <div class="my-2">
+      <h4> Users </h4>
+      <%= turbo_stream_from "users" %>
+      <div id="users">
+        <%@users.each do |i| %>
+          <div class="border rounded-md p-1 m-1  ">
+            <%= link_to "#{!i.name.nil? ? i.name : i.email}", i, class: "no-underline" %>
+          </div>
+        <%end %>
+      </div>
+    </div>
+
+    <div class="my-2">
+      <h4> Chanels </h4>
+      <%= turbo_stream_from "chat_rooms" %>
+      <div id="chat_rooms">
+        <%@chat_rooms.each do |i| %>
+          <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.name}", i, class: "no-underline" %></div>
+        <%end %>
+      </div>
+    </div>
+
+    <div class="mt-auto">
+      <%= render partial: "chat_rooms/new_chat_room_form"%>
+    </div>
+  </div>
+
+  <% if @single_chat_room %>
+    <div class="border rounded-md flex flex-col justify-between p-4 my-5 mr-5 shadow shadow-md w-full ">
+      <div class="border flex flex-row justify-center w-full h-fit rounded-md my-5">
+        <% if @single_chat_room %>
+          <h4 class="m-0"> <%= !@user.name.nil? ? @user.name : @user.email || @single_chat_room.name %> </h4>
+        <% end %>
+      </div>
+
+      <div class="overflow-y-scroll">
+        <%= turbo_stream_from @single_chat_room %>
+        <div id="messages" class="flex flex-col">
+          <%= render @messages, partial: 'messages/message' %>
+        </div>
+      </div>
+
+      <%= render partial: 'messages/new_message_form', class: "w-full space-around"%>
+    </div>
+  <% end %>
+</div>
