@@ -25,6 +25,6 @@ module ApplicationHelper
       profile: profile_path,
       accommodations: accommodations_path
     }
-    controller_name_hashmap[controller_name.to_sym]
+    controller_name_hashmap[controller_name.to_sym] || root_path
   end
 end
