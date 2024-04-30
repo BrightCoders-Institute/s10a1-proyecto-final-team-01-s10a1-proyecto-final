@@ -20,15 +20,11 @@ module ApplicationHelper
   end
 
   def navigation_path
-    case controller_name
-    when 'users'
-      users_path
-    when 'profile'
-      profiles_path
-    when 'accommodations'
-      accommodations_path
-    else
-      root_path
-    end
+    controller_name_hashmap = {
+      users: users_path,
+      profile: profile_path,
+      accommodations: accommodations_path
+    }
+    controller_name_hashmap[controller_name.to_sym]
   end
 end
