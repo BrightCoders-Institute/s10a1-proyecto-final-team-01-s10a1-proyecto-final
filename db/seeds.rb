@@ -60,3 +60,18 @@ end
                                            name: 'content').first_or_initialize
   content.update(body: Faker::Lorem.sentence)
 end
+
+30.times do |number|
+  count = number + 1
+  post = Post.where(title: "Post no. #{count}").first_or_initialize
+  post.update(user_id: staff_id)
+  content = ActionText::RichText.where(record_type: 'Post', record_id: post.id,
+                                     name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+
+  comment = Comment.where(title: "Comment no. #{post.id}", post_id: post.id).first_or_initialize
+  comment.update(user_id: guest_id)
+  content = ActionText::RichText.where(record_type: 'Comment', record_id: comment.id,
+                                     name: 'content').first_or_initialize
+  content.update(body: Faker::Lorem.sentence)
+end

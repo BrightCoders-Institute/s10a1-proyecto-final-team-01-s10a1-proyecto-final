@@ -1,3 +1,4 @@
+
 <div class="container reservations">
   <h2 class="title">Te damos la bienvenida, <span>Fernando</span></h2>
   <div class="card">
@@ -53,7 +54,6 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Reservations</h1>
     <div>
@@ -63,11 +63,9 @@
       <% end %>
     </div>
   </div>
-
   <div>
     <%= render "search_filter_form" %>
   </div>
-
   <div id="reservations" class="min-w-full">
     <% @reservations.each do |reservation| %>
       <h2><%= reservation.accommodation.title %></h2>
@@ -79,6 +77,5 @@
       <hr class="mt-6">
     <% end %>
   </div>
-
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>

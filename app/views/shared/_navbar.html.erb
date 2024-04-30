@@ -1,20 +1,21 @@
-<nav class="sticky top-0 bg-slate-800 h-fit w-full flex flex-row justify-center">
-  <div class="w-full py-5 px-4 md:py-7 md:pl-6 md:pr-9 flex flex-col min-[805px]:flex-row items-center max-w-screen-2xl 2xl:px-6 min-[1600px]:px-0">
-    <div>
-      <%= image_tag "logo.png", class: "h-auto min-[288px]:max-w-64 mt-0 mb-4 min-[805px]:mb-0 min-[805px]:mr-8" %>
+<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+      <%= image_tag 'LogoZzzlepy.png', class:"h-8"%>
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Zzzlepy</span>
     </div>
-    
-    <div class="w-full text-center overflow-x-auto min-[805px]:text-start">
-      <div class="inline-flex items-center mx-auto mb-4 min-[805px]:mb-0">
-        <%= print_home_link %>
-
-        <% if user_signed_in? %>
-          <%= print_edit_profile_link %>
-          <%= print_sign_out_button %>
-        <% else %>
-          <%= print_sign_in_link %>
+    <div class="hidden w-full md:block md:w-auto p-6" id="navbar-solid-bg">
+      <%= link_to 'Reservations', reservations_path , class:" fa-solid fa-sm no-underline text-white mr-5 hover:underline"%>
+      <%= link_to 'Acommodations',accommodations_path , class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
+      <%= link_to 'Blog', posts_path, class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
+      <%= link_to 'Messages',chat_rooms_path , class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
+      <% unless user_signed_in? %>
+        <%= link_to 'Log In', new_user_session_path %>
+      <% else %>
+        <%= link_to profile_path, class: "no-underline" do %>
+          <i class="fa-solid fa-user fa-xl" style="color: white;"> profile</i>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </nav>

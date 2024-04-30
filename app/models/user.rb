@@ -2,6 +2,8 @@ class User < ApplicationRecord
   before_create :set_default_role
   after_destroy :delete_messages
 
+  after_create_commit { broadcast_append_to "users" }
+
   belongs_to :role
   has_many :messages
   has_many :posts, dependent: :destroy, autosave: true
@@ -22,6 +24,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
+  scope :all_except, ->(user) { where.not(id: user) }
   scope :guests_count, ->() { count_users_by_role(4) }
   scope :hosts_count, ->() { count_users_by_role(3) }
   scope :staff_count, ->() { count_users_by_role(2) }
@@ -75,6 +78,26 @@ class User < ApplicationRecord
 
   def is_an_admin?
     role_id == Role.find_by(name: 'superadmin').id
+  end
+
+  def is_a_host_or_admin?
+    is_a_host? || is_an_admin?
+  end
+
+  def is_a_guest_or_admin?
+    is_a_guest? || is_an_admin?
+  end
+
+  def is_a_host?
+    role_id == 3
+  end
+
+  def is_staff?
+    role_id == 2
+  end
+
+  def is_an_admin?
+    role_id == 1
   end
 
   def is_a_host_or_admin?
