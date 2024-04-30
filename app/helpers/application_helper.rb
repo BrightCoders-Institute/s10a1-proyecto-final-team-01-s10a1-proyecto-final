@@ -16,6 +16,15 @@ module ApplicationHelper
   end
 
   def navigation_text
-    controller_name.singularize.humanize
+    controller_name.humanize
+  end
+
+  def navigation_path
+    controller_name_hashmap = {
+      users: users_path,
+      profile: profile_path,
+      accommodations: accommodations_path
+    }
+    controller_name_hashmap[controller_name.to_sym] || root_path
   end
 end

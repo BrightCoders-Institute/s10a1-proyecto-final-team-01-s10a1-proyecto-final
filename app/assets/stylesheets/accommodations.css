@@ -10,7 +10,7 @@
   background-color: rgba(211, 211, 211, 0.363);
   border-radius: 25px;
   padding: 2rem;
-  text-decoration: none;            
+  text-decoration: none;
   transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
