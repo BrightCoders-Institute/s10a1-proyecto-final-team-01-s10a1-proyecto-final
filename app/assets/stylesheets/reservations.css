@@ -199,3 +199,18 @@
   transform: scale(1.02);
 }
 
+.inline input[type="submit"]:hover {
+  text-decoration: underline;
+}
+
+.inline input[type="submit"]:hover {
+  color: black;
+}
+
+.underline-on-hover:hover {
+  text-decoration: underline;
+}
+
+.black-text {
+  color: black;
+}
