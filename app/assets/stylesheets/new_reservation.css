@@ -1,27 +1,27 @@
 .container {
-    max-width: 70%;
-    margin: 5% auto 0; 
-    padding: 20px;
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 5% auto 0; 
+    max-width: 70%;
+    padding: 20px;
   }
   
   h1 {
+    color: white;
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
-    color: white;
   }
   
   a.back-link {
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 8px;
     background-color: #C2D9FF;
+    border-radius: 8px;
     color: #190482;
-    text-decoration: none;
+    display: inline-block;
     font-weight: bold;
+    padding: 10px 15px;
+    text-decoration: none;
     transition: background-color 0.3s ease-in-out;
   }
   
@@ -36,23 +36,24 @@
 
   form select,
   form textarea{
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
     border-radius: 5px;
     border: 1px solid #ced4da;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
   }
   
   form button {
-    padding: 10px 20px;
-    border-radius: 8px;
     background-color: #190482;
+    border-radius: 8px;
+    border: none;
     color: 190482;
     font-weight: bold;
-    border: none;
+    padding: 10px 20px;
     transition: background-color 0.3s ease-in-out;
   }
   
   form button:hover {
     background-color: #190482;
   }
+  
