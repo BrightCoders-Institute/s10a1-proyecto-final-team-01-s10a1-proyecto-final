@@ -90,8 +90,7 @@
         </div>
       </div>
       
-
-      <div class="mt-2 mb-2 flex justify-between">
+      <div class="mt-2 mb-6">
         <div class="date-range flex">
           <div class="date-range-form">
             <%= form.label :dates_range, class: "block mb-2" %>
@@ -103,6 +102,17 @@
             <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
                                 'true', 'false' %>
             <%= form.label :date_filter, 'Filter with dates range', class: 'ml-2 text-start font-semibold' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2 mb-2 flex justify-between">
+        <div>
+          <%= form.label :user_favorites, class: "block mb-2" %>
+          <div class="mt-4 flex items-center justify-start">
+            <%= form.check_box :user_favorites, { checked: ActiveModel::Type::Boolean.new.cast(params[:user_favorites]), include_hidden: false }, 
+                              'true', 'false' %>
+            <%= form.label :user_favorites, 'Show only favorites', class: 'ml-2 text-start font-semibold' %>
           </div>
         </div>
         

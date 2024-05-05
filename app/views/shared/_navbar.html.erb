@@ -13,7 +13,11 @@
         <%= link_to 'Log In', new_user_session_path %>
       <% else %>
         <%= link_to profile_path, class: "no-underline" do %>
-          <i class="fa-solid fa-user fa-xl" style="color: white;"> profile</i>
+          <i class="fa-solid fa-user fa-xl" style="color: white;">Profile</i>
+        <% end %>
+
+        <%= link_to destroy_user_session_path, class: "no-underline", data: { "turbo-method": :delete } do %>
+          <i class="fa-solid fa-user fa-xl" style="color: white;">Sign out</i>
         <% end %>
       <% end %>
     </div>

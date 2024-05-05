@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :details
     resources :reviews
     member do
+      put :switch_user_favorite
       delete :remove_image
     end
   end
@@ -58,5 +59,4 @@ Rails.application.routes.draw do
   resources :chat_rooms do
     resources :messages
   end
-  
 end
