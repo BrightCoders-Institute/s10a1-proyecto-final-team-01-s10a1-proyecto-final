@@ -12,7 +12,12 @@ Rails.application.routes.draw do
       delete :remove_image
     end
   end
-  resources :reservations
+
+  resources :reservations do
+    member do
+      put :switch_user_favorite
+    end
+  end
 
   resources :posts do
     resources :comments

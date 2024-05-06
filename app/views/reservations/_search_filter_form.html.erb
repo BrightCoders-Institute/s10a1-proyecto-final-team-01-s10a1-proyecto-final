@@ -32,6 +32,12 @@
                               'true', 'false' %>
         <%= form.label :active, 'Show only active reservations', class: 'text-start font-semibold text-lg' %>
       </div>
+
+      <div class="w-1/4 p-2 mt-6">
+        <%= form.check_box :user_favorites, { checked: ActiveModel::Type::Boolean.new.cast(params[:user_favorites]), include_hidden: false }, 
+                              'true', 'false' %>
+        <%= form.label :user_favorites, 'Show only favorites', class: 'text-start font-semibold text-lg' %>
+      </div>
     </div>
   </div>
   <div class='flex justify-center p-6'>

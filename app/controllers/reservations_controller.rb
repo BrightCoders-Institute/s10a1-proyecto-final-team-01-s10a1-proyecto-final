@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_reservation, only: %i[ show edit update destroy ]
+  before_action :set_reservation, only: %i[ show edit update destroy switch_user_favorite ]
   before_action :check_if_guests_are_available, only: %i[ new ]
   before_action :check_if_is_owner_or_admin, only: %i[ edit update destroy ]
   before_action :check_if_is_guest_or_admin, only: %i[ new create ]
@@ -8,10 +8,12 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
     date_filter = params[:date_filter]
+    user_favorites = params[:user_favorites]
 
     filtering_params(params).each do |key, value|
-      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range")
-        @reservations = @reservations.public_send("filter_by_#{key}", value)
+      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range") &&
+         (user_favorites.present? || key != "user_favorites")
+        @reservations = @reservations.public_send("filter_by_#{key}", key == "user_favorites" ? current_user.id : value)
       end
     end
 
@@ -52,6 +54,20 @@ class ReservationsController < ApplicationController
     redirect_to reservations_url
   end
 
+  def switch_user_favorite
+    favorite_mark_exists = current_user.reservation_favorite_marking_exists?(@reservation.id)
+    favorite_marking = FavoriteReservation.find_or_create_by(user_id: current_user.id, reservation_id: @reservation.id)
+
+    if favorite_mark_exists
+      favorite_marking.update(favorite: !favorite_marking.favorite)
+    else
+      favorite_marking.update(favorite: true)
+    end
+
+    favorite_marking.save!
+    redirect_back(fallback_location: request.referer)
+  end
+
   private
     def set_reservation
       @reservation = Reservation.find(params[:id])
@@ -78,6 +94,6 @@ class ReservationsController < ApplicationController
     end
 
     def filtering_params(params)
-      params.slice(:guests_ids, :accommodations_ids, :dates_range, :active)
+      params.slice(:guests_ids, :accommodations_ids, :dates_range, :active, :user_favorites)
     end
 end
