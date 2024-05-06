@@ -12,8 +12,11 @@
       <% unless user_signed_in? %>
         <%= link_to 'Log In', new_user_session_path %>
       <% else %>
+        <%= link_to 'Sign out', destroy_user_session_path, data: { "turbo-method": :delete }, 
+                    class:"fa-solid fa-sm no-underline text-white mr-5 hover:underline" %>
+        
         <%= link_to profile_path, class: "no-underline" do %>
-          <i class="fa-solid fa-user fa-xl" style="color: white;"> profile</i>
+          <i class="fa-solid fa-user fa-xl" style="color: white;">Profile</i>
         <% end %>
       <% end %>
     </div>

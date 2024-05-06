@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
   has_many :accommodations, dependent: :destroy, autosave: true
+  has_many :favorite_accommodations, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
@@ -106,6 +107,14 @@ class User < ApplicationRecord
 
   def is_a_guest_or_admin?
     is_a_guest? || is_an_admin?
+  end
+
+  def accommodation_favorite_marking_exists?(accommodation_id)
+    favorite_accommodations.where(accommodation_id: accommodation_id).count > 0
+  end
+
+  def marked_accommodation_as_favorite?(accommodation_id)
+    favorite_accommodations.where(accommodation_id: accommodation_id, favorite: true).count > 0
   end
 
   private

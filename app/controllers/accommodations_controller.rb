@@ -1,6 +1,6 @@
 class AccommodationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_accommodation, only: %i[ show edit update remove_image destroy ]
+  before_action :set_accommodation, only: %i[ show edit update switch_user_favorite remove_image destroy ]
   before_action :check_if_hosts_are_available, only: %i[ new ]
   before_action :check_if_is_owner_or_admin, only: %i[ edit remove_image update remove_image destroy ]
   before_action :check_if_is_host_or_admin, only: %i[ new create ]
@@ -9,10 +9,12 @@ class AccommodationsController < ApplicationController
   def index
     @accommodations = Accommodation.all
     date_filter = params[:date_filter]
+    user_favorites = params[:user_favorites]
 
     filtering_params(params).each do |key, value|
-      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range")
-        @accommodations = @accommodations.public_send("filter_by_#{key}", value)
+      if value.present? && !value.empty? && (date_filter.present? || key != "dates_range") &&
+         (user_favorites.present? || key != "user_favorites")
+        @accommodations = @accommodations.public_send("filter_by_#{key}", key == "user_favorites" ? current_user.id : value)
       end
     end
 
@@ -53,6 +55,20 @@ class AccommodationsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def switch_user_favorite
+    favorite_mark_exists = current_user.accommodation_favorite_marking_exists?(@accommodation.id)
+    favorite_marking = FavoriteAccommodation.find_or_create_by(user_id: current_user.id, accommodation_id: @accommodation.id)
+
+    if favorite_mark_exists
+      favorite_marking.update(favorite: !favorite_marking.favorite)
+    else
+      favorite_marking.update(favorite: true)
+    end
+
+    favorite_marking.save!
+    redirect_back(fallback_location: request.referer)
   end
 
   def remove_image
@@ -100,6 +116,6 @@ class AccommodationsController < ApplicationController
 
     def filtering_params(params)
       params.slice(:hosts_ids, :categories_ids, :details_ids, :title, :price_per_day, :rating, :bedrooms_number,
-                   :bathrooms_number, :beds_number, :max_guests_number, :dates_range, :address)
+                   :bathrooms_number, :beds_number, :max_guests_number, :dates_range, :address, :user_favorites)
     end
 end
