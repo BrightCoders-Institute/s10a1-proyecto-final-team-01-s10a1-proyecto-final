@@ -34,7 +34,7 @@ class Accommodation < ApplicationRecord
   scope :filter_by_hosts_ids, ->(hosts_ids) { where(user_id: hosts_ids).order(updated_at: :desc) }
   scope :filter_by_categories_ids, ->(categories_ids) { where(category_id: categories_ids).order(updated_at: :desc) }
   scope :filter_by_details_ids, ->(details_ids) { includes(:details).where(details: { id: details_ids }) }
-  scope :filter_by_user_favorites, ->(guest_id) { where(id: User.find(guest_id).favorite_accommodations.where(favorite: true).pluck(:accommodation_id)).order(updated_at: :desc) }
+  scope :filter_by_user_favorites, ->(user_id) { where(id: User.find(user_id).favorite_accommodations.where(favorite: true).pluck(:accommodation_id)).order(updated_at: :desc) }
 
   scope :filter_by_title, ->(title) { where("title LIKE ?", "%#{title}%").order(updated_at: :desc) }
   scope :filter_by_price_per_day, ->(range) { filter_by_range(:price_per_day, range) }
