@@ -14,6 +14,14 @@
         <%= form.text_field :title, value: params[:title],
                             class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
       </div>
+
+      <div class="my-5">
+          <div class="flex items-center justify-start">
+            <%= form.check_box :user_favorites, { checked: ActiveModel::Type::Boolean.new.cast(params[:user_favorites]), include_hidden: false }, 
+                              'true', 'false' %>
+            <%= form.label :user_favorites, 'Show only favorites', class: 'ml-2 text-start font-semibold' %>
+          </div>
+      </div>
     </div>
 
     <div class='flex flex-col items-center min-[250px]:flex-row'>
