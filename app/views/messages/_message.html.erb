@@ -1,4 +1,4 @@
-<div class="border rounded-lg w-fit my-4 <%= "cont-#{message.user.id}" %>">
+<div class="border rounded-lg w-fit my-4 mr-4 <%= "cont-#{message.user.id}" %>">
   <div class="message-box msg-<%= message.user.id %> rounded-lg p-2" >
     <% unless message.chat_room.is_private %>
       <h6 class="text-xs "> <%= message.user.email %> </h6>
