@@ -1,27 +1,48 @@
-<div class="w-full">
+<div class="container-profile">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+  <%= render '/shared/head' %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <div>
-      <%= link_to "Home", root_path, class: "inline-block rounded-lg text-center py-3 px-5 bg-blue-600 text-white block font-medium" %>
-      <%= link_to "New post", new_post_path, class: "inline-block rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    </div>
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="font-bold text-4xl m-0">Posts</h1>
   </div>
-
-  <div>
+  <div class="filtro mb-4">
     <%= render "search_filter_form" %>
   </div>
+  <div class="buttons">
+    <%= link_to "New post", new_post_path, class: "inline-block rounded-lg py-3 px-5 bg-green-600 w-100 text-white text-center block font-medium" %>
+  </div>
 
-  <div id="posts" class="min-w-full">
+
+  <div id="posts" class="min-w-full posts">
     <% @posts.each do |post| %>
-      <h2><%= post.title %></h2>
-      <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <% if post.user.id == current_user.id || current_user.is_an_admin? %>
-        <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-      <% end %>
+    <%= link_to post do %>
+      <div class="post m-8" id="post_<%= post.id %>">
+        <div class="user-date flex justify-between">
+          <div class="user-post flex justify-start items-center">
+            <% if post.user.image.representable? %>
+              <div class="image-profile mr-4">
+                <%= image_tag post.user.image, class: 'user-profile' %>
+              </div>
+            <% end %>
+            <p><%= post.user.name %></p>
+          </div>
+          <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
+        </div>
+        <div class="post-title">
+          <h2 class="mt-4 mb-4"><%= post.title %></h2>
+        </div>
+        <div class="post-text">
+          <p><%= truncate_words(post.content) %></p>
+        </div>
+        <% if post.user.id == current_user.id || current_user.is_an_admin? %>
+          <div class="buttons flex justify-end">
+            <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 px-5 bg-orange-100 inline-block font-medium" %>
+          </div>
+        <% end %>
+      </div>
+    <% end  %>
       <hr class="mt-6">
     <% end %>
   </div>
