@@ -24,7 +24,7 @@
       <%= turbo_stream_from "chat_rooms" %>
       <div id="chat_rooms">
         <%@chat_rooms.each do |i| %>
-          <div class="border rounded-md p-1 m-1  "><%= link_to "#{i.name}", i, class: "no-underline" %></div>
+          <div class="channel"><%= link_to "#{i.name}", i, class: "no-underline" %></div>
         <%end %>
       </div>
     </div>
