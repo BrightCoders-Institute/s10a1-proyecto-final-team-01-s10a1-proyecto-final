@@ -18,4 +18,10 @@ module ApplicationHelper
   def navigation_text
     controller_name.singularize.humanize
   end
+
+  def truncate_words(text, length = 20, end_string = '...')
+    plain_text = text.to_plain_text
+    words = plain_text.split
+    words.length > length ? words[0...length].join(' ') + end_string : plain_text
+  end
 end

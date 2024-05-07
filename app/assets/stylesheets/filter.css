@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: #F3F4F6;
+  border-radius: 25px;
 }
 
 .filter-title,
@@ -28,8 +30,8 @@
 @media (min-width: 481px) {
   .data-accomodations {
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .form-group,
@@ -41,7 +43,6 @@
 @media (min-width: 769px) {
   .filter {
     flex-direction: row;
-    justify-content: space-between;
   }
 
   .filter-title {
@@ -56,11 +57,16 @@
   .data-accomodations {
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-start;
   }
 
   .form-group,
   .range-slide {
     width: calc(33.333% - 2rem);
+  }
+
+  .form-group {
+    margin: 0 1rem 1rem 0;
   }
 }
 
