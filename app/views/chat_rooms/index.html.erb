@@ -24,7 +24,7 @@
   </div>
 
   <% if @single_chat_room %>
-    <div class="border rounded-md flex flex-col justify-between p-4 my-5 mr-5 shadow shadow-md w-full ">
+    <div class="border rounded-md flex flex-col justify-between p-4 pl-10 my-5 mr-5 shadow shadow-md w-full ">
       <div class="border flex flex-row justify-center items-center w-full h-fit rounded-md my-5 py-2">
         <% if @single_chat_room %>
           <% unless @user.image.nil? %>
@@ -37,7 +37,7 @@
         <% end %>
       </div>
 
-      <div class="overflow-y-scroll">
+      <div class="overflow-y-scroll mx-2">
         <%= turbo_stream_from @single_chat_room %>
         <div id="messages" class="flex flex-col">
           <%= render @messages, partial: 'messages/message' %>
@@ -49,7 +49,7 @@
   <% end %>
   <style>
     <%= ".msg-#{current_user&.id}" %> {
-        background-color: #007bff !important;
+        background-color: #7752FE !important;
     }
     <%= ".cont-#{current_user&.id}" %> {
         place-self: end;
