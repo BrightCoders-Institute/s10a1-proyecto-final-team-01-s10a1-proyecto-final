@@ -1,15 +1,17 @@
 <div class="flex flex-row border border-gray-200 w-screen h-screen ">
   <div class="flex flex-col border rounded-md p-4 my-5 ml-5 shadow shadow-md w-fit ">
     <div class="flex flex-row items-center h-16 my-2 relative">
-      <div class="w-8 h-8 overflow-hidden rounded-full mx-2">
-        <%= image_tag(@current_user.image, class: "object-cover w-full h-full") if @current_user.image.representable? %>
-      </div>
+      <% unless @current_user.image.nil? %>
+        <div class="w-8 h-8 overflow-hidden rounded-full mx-2">
+          <%= image_tag(@current_user.image, class: "object-cover w-full h-full") if @current_user.image.representable? %>
+        </div>
+      <% end %>
       <h5 class="w-fit mx-2"><%= !@current_user.name.nil? ? @current_user.name : @current_user.email %></h5>
       <div class="w-8 h-8 mx-2 align-self-end absolute right-0"><%= link_to( image_tag('home.svg', class: "w-full h-full"), root_path) %></div>
     </div>
 
     <div class="my-2">
-      <h4> Users </h4>
+      <h4 class="m-2 mb-3"> Users </h4>
       <%= turbo_stream_from "users" %>
       <div id="users">
         <%@users.each do |i| %>
@@ -23,9 +25,15 @@
 
   <% if @single_chat_room %>
     <div class="border rounded-md flex flex-col justify-between p-4 my-5 mr-5 shadow shadow-md w-full ">
-      <div class="border flex flex-row justify-center w-full h-fit rounded-md my-5">
+      <div class="border flex flex-row justify-center items-center w-full h-fit rounded-md my-5 py-2">
         <% if @single_chat_room %>
-          <h4 class="m-0"> <%= !@user.name.nil? ? @user.name : @user.email || @single_chat_room.name %> </h4>
+          <% unless @user.image.nil? %>
+            <div class="w-8 h-8 overflow-hidden rounded-full mx-2">
+              <%= image_tag(@user.image, class: "object-cover w-full h-full") if @user.image.representable? %>
+            </div>
+          <% end %>
+
+          <h4 class="m-0"> <%= !@user.name.nil? ? @user.name : @user.email%> </h4>
         <% end %>
       </div>
 
@@ -36,7 +44,7 @@
         </div>
       </div>
 
-      <%= render partial: 'messages/new_message_form', class: "w-full space-around"%>
+      <%= render partial: 'messages/new_message_form', class: "w-full space-between"%>
     </div>
   <% end %>
   <style>
