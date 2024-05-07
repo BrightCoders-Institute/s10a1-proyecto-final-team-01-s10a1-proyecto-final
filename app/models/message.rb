@@ -11,4 +11,3 @@ class Message < ApplicationRecord
     throw :abort unless is_participant
   end
 end
-
