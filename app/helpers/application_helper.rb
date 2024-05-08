@@ -19,9 +19,8 @@ module ApplicationHelper
     controller_name.singularize.humanize
   end
 
-  def truncate_words(text, length = 20, end_string = '...')
+  def truncate_words(text, length = 60)
     plain_text = text.to_plain_text
-    words = plain_text.split
-    words.length > length ? words[0...length].join(' ') + end_string : plain_text
+    plain_text.truncate(length, separator: '')
   end
 end
