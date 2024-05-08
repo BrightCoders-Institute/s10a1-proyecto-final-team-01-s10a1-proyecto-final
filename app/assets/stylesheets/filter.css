@@ -1,9 +1,9 @@
 .filter {
+  background-color: #F3F4F6;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-color: #F3F4F6;
-  border-radius: 25px;
 }
 
 .filter-title,
@@ -12,14 +12,14 @@
 }
 
 .data-accomodations {
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 
 .form-group,
 .range-slide {
-  width: 100%;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .range-slider {
@@ -46,8 +46,8 @@
   }
 
   .filter-title {
-    width: auto;
     flex-grow: 1;
+    width: auto;
   }
 
   .filter-form {
@@ -69,4 +69,3 @@
     margin: 0 1rem 1rem 0;
   }
 }
-
