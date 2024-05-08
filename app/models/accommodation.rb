@@ -1,6 +1,7 @@
 class Accommodation < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_many :favorite_accommodations, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
   has_and_belongs_to_many :details, dependent: :destroy, autosave: true
@@ -33,6 +34,7 @@ class Accommodation < ApplicationRecord
   scope :filter_by_hosts_ids, ->(hosts_ids) { where(user_id: hosts_ids).order(updated_at: :desc) }
   scope :filter_by_categories_ids, ->(categories_ids) { where(category_id: categories_ids).order(updated_at: :desc) }
   scope :filter_by_details_ids, ->(details_ids) { includes(:details).where(details: { id: details_ids }) }
+  scope :filter_by_user_favorites, ->(user_id) { where(id: User.find(user_id).favorite_accommodations.where(favorite: true).pluck(:accommodation_id)).order(updated_at: :desc) }
 
   scope :filter_by_title, ->(title) { where("title LIKE ?", "%#{title}%").order(updated_at: :desc) }
   scope :filter_by_price_per_day, ->(range) { filter_by_range(:price_per_day, range) }
@@ -56,7 +58,7 @@ class Accommodation < ApplicationRecord
 
   def main_image_is_saved_and_exists?
     return false if main_image.blob.nil?
-    
+
     image_blob = main_image.blob
     image_blob.attached? && image_blob.present? && image_blob.persisted?
   end
