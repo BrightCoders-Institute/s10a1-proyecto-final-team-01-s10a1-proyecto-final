@@ -15,6 +15,12 @@ module.exports = {
       gridTemplateColumns: {
         12: "repeat(12, minmax(0, 1fr))",
       },
+      colors: {
+        'purple-700': '#190482', // Define el color morado personalizado
+      },
+      colors: {
+        'purple-600': '#7752FE', // Define el color morado personalizado
+      },
     },
   },
   plugins: [

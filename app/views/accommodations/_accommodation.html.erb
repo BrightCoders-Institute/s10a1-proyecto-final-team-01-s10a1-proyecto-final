@@ -21,7 +21,11 @@
         </div>
       </div>
     </div>
-    <div class="buttons">
+    <div class="buttons flex justify-content-end">
+      <%= link_to current_user.marked_accommodation_as_favorite?(accommodation.id) ? "Unmark as favorite" : "Mark as favorite",
+                  switch_user_favorite_accommodation_path, method: :put, data: { turbo_method: :put },
+                  class: "ml-2 rounded-lg py-3 px-5 inline-block font-medium back-button" %>
+
       <%= link_to "Back to accommodations", accommodations_path, class: "ml-2 rounded-lg py-3 px-5 inline-block font-medium back-button" %>
       <% if action_name != "show" %>
         <%= link_to "Show this accommodation", accommodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
