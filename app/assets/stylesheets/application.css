@@ -9,9 +9,11 @@
 @import "show_reservation.css";
 @import "filter.css";
 @import "accommodations.css";
+@import "accommodation.css";
 @import "reservations.css";
 @import "responsive.css";
 @import "posts.css";
+@import "reviews.css";
 
 /*
  *= require_self
@@ -249,4 +251,6 @@ label {
   .container {
     max-width: 1140px;
   }
+}
+
 }

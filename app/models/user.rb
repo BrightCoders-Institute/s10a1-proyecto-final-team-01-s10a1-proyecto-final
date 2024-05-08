@@ -2,11 +2,14 @@ class User < ApplicationRecord
   before_create :set_default_role
   after_destroy :delete_messages
 
+  after_create_commit { broadcast_append_to "users" }
+
   belongs_to :role
   has_many :messages
   has_many :posts, dependent: :destroy, autosave: true
   has_many :comments, dependent: :destroy, autosave: true
   has_many :accommodations, dependent: :destroy, autosave: true
+  has_many :favorite_accommodations, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
@@ -22,6 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
+  scope :all_except, ->(user) { where.not(id: user) }
   scope :guests_count, ->() { count_users_by_role(4) }
   scope :hosts_count, ->() { count_users_by_role(3) }
   scope :staff_count, ->() { count_users_by_role(2) }
@@ -103,6 +107,14 @@ class User < ApplicationRecord
 
   def is_a_guest_or_admin?
     is_a_guest? || is_an_admin?
+  end
+
+  def accommodation_favorite_marking_exists?(accommodation_id)
+    favorite_accommodations.where(accommodation_id: accommodation_id).count > 0
+  end
+
+  def marked_accommodation_as_favorite?(accommodation_id)
+    favorite_accommodations.where(accommodation_id: accommodation_id, favorite: true).count > 0
   end
 
   private

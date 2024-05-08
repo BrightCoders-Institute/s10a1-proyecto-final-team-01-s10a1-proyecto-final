@@ -1,8 +1,13 @@
 class Message < ApplicationRecord
-  belongs_to :sender, class_name: 'User'
-  belongs_to :receiver, class_name: 'User'
+  belongs_to :chat_room
+  belongs_to :user
+  validates :content, presence: true
+  after_create_commit { broadcast_append_to self.chat_room }
+  before_create :confirm_participant
 
-  validates :sender_id, presence: true
-  validates :receiver_id, presence: true
-  validates :text, presence: true
+  def confirm_participant
+    return unless chat_room.is_private
+    is_participant = Participant.find_by(user_id: user.id, chat_room_id: chat_room.id)
+    throw :abort unless is_participant
+  end
 end

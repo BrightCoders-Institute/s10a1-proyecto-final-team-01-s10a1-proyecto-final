@@ -1,0 +1,104 @@
+.accommodation-t {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.accommodation-t h1{
+  margin-bottom: 0.5rem;
+}
+
+.back-button {
+  display: none;
+}
+
+.info-t {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 1rem 0;
+}
+
+.info-container{
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 1rem 0 0;
+}
+
+.info-container i {
+  margin: 0 0.5rem 0 0;
+}
+
+.accommodation-details {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem 0 0 0;
+}
+
+.accommodation-price {
+  width: 100%;
+}
+
+.card-price {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem 0;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.price-data {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.price h3 {
+  color: #333;
+}
+
+.date-range h4 {
+  color: #666;
+  margin: 0;
+}
+
+.date-range p {
+  color: #444;
+  margin: 5px 0 0 0;
+}
+
+.price {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 1rem 0;
+}
+
+.amenities h2 , .price h3, .rules h3, .location h3 {
+  margin: 1rem 0 0 0;
+}
+
+@media (min-width: 900px) {
+  .back-button {
+    display: block;
+    background-color: #190482;
+    color: white;
+  }
+
+  .accommodation-details {
+    flex-wrap: nowrap;
+  }
+
+  .accommodation-price {
+    width: 25%;
+  }
+}

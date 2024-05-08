@@ -9,10 +9,10 @@
     display: flex;
     font-weight: 500;
     gap: 0.5rem;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     width: 100%;
   }
-
+  
   .reservations-buttons:hover {
     background-color: rgb(247, 247, 247);
     color: black !important;
@@ -175,4 +175,42 @@
 
 .reservations .btn-outline.active {
   border: 2px solid black;
+}
+
+#reservations {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 1rem 0 0 0;
+  padding-bottom: 50px;
+}
+
+.reservation-container {
+  background-color: rgba(211, 211, 211, 0.363);
+  border-radius: 25px;
+  padding: 1rem;
+  text-decoration: none;            
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-container:hover,
+.reservation-container:focus {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+.inline input[type="submit"]:hover {
+  text-decoration: underline;
+}
+
+.inline input[type="submit"]:hover {
+  color: black;
+}
+
+.underline-on-hover:hover {
+  text-decoration: underline;
+}
+
+.black-text {
+  color: black;
 }

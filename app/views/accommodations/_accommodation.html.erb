@@ -1,102 +1,91 @@
 <%= content_tag :div, id: (dom_id accommodation), data: { controller: "places" } do %>
-  <h1 class="font-bold text-4xl"><%= accommodation.title %></h1>
+  <div class="accommodation-t border-b border-gray-200">
+    <div class="accommodation-info">
+      <h1 class="font-bold text-4xl"><%= accommodation.title %></h1>
+      <div class="info-t">
+        <div class="info-container">
+          <i class="fa-solid fa-star" style="color: #7752fe;"></i>
+          <%= accommodation.calculate_rating %>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-location-dot" style="color: #7752fe;"></i>
+          <%= accommodation.address %>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-earth-americas" style="color: #7752fe;"></i>
+          <%= accommodation.category.name %>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-user" style="color: #7752fe;"></i>
+          <%= accommodation.user.email %>
+        </div>
+      </div>
+    </div>
+    <div class="buttons flex justify-content-end">
+      <%= link_to current_user.marked_accommodation_as_favorite?(accommodation.id) ? "Unmark as favorite" : "Mark as favorite",
+                  switch_user_favorite_accommodation_path, method: :put, data: { turbo_method: :put },
+                  class: "ml-2 rounded-lg py-3 px-5 inline-block font-medium back-button" %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= accommodation.user.email %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Category:</strong>
-    <%= accommodation.category.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Details:</strong>
-    <ul>
-      <% accommodation.details.each do |detail| %>
-        <li><%= detail.name %></li>
+      <%= link_to "Back to accommodations", accommodations_path, class: "ml-2 rounded-lg py-3 px-5 inline-block font-medium back-button" %>
+      <% if action_name != "show" %>
+        <%= link_to "Show this accommodation", accommodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit this accommodation", edit_accommodation_path(accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
       <% end %>
-    </ul>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price per day:</strong>
-    <%= accommodation.price_per_day %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Dates range:</strong>
-    <%= accommodation.dates_range %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rating:</strong>
-    <%= accommodation.calculate_rating %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= accommodation.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rules:</strong>
-    <%= accommodation.rules %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Bedrooms number:</strong>
-    <%= accommodation.bedrooms_number %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Bathrooms number:</strong>
-    <%= accommodation.bathrooms_number %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Beds number:</strong>
-    <%= accommodation.beds_number %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Max guests number:</strong>
-    <%= accommodation.max_guests_number %>
-  </p>
-  
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Main image:</strong>
+    </div>
+  </div>
+  <div class="accommodation-gallery">
     <%= image_tag accommodation.main_image if accommodation.main_image.attached? %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Secondary images:</strong>
     <% accommodation.secondary_images.each do |secondary_image| %>
       <div class="my-5"><%= image_tag secondary_image %></div>
     <% end %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Address:</strong>
-    <span data-places-target="address"><%= accommodation.address %></span>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Latitude:</strong>
-    <span data-places-target="latitude"><%= accommodation.latitude %></span>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Longitude:</strong>
-    <span data-places-target="longitude"><%= accommodation.longitude %></span>
-  </p>
-
-  <%= tag.div class: "my-5 h-[400px]", data: { "places-target": "component" } %>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this accommodation", accommodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this accommodation", edit_accommodation_path(accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  </div>
+  <div class="accommodation-details border-b border-gray-200">
+    <div class="amenities">
+      <h2><%= accommodation.title %> by <%= accommodation.user.name %></h2>
+      <div class="info-t">
+        <div class="info-container">
+          <i class="fa-solid fa-person-circle-question" style="color: #190482;"></i>
+          <p><%= accommodation.max_guests_number %> guests</p>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-person-shelter" style="color: #190482;"></i>
+          <p><%= accommodation.bedrooms_number %> bedrooms </p>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-bed" style="color: #190482;"></i>
+          <p><%= accommodation.beds_number %> beds </p>
+        </div>
+        <div class="info-container">
+          <i class="fa-solid fa-bath" style="color: #190482;"></i>
+          <p><%= accommodation.bathrooms_number %> baths </p>
+        </div>
+      </div>
+      <div class="description-details">
+        <h3>Description</h3>
+        <p><%= accommodation.description %></p>
+      </div>
+    </div>
+    <div class="accommodation-price">
+      <div class="card-price">
+        <div class="price-data">
+          <div class="price">
+            <h3>$<%= accommodation.price_per_day %> / night</h3>
+          </div>
+          <div class="date-range">
+            <h4>Check-In | Check-Out:</h4>
+            <p><%= accommodation.dates_range %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rules border-b border-gray-200">
+    <h3>Rules</h3>
+    <p><%= accommodation.rules %></p>
+  </div>
+  <div class="location border-b border-gray-200">
+    <h3>Location</h3>
+    <p>(<span data-places-target="longitude"><%= accommodation.longitude %></span>, <span data-places-target="latitude"><%= accommodation.latitude %></span>)</p>
+    <%= tag.div class: "my-5 h-[400px]", data: { "places-target": "component" } %>
+  </div>
 <% end %>
