@@ -1,6 +1,6 @@
 <div>
   <%= form_with(model: [@single_chat_room ,@message], remote: true, class: "flex", data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } ) do |f| %>
-    <%= f.text_field :content, id: 'chat-text', class: "m-2 w-10/12 ", autocomplete: 'off' %>
-    <%= f.submit data: { disable_with: false }, class: "btn bg-violet-500 hover:bg-violet-400 p-2 m-2 rounded-md" %>
+    <%= f.text_field :content, id: 'chat-text', class: "m-2 grow ", autocomplete: 'off' %>
+    <%= f.submit data: { disable_with: false }, class: "btn bg-purple-700 text-white font-semibold hover:bg-purple-600 p-2 m-2 rounded-md" %>
   <% end %>
 </div>

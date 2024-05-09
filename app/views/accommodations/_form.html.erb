@@ -105,15 +105,17 @@
 
   <div class="my-5">
     <% accommodation.secondary_images.each do |image| %>
-      <%= form.hidden_field :secondary_images, multiple: true, value: image.signed_id %>
+      <% if accommodation.image_is_saved_and_exists?(image) %>
+        <%= form.hidden_field :secondary_images, multiple: true, value: image.signed_id %>
 
-      <div class="my-5">
-        <div class="mb-3">
-          <%= image_tag image %>
+        <div class="my-5">
+          <div class="mb-3">
+            <%= image_tag image %>
+          </div>
+          <%= link_to "Remove", remove_image_accommodation_path(image.id), class: "rounded-lg py-1 px-3 bg-red-600 text-white inline-block font-medium cursor-pointer",
+                      method: :delete, data: { turbo_method: :delete } %>
         </div>
-        <%= link_to "Remove", remove_image_accommodation_path(image.id), class: "rounded-lg py-1 px-3 bg-red-600 text-white inline-block font-medium cursor-pointer",
-                    method: :delete, data: { turbo_method: :delete } %>
-      </div>
+      <% end %>
     <% end %>
   </div>
 

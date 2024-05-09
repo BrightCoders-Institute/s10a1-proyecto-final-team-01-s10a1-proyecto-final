@@ -1,18 +1,21 @@
-<h2 class="break-all mt-0 mb-4">Filtering params</h2>
-<%= form_with url: posts_path, method: :get do |form| %>
-  <div>
-    <div>
-      <div class="my-5">
+<div class="filter p-5 rounded-sm" data-controller="toggle">
+  <div class="filter-title flex justify-between items-center">
+    <h2 class="break-all mt-0 mb-4">Filtering params</h2>
+    <button data-action="click->toggle#toggle" data-toggle-target="button" class="px-4 py-2 bg-blue-500 text-white rounded-md">Show Filters</button>
+  </div>
+  <div class="filter-form hidden m-1" data-toggle-target="form">
+    <%= form_with url: posts_path, method: :get do |form| %>
+    <div class="data-accomodations flex">
+      <div class="form-group">
         <%= form.label :users_ids, 'Users' %>
         <%= form.select(:users_ids, options_for_select(User.all.collect { |user| [user.email, user.id] },
                         params[:users_ids]), { include_blank: false, include_hidden: false },
-                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
+                        { class: "shadow w-100", data: { controller: "tommultipleselect" }, multiple: true }) %>
       </div>
-
-      <div class="my-5">
+      <div class="form-group">
         <%= form.label :title %>
         <%= form.text_field :title, value: params[:title],
-                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-72" %>
+                            class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-100" %>
       </div>
 
       <div class="my-5">
@@ -23,10 +26,10 @@
           </div>
       </div>
     </div>
-
     <div class='flex flex-col items-center min-[250px]:flex-row'>
-      <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-      <%= link_to 'Clear', posts_path, class: 'rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-3 no-underline' %>
+      <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 w-50 bg-green-600 text-white font-bold inline-block hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-900 focus:ring-opacity-100' %>
+      <%= link_to 'Clear', posts_path, class: 'rounded-lg py-3 px-5 w-50 text-center bg-red-500 text-white inline-block font-bold ml-3 no-underline hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-900 focus:ring-opacity-100' %>
     </div>
+    <% end %>
   </div>
-<% end %>
+</div>
