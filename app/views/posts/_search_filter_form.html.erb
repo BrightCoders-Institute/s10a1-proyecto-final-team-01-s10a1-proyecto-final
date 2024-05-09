@@ -17,15 +17,16 @@
         <%= form.text_field :title, value: params[:title],
                             class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-100" %>
       </div>
+    </div>
 
-      <div class="my-5">
-          <div class="flex items-center justify-start">
-            <%= form.check_box :user_favorites, { checked: ActiveModel::Type::Boolean.new.cast(params[:user_favorites]), include_hidden: false }, 
-                              'true', 'false' %>
-            <%= form.label :user_favorites, 'Show only favorites', class: 'ml-2 text-start font-semibold' %>
-          </div>
+    <div class="mb-5">
+      <div class="flex items-center justify-start">
+        <%= form.check_box :user_favorites, { checked: ActiveModel::Type::Boolean.new.cast(params[:user_favorites]), include_hidden: false }, 
+                          'true', 'false' %>
+        <%= form.label :user_favorites, 'Show only favorites', class: 'ml-2 text-start font-semibold' %>
       </div>
     </div>
+
     <div class='flex flex-col items-center min-[250px]:flex-row'>
       <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 w-50 bg-green-600 text-white font-bold inline-block hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-900 focus:ring-opacity-100' %>
       <%= link_to 'Clear', posts_path, class: 'rounded-lg py-3 px-5 w-50 text-center bg-red-500 text-white inline-block font-bold ml-3 no-underline hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-900 focus:ring-opacity-100' %>
