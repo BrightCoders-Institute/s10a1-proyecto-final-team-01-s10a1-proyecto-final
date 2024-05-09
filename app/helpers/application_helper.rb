@@ -27,4 +27,9 @@ module ApplicationHelper
     }
     controller_name_hashmap[controller_name.to_sym] || root_path
   end
+
+  def truncate_words(text, length = 60)
+    plain_text = text.to_plain_text
+    plain_text.truncate(length, separator: '')
+  end
 end

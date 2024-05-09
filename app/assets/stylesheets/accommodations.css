@@ -9,17 +9,17 @@
 .accommodations a {
   background-color: rgba(211, 211, 211, 0.363);
   border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   text-decoration: none;
   transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .accommodations a:hover,
 .accommodations a:focus {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   color: #01408e;
   text-decoration: underline;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
 }
 
