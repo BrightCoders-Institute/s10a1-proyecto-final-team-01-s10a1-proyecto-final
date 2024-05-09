@@ -1,4 +1,4 @@
-<div class="filter" data-controller="toggle">
+<div class="filter p-5 rounded-sm" data-controller="toggle">
   <div class="filter-title flex justify-between items-center">
     <h2 class="break-all mt-0 mb-4">Filtering params</h2>
     <button data-action="click->toggle#toggle" data-toggle-target="button" class="px-4 py-2 bg-blue-500 text-white rounded-md">Show Filters</button>
@@ -89,16 +89,15 @@
                               rangeslider_range_value: params[:max_guests_number], rangeslider_field_value: :max_guests_number } %>
         </div>
       </div>
-      
-      <div class="mt-2 mb-6">
-        <div class="date-range flex">
+
+      <div class="mt-2 mb-2 flex justify-between flex-wrap items-center">
+        <div class="date-range flex flex-wrap">
           <div class="date-range-form">
             <%= form.label :dates_range, class: "block mb-2" %>
             <%= form.text_field :dates_range, value: params[:dates_range], data: {controller: "daterangepicker"},
                               class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mr-5 w-72" %>
           </div>
-          
-          <div class="mt-4 flex items-center justify-start">
+          <div class="mt-4 mb-4 flex items-center justify-start">
             <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
                                 'true', 'false' %>
             <%= form.label :date_filter, 'Filter with dates range', class: 'ml-2 text-start font-semibold' %>

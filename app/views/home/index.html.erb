@@ -1,9 +1,9 @@
-<div class="dark:bg-gray-800 h-auto">
+<div class="dark:bg-gray-800 h-auto ">
   <div>
     <%= render 'shared/navbar' %>
   </div>
   <div class="content">
-    <div class="carrusel mt-1">
+    <div class="carousel">
       <% @images.each do |image| %>
         <div class="slide">
           <%= image_tag image, alt: 'Imagen' %>

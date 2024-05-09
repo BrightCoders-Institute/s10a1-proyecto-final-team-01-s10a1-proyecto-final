@@ -1,0 +1,56 @@
+.posts a {
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.post {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-bottom: 15px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.user-profile {
+  border-radius: 50%;
+  height: 30px;
+  object-fit: cover;
+  width: 30px;
+}
+
+.user-post p {
+  font-weight: 400;
+}
+
+@media (min-width: 480px) {
+  .post {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  .user-profile {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .post {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+    padding: 20px;
+  }
+
+  .user-profile {
+    height: 50px;
+    width: 50px;
+  }
+}
