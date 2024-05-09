@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, autosave: true
   has_many :accommodations, dependent: :destroy, autosave: true
   has_many :favorite_accommodations, dependent: :destroy, autosave: true
+  has_many :favorite_reservations, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
@@ -53,6 +54,8 @@ class User < ApplicationRecord
   end
 
   def image_is_saved_and_exists?
+    return false if image.blob.nil?
+
     image_blob = image.blob
     image.attached? && image_blob.present? && image_blob.persisted?
   end
@@ -110,16 +113,32 @@ class User < ApplicationRecord
   end
 
   def accommodation_favorite_marking_exists?(accommodation_id)
-    favorite_accommodations.where(accommodation_id: accommodation_id).count > 0
+    favorite_accomodations_count({accommodation_id: accommodation_id}) > 0
   end
 
   def marked_accommodation_as_favorite?(accommodation_id)
-    favorite_accommodations.where(accommodation_id: accommodation_id, favorite: true).count > 0
+    favorite_accomodations_count({accommodation_id: accommodation_id, favorite: true}) > 0
+  end
+
+  def reservation_favorite_marking_exists?(reservation_id)
+    favorite_reservations_count({reservation_id: reservation_id}) > 0
+  end
+
+  def marked_reservation_as_favorite?(reservation_id)
+    favorite_reservations_count({reservation_id: reservation_id, favorite: true}) > 0
   end
 
   private
 
   def delete_messages
     Message.where('sender_id = ? OR receiver_id = ?', self.id, self.id).map(&:destroy)
+  end
+
+  def favorite_accomodations_count(params)
+    favorite_accommodations.where(params).count
+  end
+
+  def favorite_reservations_count(params)
+    favorite_reservations.where(params).count
   end
 end
