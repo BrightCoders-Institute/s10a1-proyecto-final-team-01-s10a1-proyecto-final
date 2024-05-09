@@ -54,6 +54,8 @@ class User < ApplicationRecord
   end
 
   def image_is_saved_and_exists?
+    return false if main_image.blob.nil?
+    
     image_blob = image.blob
     image.attached? && image_blob.present? && image_blob.persisted?
   end
