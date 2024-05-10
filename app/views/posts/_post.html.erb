@@ -1,13 +1,15 @@
-<%= content_tag :div, id: (dom_id post), class: "bg-white rounded-md shadow" do %>
+<%= content_tag :div, id: (dom_id post), class: "bg-white rounded-md shadow p-3" do %>
   <div class="text-center">
     <h1 class="font-bold text-2xl text-gray-900"><%= post.title %></h1>
-    <p class="text-base text-gray-700">By: <span class="text-black"><%= post.user.name %></span></p>
+    <p class="text-base text-gray-700">User: <span class="text-black"><%= post.user.name %></span></p>
   </div>
-  <p class="text-base text-gray-700">Content: <span class="text-black"><%= post.content %></span></p>
-  <% if action_name != "show" %>
-    <div class="flex justify-end mt-4">
-      <%= link_to "Show", post, class: "text-base text-gray-700 font-medium mr-2" %>
-      <%= link_to "Edit", edit_post_path(post), class: "text-base text-gray-700 font-medium" %>
-    </div>
-  <% end %>
+  <div class="overflow-auto max-h-[270px]">
+    <p class="text-base text-gray-700">Content: <span class="text-black"><%= post.content %></span></p>
+    <% if action_name != "show" %>
+      <div class="flex justify-end mt-4">
+        <%= link_to "Show", post, class: "text-base text-gray-700 font-medium mr-2" %>
+        <%= link_to "Edit", edit_post_path(post), class: "text-base text-gray-700 font-medium" %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
