@@ -1,19 +1,15 @@
-<%= content_tag :div, id: (dom_id post) do %>
-  <h1 class="font-bold text-4xl"><%= post.title %></h1>
+<%= content_tag :div, id: (dom_id post), class: "bg-gray-100 rounded-lg shadow-lg p-6 mb-4" do %>
+  <div class="text-center mb-4">
+    <h1 class="font-bold text-3xl text-purple-800"><%= post.title %></h1>
+    <p class="text-lg text-left text-purple-600">User: <span class="text-black"><%= post.user.email %></span></p>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= post.user.email %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= post.content %>
-  </p>
+  <p class="text-lg text-left text-purple-600">Content: <span class="text-black"><%= post.content %></span></p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+    <div class="flex justify-end">
+      <%= link_to "Show this post", post, class: "text-sm text-purple-600 font-medium mr-4" %>
+      <%= link_to "Edit this post", edit_post_path(post), class: "text-sm text-purple-600 font-medium" %>
+    </div>
   <% end %>
 <% end %>
