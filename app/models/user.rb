@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  before_create :set_default_role
   after_destroy :delete_messages
-
   after_create_commit { broadcast_append_to "users" }
 
   belongs_to :role
@@ -46,11 +44,6 @@ class User < ApplicationRecord
       user.email = provider_data.info.email
       user.password = Devise.friendly_token[0, 20]
     end
-  end
-
-  def set_default_role
-    role = Role.find_by(name: 'guest')
-    self.role_id = role.id if role.present?
   end
 
   def image_is_saved_and_exists?
