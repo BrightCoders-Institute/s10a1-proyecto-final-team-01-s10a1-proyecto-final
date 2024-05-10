@@ -1,17 +1,18 @@
-<%= form_with(model: [post, Comment.new], class: "contents") do |form| %>
+<%= form_with(model: [post, Comment.new], class: "bg-white rounded-lg shadow-lg") do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="p-5">
+    <%= form.label :title, class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :title, class: "block w-full rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="p-5">
+    <%= form.label :content, class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.rich_text_area :content, class: "block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="text-center ">
+    <i class="fa-regular fa-paper-plane text-green-700 hover:text-green-900"></i>
+    <%= form.submit "Send Comment", class: "text-green-700 hover:text-green-900"%>
   </div>
 <% end %>
