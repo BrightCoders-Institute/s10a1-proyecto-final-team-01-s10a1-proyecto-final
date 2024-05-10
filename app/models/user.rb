@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  before_create :set_default_role
-  after_destroy :delete_messages
-
   after_create_commit { broadcast_append_to "users" }
 
   belongs_to :role
@@ -48,20 +45,11 @@ class User < ApplicationRecord
     end
   end
 
-  def set_default_role
-    role = Role.find_by(name: 'guest')
-    self.role_id = role.id if role.present?
-  end
-
   def image_is_saved_and_exists?
     return false if image.blob.nil?
 
     image_blob = image.blob
     image.attached? && image_blob.present? && image_blob.persisted?
-  end
-
-  def messages
-    Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
   end
 
   def already_reviewed_accommodation?(accommodation_id)
@@ -92,26 +80,6 @@ class User < ApplicationRecord
     is_a_guest? || is_an_admin?
   end
 
-  def is_a_host?
-    role_id == 3
-  end
-
-  def is_staff?
-    role_id == 2
-  end
-
-  def is_an_admin?
-    role_id == 1
-  end
-
-  def is_a_host_or_admin?
-    is_a_host? || is_an_admin?
-  end
-
-  def is_a_guest_or_admin?
-    is_a_guest? || is_an_admin?
-  end
-
   def accommodation_favorite_marking_exists?(accommodation_id)
     favorite_accomodations_count({accommodation_id: accommodation_id}) > 0
   end
@@ -129,10 +97,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def delete_messages
-    Message.where('sender_id = ? OR receiver_id = ?', self.id, self.id).map(&:destroy)
-  end
 
   def favorite_accomodations_count(params)
     favorite_accommodations.where(params).count

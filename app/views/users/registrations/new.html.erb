@@ -16,7 +16,7 @@
       <div class="field">
         <%= f.label :role_id %>
         <%= f.select(:role_id, Role.where(id: [3, 4]).collect { |role| [role.name.capitalize, role.id] }, { include_blank: false },
-                      { class: "form-input" }) %>
+                      { class: "form-input my-0" }) %>
       </div>
 
       <div class="field">
