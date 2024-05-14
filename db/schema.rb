@@ -139,6 +139,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_040021) do
     t.index ["user_id"], name: "index_favorite_reservations_on_user_id"
   end
 
+  create_table "favorites", primary_key: ["user_id", "accommodation_id"], force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "accommodation_id", null: false
+    t.boolean "favorite", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_favorites_on_accommodation_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -232,6 +242,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_14_040021) do
   add_foreign_key "favorite_posts", "users"
   add_foreign_key "favorite_reservations", "reservations"
   add_foreign_key "favorite_reservations", "users"
+  add_foreign_key "favorites", "accommodations"
+  add_foreign_key "favorites", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "chat_rooms"
