@@ -19,6 +19,9 @@
   <body class="prose min-h-dvh min-w-full flex flex-col">
     <div>
       <div>
+        <% if user_signed_in? %>
+          <%= render 'shared/navbar' %>
+        <% end %>
         <%= yield %>
       </div>
     </div>

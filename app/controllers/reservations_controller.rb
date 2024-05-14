@@ -6,7 +6,16 @@ class ReservationsController < ApplicationController
   before_action :check_if_is_guest_or_admin, only: %i[ new create ]
 
   def index
-    @reservations = Reservation.all
+    @user= current_user
+
+    @reservations = if @user.is_an_admin? || @user.is_staff?
+                      Reservation.all
+                    elsif @user.is_a_host?
+                      Reservation.joins(:accommodation).where("accommodations.user_id = ?", @user.id)
+                    else
+                      Reservation.where(user_id: @user.id)
+                    end
+
     date_filter = params[:date_filter]
     user_favorites = params[:user_favorites]
 

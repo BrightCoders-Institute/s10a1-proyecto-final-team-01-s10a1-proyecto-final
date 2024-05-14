@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_06_001616) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_14_040021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,6 +117,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_001616) do
     t.datetime "updated_at", null: false
     t.index ["accommodation_id"], name: "index_favorite_accommodations_on_accommodation_id"
     t.index ["user_id"], name: "index_favorite_accommodations_on_user_id"
+  end
+
+  create_table "favorite_posts", primary_key: ["user_id", "post_id"], force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.boolean "favorite", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_favorite_posts_on_post_id"
+    t.index ["user_id"], name: "index_favorite_posts_on_user_id"
   end
 
   create_table "favorite_reservations", primary_key: ["user_id", "reservation_id"], force: :cascade do |t|
@@ -228,6 +238,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_001616) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorite_accommodations", "accommodations"
   add_foreign_key "favorite_accommodations", "users"
+  add_foreign_key "favorite_posts", "posts"
+  add_foreign_key "favorite_posts", "users"
   add_foreign_key "favorite_reservations", "reservations"
   add_foreign_key "favorite_reservations", "users"
   add_foreign_key "favorites", "accommodations"
