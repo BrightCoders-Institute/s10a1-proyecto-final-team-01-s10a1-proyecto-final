@@ -20,19 +20,22 @@ window.RangeSlider = RangeSlider
 document.addEventListener("turbo:load", function() {
   let currentSlide = 0;
   const slides = document.querySelectorAll(".slide");
-  const totalSlides = slides.length;
 
-  function showSlide(n) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[n].classList.add("active");
-  }
+  if (slides.length > 0) {
+    const totalSlides = slides.length;
 
-  showSlide(currentSlide);
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[n].classList.add("active");
+    }
+  
     showSlide(currentSlide);
+  
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+  
+    setInterval(nextSlide, 4000);
   }
-
-  setInterval(nextSlide, 4000);
 });
