@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :accommodations, dependent: :destroy, autosave: true
   has_many :favorite_accommodations, dependent: :destroy, autosave: true
   has_many :favorite_reservations, dependent: :destroy, autosave: true
+  has_many :favorite_posts, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
@@ -96,6 +97,14 @@ class User < ApplicationRecord
     favorite_reservations_count({reservation_id: reservation_id, favorite: true}) > 0
   end
 
+  def post_favorite_marking_exists?(post_id)
+    favorite_posts_count({post_id: post_id}) > 0
+  end
+
+  def marked_post_as_favorite?(post_id)
+    favorite_posts_count({post_id: post_id, favorite: true}) > 0
+  end
+
   private
 
   def favorite_accomodations_count(params)
@@ -104,5 +113,9 @@ class User < ApplicationRecord
 
   def favorite_reservations_count(params)
     favorite_reservations.where(params).count
+  end
+
+  def favorite_posts_count(params)
+    favorite_posts.where(params).count
   end
 end
