@@ -12,7 +12,7 @@
     padding: 1rem 1rem;
     width: 100%;
   }
-  
+
   .reservations-buttons:hover {
     background-color: rgb(247, 247, 247);
     color: black !important;
@@ -44,10 +44,6 @@
     color: black;
     font-size: 14px;
     font-weight: 500;
-  }
-
-  p {
-    margin: 0;
   }
 
   .bold {
@@ -177,20 +173,18 @@
   border: 2px solid black;
 }
 
-#reservations {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 1rem 0 0 0;
-  padding-bottom: 50px;
-}
-
 .reservation-container {
-  background-color: rgba(211, 211, 211, 0.363);
+  background-color: #F3F4F6;
   border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   text-decoration: none;            
   transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-container h2 {
+  color: #1F2937;
+  margin: 0;
 }
 
 .reservation-container:hover,

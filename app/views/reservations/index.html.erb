@@ -1,39 +1,45 @@
 <div class="container-profile">
-  
+
   <%= render 'shared/head' %>
-  
+
   <% if notice.present? %>
     <p class="py-1 px-2 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
   <div>
-  <p class="font-bold text-4xl">Reservation</p>
+    <h1 class="font-bold text-4xl mb-8 text-left">Reservation</h1>
     <%= render "search_filter_form" %>
   </div>
-
   <div>
     <% if current_user.is_a_guest_or_admin? && Accommodation.all.count > 0 %>
-      <%= link_to new_reservation_path, class: "inline-flex items-center text-white font-medium py-2 px-4"  do %>
-        <i class="mr-1 fa-regular fa-calendar-plus fa-2xl" style="color: #190482;"></i>
-        <span class="text-black ">New Reservation</span>
+      <%= link_to new_reservation_path, class: "inline-block rounded-lg py-3 px-5 bg-green-600 w-100 text-white text-center block font-medium mb-4"  do %>
+        <i class="mr-1 fa-regular fa-calendar-plus fa-2xl"></i>
+        <span>New Reservation</span>
       <% end %>
     <% end %>
   </div>
-  
-  <div class="flex justify-between items-center">
-    <div id="reservations" class="min-w-full">
-      <% @reservations.each do |reservation| %>
-        <div class="reservation-container">
-          <h2 class="text-2xl font-bold text-gray-900 mt-0"><%= reservation.accommodation.title %></h2>
-          <h4 class="text-base font-semibold text-gray-700"><%= reservation.user.email %></h4>
-          <%= link_to "Show this reservation", reservation, class: "mt-6 rounded-lg py-3 px-5 bg-blue-800 text-white inline-block font-medium hover:bg-blue-700" %>
-          <% if reservation.user.id == current_user.id || current_user.is_an_admin? %>
-            <%= link_to "Edit this reservation", edit_reservation_path(reservation), class: "rounded-lg py-3 ml-2 px-5 bg-blue-600 text-white inline-block font-medium hover:bg-blue-500" %>
-          <% end %>
-        </div>
-        <hr class="mt-6">
-      <% end %>
-    </div>
+  <div id="reservations" class="min-w-full grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <% @reservations.each do |reservation| %>
+      <div class="reservation-container mb-4 bg-white shadow rounded-lg p-16">
+        <%= link_to reservation do %>
+          <div class="reservation-title border-b border-gray-300 pb-2">
+            <h2 class="text-2xl font-bold text-gray-900 mt-0"><%= reservation.accommodation.title %></h2>
+            <h3 class="text-base font-semibold text-gray-700">by <%= reservation.user.name %></h3>
+          </div>
+          <div class="reservation-info">
+            <div class="data flex justify-between">
+              <p><%= reservation.accommodation.address %></p>
+              <p class="font-bold">$<%= reservation.accommodation.price_per_day %> MXN</p>
+            </div>
+            <p><%= reservation.accommodation.dates_range %></p>
+          </div>
+        <% end %>
+        <% if reservation.user.id == current_user.id || current_user.is_an_admin? %>
+          <%= link_to "Edit this reservation", edit_reservation_path(reservation), class: "rounded-lg py-3 ml-2 px-5 bg-purple-500 text-white inline-block font-medium hover:bg-purple-400" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  
+
+
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>

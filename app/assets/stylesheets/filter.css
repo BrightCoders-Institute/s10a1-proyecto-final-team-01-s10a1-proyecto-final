@@ -41,9 +41,6 @@
 }
 
 @media (min-width: 769px) {
-  .filter {
-    flex-direction: row;
-  }
 
   .filter-title {
     flex-grow: 1;
