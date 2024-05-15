@@ -25,9 +25,9 @@
         <div class="reservation-container">
           <h2 class="text-2xl font-bold text-gray-900 mt-0"><%= reservation.accommodation.title %></h2>
           <h4 class="text-base font-semibold text-gray-700"><%= reservation.user.email %></h4>
-          <%= link_to "Show this reservation", reservation, class: "mt-6 rounded-lg py-3 px-5 bg-purple-700 text-white inline-block font-medium hover:bg-purple-400" %>
+          <%= link_to "Show this reservation", reservation, class: "mt-6 rounded-lg py-3 px-5 bg-blue-800 text-white inline-block font-medium hover:bg-blue-700" %>
           <% if reservation.user.id == current_user.id || current_user.is_an_admin? %>
-            <%= link_to "Edit this reservation", edit_reservation_path(reservation), class: "rounded-lg py-3 ml-2 px-5 bg-purple-500 text-white inline-block font-medium hover:bg-purple-400" %>
+            <%= link_to "Edit this reservation", edit_reservation_path(reservation), class: "rounded-lg py-3 ml-2 px-5 bg-blue-600 text-white inline-block font-medium hover:bg-blue-500" %>
           <% end %>
         </div>
         <hr class="mt-6">
