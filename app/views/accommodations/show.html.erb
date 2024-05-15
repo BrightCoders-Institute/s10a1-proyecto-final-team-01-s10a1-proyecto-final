@@ -11,9 +11,9 @@
 
     <% if @accommodation.user.id == current_user.id || current_user.is_an_admin? %>
       <div class="mt-2">
-        <%= link_to "Edit this accommodation", edit_accommodation_path(@accommodation), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit this accommodation", edit_accommodation_path(@accommodation), class: "rounded-lg py-3 ml-2 px-5 bg-purple-500 text-white inline-block font-medium hover:bg-purple-400" %>
       </div>
-      <div class="mt-2 ml-2 inline-block">
+      <div class="mt-2">
         <%= button_to "Destroy this accommodation", accommodation_path(@accommodation), method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
       </div>
     <% end %>
