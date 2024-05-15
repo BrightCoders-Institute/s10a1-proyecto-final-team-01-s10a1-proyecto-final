@@ -1,11 +1,11 @@
 <div class="filter p-5 rounded-sm" data-controller="toggle">
   <div class="filter-title flex justify-between items-center">
     <h2 class="break-all mt-0 mb-4">Filtering params</h2>
-    <button data-action="click->toggle#toggle" data-toggle-target="button" class="px-4 py-2 bg-blue-500 text-white rounded-md">Show Filters</button>
+    <button data-action="click->toggle#toggle" data-toggle-target="button" class="px-4 py-2 bg-blue-500 text-white rounded-md">Hide Filters</button>
   </div>
-  <div class="filter-form hidden" data-toggle-target="form">
+  <div class="filter-form" data-toggle-target="form">
     <%= form_with url: accommodations_path, method: :get do |form| %>
-      <div class="data-accomodations flex">
+      <div class="data-accomodations flex !flex-wrap">
         <div class="form-group">
           <%= form.label :hosts_ids, 'Hosts' %>
           <%= form.select(:hosts_ids, options_for_select(User.where(role_id: 3).collect { |user| [user.email, user.id] },

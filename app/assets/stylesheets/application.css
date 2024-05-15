@@ -5,7 +5,6 @@
 @import "profile.css";
 @import "profile_form.css";
 @import "home_page.css";
-@import "new_reservation.css";
 @import "show_reservation.css";
 @import "filter.css";
 @import "accommodations.css";
@@ -253,4 +252,3 @@ label {
   }
 }
 
-}

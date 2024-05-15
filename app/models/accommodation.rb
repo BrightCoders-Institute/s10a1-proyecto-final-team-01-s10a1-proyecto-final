@@ -57,10 +57,14 @@ class Accommodation < ApplicationRecord
   }
 
   def main_image_is_saved_and_exists?
-    return false if main_image.blob.nil?
+    image_is_saved_and_exists?(main_image)
+  end
 
-    image_blob = main_image.blob
-    image_blob.attached? && image_blob.present? && image_blob.persisted?
+  def image_is_saved_and_exists?(image)
+    return false if image.blob.nil?
+
+    image_blob = image.blob
+    (!image.is_a?(ActiveStorage::Attachment) ? image.attached? : true) && image_blob.present? && image_blob.persisted?
   end
 
   def available_users_for_reviewing

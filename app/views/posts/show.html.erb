@@ -1,21 +1,48 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="w-full">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="max-h-auto bg-gray-100 max-[950px]:">
+  <div class="grid grid-cols-2 grid-rows-2 gap-3">
 
-    <%= render @post %>
+    <div class=" rounded-lg shadow-lg p-3">
+      <% if notice.present? %>
+        <p class="py-2 px-3 bg-green-100 text-green-700 font-medium rounded-lg mb-4"><%= notice %></p>
+        <%end%>
 
-    <div class="mb-10">
-      <% if @post.user.id == current_user.id || current_user.is_an_admin? %>
-        <%= link_to "Edit this post", edit_post_path(@post), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        <div class="inline-block ml-2">
-          <%= button_to "Destroy this post", post_path(@post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-        </div>
+      <div class="flex justify-between p-2">
+        <%= link_to posts_path, class: "flex items-center rounded-md mr-5 text-white bg-gray-700 hover:bg-black" do %>
+          <i class="fa-solid fa-chevron-left text-white p-1"></i>
+          <span class="text-sm font-medium mr-2">Back posts</span>
+        <% end %>
+        <%= link_to switch_user_favorite_post_path, method: :put, data: { turbo_method: :put }, class: "rounded-lg mr-1 bg-gray-100 inline-block font-medium" do %>
+          <% if current_user.marked_post_as_favorite?(@post.id) %>
+            <i class="fa-solid fa-star text-red-600"></i>
+          <% else %>
+        <span class="rounded-full p-1">
+          <i class="fa-regular fa-star text-red-500"></i>
+        </span>
       <% end %>
-      <%= link_to "Back to posts", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= current_user.marked_post_as_favorite?(@post.id) ? "unfavorite" : "favorite" %>
+<% end %>
+        <% if @post.user.id == current_user.id || current_user.is_an_admin? %>
+          <%= link_to edit_post_path(@post), class: "flex items-center rounded-md text-white bg-blue-500 mr-5 hover:bg-blue-700 ml-auto " do %>
+            <i class="fa-regular fa-pen-to-square text-white p-1"></i>
+            <span class="text-sm font-medium mr-1">Edit post</span>
+          <% end %>
+          <%= button_to post_path(@post), method: :delete, class: "flex items-center rounded-md text-white bg-red-500 mr-5 hover:text-red-700 ml-auto" do %>
+            <i class="fa-regular fa-trash-can text-white p-1"></i>
+            <span class="text-sm font-medium mr-1">Destroy post</span>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render @post %>
     </div>
 
-    <%= render "posts/comments", post: @post, comments: @comments %>
+    <div class="col-start-1 row-start-2 mt-2">
+      <%= render "comments/new", post: @post %>
+    </div>
+
+    <div class="row-span-2 col-start-2 row-start-1 rounded-lg shadow-lg overflow-y-auto max-h-[930px] m-2">
+      <h1 class="font-bold text-4xl sticky top-0 bg-white p-10 rounded-md shadow-lg ">Comments</h1>
+      <%= render "posts/comments", post: @post, comments: @comments %>
+    </div>
+
   </div>
 </div>

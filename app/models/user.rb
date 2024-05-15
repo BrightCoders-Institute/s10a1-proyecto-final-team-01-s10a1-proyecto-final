@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  before_create :set_default_role
-  after_destroy :delete_messages
-
   after_create_commit { broadcast_append_to "users" }
 
   belongs_to :role
@@ -10,6 +7,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, autosave: true
   has_many :accommodations, dependent: :destroy, autosave: true
   has_many :favorite_accommodations, dependent: :destroy, autosave: true
+  has_many :favorite_reservations, dependent: :destroy, autosave: true
+  has_many :favorite_posts, dependent: :destroy, autosave: true
   has_many :reviews, dependent: :destroy, autosave: true
   has_many :reservations, dependent: :destroy, autosave: true
 
@@ -47,18 +46,11 @@ class User < ApplicationRecord
     end
   end
 
-  def set_default_role
-    role = Role.find_by(name: 'guest')
-    self.role_id = role.id if role.present?
-  end
-
   def image_is_saved_and_exists?
+    return false if image.blob.nil?
+
     image_blob = image.blob
     image.attached? && image_blob.present? && image_blob.persisted?
-  end
-
-  def messages
-    Message.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
   end
 
   def already_reviewed_accommodation?(accommodation_id)
@@ -89,37 +81,41 @@ class User < ApplicationRecord
     is_a_guest? || is_an_admin?
   end
 
-  def is_a_host?
-    role_id == 3
-  end
-
-  def is_staff?
-    role_id == 2
-  end
-
-  def is_an_admin?
-    role_id == 1
-  end
-
-  def is_a_host_or_admin?
-    is_a_host? || is_an_admin?
-  end
-
-  def is_a_guest_or_admin?
-    is_a_guest? || is_an_admin?
-  end
-
   def accommodation_favorite_marking_exists?(accommodation_id)
-    favorite_accommodations.where(accommodation_id: accommodation_id).count > 0
+    favorite_accomodations_count({accommodation_id: accommodation_id}) > 0
   end
 
   def marked_accommodation_as_favorite?(accommodation_id)
-    favorite_accommodations.where(accommodation_id: accommodation_id, favorite: true).count > 0
+    favorite_accomodations_count({accommodation_id: accommodation_id, favorite: true}) > 0
+  end
+
+  def reservation_favorite_marking_exists?(reservation_id)
+    favorite_reservations_count({reservation_id: reservation_id}) > 0
+  end
+
+  def marked_reservation_as_favorite?(reservation_id)
+    favorite_reservations_count({reservation_id: reservation_id, favorite: true}) > 0
+  end
+
+  def post_favorite_marking_exists?(post_id)
+    favorite_posts_count({post_id: post_id}) > 0
+  end
+
+  def marked_post_as_favorite?(post_id)
+    favorite_posts_count({post_id: post_id, favorite: true}) > 0
   end
 
   private
 
-  def delete_messages
-    Message.where('sender_id = ? OR receiver_id = ?', self.id, self.id).map(&:destroy)
+  def favorite_accomodations_count(params)
+    favorite_accommodations.where(params).count
+  end
+
+  def favorite_reservations_count(params)
+    favorite_reservations.where(params).count
+  end
+
+  def favorite_posts_count(params)
+    favorite_posts.where(params).count
   end
 end

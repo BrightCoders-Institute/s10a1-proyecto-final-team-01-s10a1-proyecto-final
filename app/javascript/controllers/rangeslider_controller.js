@@ -18,7 +18,7 @@ export default class extends Controller {
     }
 
     new RangeSlider("#" + this.element.id, {
-      values: [range[0], range[range.length - 1]],
+      values: range,
       min: this.minValue,
       max: this.maxValue,
       pointRadius: 8

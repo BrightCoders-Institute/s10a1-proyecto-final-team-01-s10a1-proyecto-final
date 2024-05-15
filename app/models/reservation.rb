@@ -1,6 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :accommodation
+  has_many :favorite_reservations, dependent: :destroy, autosave: true
 
   validates :user_id, presence: true
   validates :accommodation_id, presence: true
@@ -8,6 +9,7 @@ class Reservation < ApplicationRecord
   validates_inclusion_of :active, in: [true, false]
   validate :accommodation_has_an_available_dates_range, :user_is_a_guest
 
+  scope :filter_by_user_favorites, ->(user_id) { where(id: User.find(user_id).favorite_reservations.where(favorite: true).pluck(:reservation_id)).order(updated_at: :desc) }
   scope :filter_by_guests_ids, ->(guests_ids) { where(user_id: guests_ids).order(updated_at: :desc) }
   scope :filter_by_accommodations_ids, lambda { |accommodations_ids|
     where(accommodation_id: accommodations_ids).order(updated_at: :desc)
