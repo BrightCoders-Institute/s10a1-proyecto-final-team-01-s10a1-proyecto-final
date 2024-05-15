@@ -23,7 +23,9 @@ module ApplicationHelper
     controller_name_hashmap = {
       users: users_path,
       profile: profile_path,
-      accommodations: accommodations_path
+      accommodations: accommodations_path,
+      reservations: reservations_path,
+      posts: posts_path
     }
     controller_name_hashmap[controller_name.to_sym] || root_path
   end
