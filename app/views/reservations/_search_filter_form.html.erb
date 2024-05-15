@@ -1,41 +1,50 @@
-<%= form_with url: reservations_path, method: :get do |form| %>
-  <div class="flex flex-row justify-center items-center ">
-    <div class="flex flex-row w-11/12 rounded-lg">
-      <div class="w-1/4 p-2">
-        <%= form.label :guests_ids, 'Guests', class: 'text-xl' %>
-        <%= form.select(:guests_ids, options_for_select(User.where(role_id: 4).collect { |user| [user.email, user.id] },
-                        params[:guests_ids]), { include_blank: false, include_hidden: false },
-                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
-      </div>
-
-      <div class="w-1/4 p-2">
-        <%= form.label :accommodations_ids, 'Accommodations', class:'text-xl' %>
-        <%= form.select(:accommodations_ids, options_for_select(Accommodation.all.collect { |accommodation| [accommodation.title, accommodation.id] },
-                        params[:accommodations_ids]), { include_blank: true, include_hidden: false },
-                        { class: "shadow w-72", data: { controller: "tommultipleselect" }, multiple: true }) %>
-      </div>
-
-      <div class="w-1/4 p-2 mt-2">
-        <%= form.label :dates_range, class: "block text-lg" %>
-        <%= form.text_field :dates_range, value: params[:dates_range], data: {controller: "daterangepicker"},
-                            class: 'rounded-lg' %>
-      </div>
-
-      <div class="w-1/4 p-2 mt-6">
-        <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
-                            'true', 'false' %>
-        <%= form.label :date_filter, 'Filter with dates range', class: 'text-start font-semibold text-lg' %>
-      </div>
-
-      <div class="w-1/4 p-2 mt-6">
-        <%= form.check_box :active, { checked: ActiveModel::Type::Boolean.new.cast(params[:active]), include_hidden: false }, 
-                              'true', 'false' %>
-        <%= form.label :active, 'Show only active reservations', class: 'text-start font-semibold text-lg' %>
-      </div>
-    </div>
+<div class="filter mb-8 p-4 rounded-sm" data-controller="toggle">
+  <div class="filter-title flex justify-between items-center">
+    <h2 class="break-all mt-0 mb-4">Filtering params</h2>
+    <button data-action="click->toggle#toggle" data-toggle-target="button" class="px-4 py-2 bg-blue-500 text-white rounded-md">Show Filters</button>
   </div>
-  <div class='flex justify-center p-6'>
-    <%= form.submit 'Search', class: 'mr-6 bg-purple-700 text-white p-2 rounded-lg hover:bg-purple-400' %>
-    <%= link_to 'Clear', reservations_path, class: 'bg-purple-500 text-white p-2 no-underline rounded-lg hover:bg-purple-400' %>
+  <div class="filter-form hidden" data-toggle-target="form">
+    <%= form_with url: reservations_path, method: :get do |form| %>
+      <div class="flex flex-col md:flex-row justify-center items-center p-4">
+        <div class="flex w-full md:w-11/12 rounded-lg flex-wrap">
+          <div class="w-full p-2 md:w-1/2 lg:w-1/4">
+            <%= form.label :guests_ids, 'Guests', class: 'text-xl' %>
+            <%= form.select(:guests_ids, options_for_select(User.where(role_id: 4).collect { |user| [user.email, user.id] },
+                            params[:guests_ids]), { include_blank: false, include_hidden: false },
+                            { class: "shadow w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
+          </div>
+
+          <div class="w-full p-2 md:w-1/2 lg:w-1/4">
+            <%= form.label :accommodations_ids, 'Accommodations', class:'text-xl' %>
+            <%= form.select(:accommodations_ids, options_for_select(Accommodation.all.collect { |accommodation| [accommodation.title, accommodation.id] },
+                            params[:accommodations_ids]), { include_blank: true, include_hidden: false },
+                            { class: "shadow w-full", data: { controller: "tommultipleselect" }, multiple: true }) %>
+          </div>
+
+          <div class="w-full p-2 mt-2 md:mt-0 md:w-1/2 lg:w-1/4">
+            <%= form.label :dates_range, class: "block text-lg" %>
+            <%= form.text_field :dates_range, value: params[:dates_range], data: {controller: "daterangepicker"},
+                                class: 'rounded-lg w-full' %>
+          </div>
+
+          <div class="w-full p-2 mt-6 md:mt-0 md:w-1/2 lg:w-1/4">
+            <div class="flex items-center">
+              <%= form.check_box :date_filter, { checked: ActiveModel::Type::Boolean.new.cast(params[:date_filter]), include_hidden: false }, 
+                                  'true', 'false' %>
+              <%= form.label :date_filter, 'Filter with dates range', class: 'text-start font-semibold text-lg ml-2' %>
+            </div>
+            <div class="flex items-center">
+              <%= form.check_box :active, { checked: ActiveModel::Type::Boolean.new.cast(params[:active]), include_hidden: false }, 
+                                  'true', 'false' %>
+              <%= form.label :active, 'Show only active reservations', class: 'text-start font-semibold text-lg ml-2' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='flex justify-center'>
+        <%= form.submit 'Search', class: 'rounded-lg py-3 px-5 bg-green-600 text-white font-bold inline-block hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-900 focus:ring-opacity-100' %>
+        <%= link_to 'Clear', reservations_path, class: 'rounded-lg py-3 px-5 bg-red-500 text-white inline-block font-bold ml-3 no-underline hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-900 focus:ring-opacity-100' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
