@@ -4,23 +4,23 @@
     <div class=" rounded-lg shadow-lg p-3">
       <% if notice.present? %>
         <p class="py-2 px-3 bg-green-100 text-green-700 font-medium rounded-lg mb-4"><%= notice %></p>
-    <%= render @post %>
-    <div class="mb-10">
-      <%= link_to current_user.marked_post_as_favorite?(@post.id) ? "Unmark as favorite" : "Mark as favorite",
-        switch_user_favorite_post_path, method: :put, data: { turbo_method: :put },
-        class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%end%>
 
-      <% if @post.user.id == current_user.id || current_user.is_an_admin? %>
-        <%= link_to "Edit this post", edit_post_path(@post), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        <div class="inline-block ml-2">
-          <%= button_to "Destroy this post", post_path(@post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-        </div>
-      <% end %>
       <div class="flex justify-between p-2">
-        <%= link_to posts_path, class: "flex items-center rounded-md text-white bg-gray-700 hover:bg-black" do %>
+        <%= link_to posts_path, class: "flex items-center rounded-md mr-5 text-white bg-gray-700 hover:bg-black" do %>
           <i class="fa-solid fa-chevron-left text-white p-1"></i>
           <span class="text-sm font-medium mr-2">Back posts</span>
         <% end %>
+        <%= link_to switch_user_favorite_post_path, method: :put, data: { turbo_method: :put }, class: "rounded-lg mr-1 bg-gray-100 inline-block font-medium" do %>
+          <% if current_user.marked_post_as_favorite?(@post.id) %>
+            <i class="fa-solid fa-star text-red-600"></i>
+          <% else %>
+        <span class="rounded-full p-1">
+          <i class="fa-regular fa-star text-red-500"></i>
+        </span>
+      <% end %>
+  <%= current_user.marked_post_as_favorite?(@post.id) ? "unfavorite" : "favorite" %>
+<% end %>
         <% if @post.user.id == current_user.id || current_user.is_an_admin? %>
           <%= link_to edit_post_path(@post), class: "flex items-center rounded-md text-white bg-blue-500 mr-5 hover:bg-blue-700 ml-auto " do %>
             <i class="fa-regular fa-pen-to-square text-white p-1"></i>
